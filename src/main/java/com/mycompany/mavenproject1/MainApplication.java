@@ -22,8 +22,6 @@ public class MainApplication extends javax.swing.JFrame {
     }
 
     private void myInitComponents() {
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
         panelSectionSell.setVisible(true);
         panelSell1.setVisible(true);
         panelRepayment1.setVisible(false);

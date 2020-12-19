@@ -32,6 +32,7 @@ public class PanelSell extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnShowMessage = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(950, 850));
 
         jLabel1.setText("Hello world!!!");

@@ -31,7 +31,7 @@ public class LoginForm extends javax.swing.JFrame {
         initComponents();
         scaleImage();
     }
-    
+
     private void scaleImage() {
         ImageIcon icon = new ImageIcon(getClass().getResource("/img_568656.png"));
         Image img = icon.getImage();
@@ -154,27 +154,35 @@ public class LoginForm extends javax.swing.JFrame {
         btnIngresar.setEnabled(false);
         if (!txtUsername.getText().equals("") && txtUsername.getText() != null && txtPassword.getPassword().length != 0) {
             String password = new String(txtPassword.getPassword());
-            
+
             AuthRequest authRequest = new AuthRequest();
             authRequest.setUsername(txtUsername.getText());
             authRequest.setPassword(password);
-            
+
             Call<AuthResponse> authResponseCall = ApiClient.getAuthService().login(authRequest);
             authResponseCall.enqueue(new Callback<AuthResponse>() {
                 @Override
                 public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
-                    if (response.isSuccessful()) {
+                    if (!response.isSuccessful()) {
+                        JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos", "Inicio de sesión", JOptionPane.ERROR_MESSAGE);
+                    } else {
                         AuthResponse authResponse = response.body();
                         if (authResponse != null) {
+
+                            SQLiteJDBC sqlite = new SQLiteJDBC();
+
+                            sqlite.createUserTable();
+                            sqlite.insertUser(authResponse.getToken(), authResponse.getUserId(), authResponse.getBoxId());
+
+                            // SHOW MAIN APPLICATION
                             MainApplication mainApp = new MainApplication();
+                            mainApp.setLocationRelativeTo(null);
                             mainApp.setVisible(true);
                             dispose();
                         }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos", "Inicio de sesión", JOptionPane.ERROR_MESSAGE);
                     }
                 }
-                
+
                 @Override
                 public void onFailure(Call<AuthResponse> call, Throwable t) {
                     System.out.println(t.getLocalizedMessage());
