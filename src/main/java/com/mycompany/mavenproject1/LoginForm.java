@@ -33,7 +33,7 @@ public class LoginForm extends javax.swing.JFrame {
         initComponents();
         scaleImage();
     }
-    
+
     private void scaleImage() {
         ImageIcon icon = new ImageIcon(getClass().getResource("/img_568656.png"));
         Image img = icon.getImage();
@@ -79,7 +79,7 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
         jLabel3.setText("Contraseña:");
 
-        btnIngresar.setBackground(new java.awt.Color(0, 102, 255));
+        btnIngresar.setBackground(new java.awt.Color(0, 166, 237));
         btnIngresar.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
         btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
         btnIngresar.setText("Ingresar");
@@ -154,26 +154,29 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
+        btnIngresar.setBackground(Color.GRAY);
         btnIngresar.setEnabled(false);
         if (!txtUsername.getText().equals("") && txtUsername.getText() != null && txtPassword.getPassword().length != 0) {
             String password = new String(txtPassword.getPassword());
-            
+
             AuthRequest authRequest = new AuthRequest();
             authRequest.setUsername(txtUsername.getText());
             authRequest.setPassword(password);
-            
+
             Call<AuthResponse> authResponseCall = ApiClient.getAuthService().login(authRequest);
             authResponseCall.enqueue(new Callback<AuthResponse>() {
                 @Override
                 public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
                     if (!response.isSuccessful()) {
                         JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos", "Inicio de sesión", JOptionPane.ERROR_MESSAGE);
+                        btnIngresar.setBackground(new java.awt.Color(0, 166, 237));
+                        btnIngresar.setEnabled(true);
                     } else {
                         AuthResponse authResponse = response.body();
                         if (authResponse != null) {
-                            
+
                             SQLiteJDBC sqlite = new SQLiteJDBC();
-                            
+
                             sqlite.createUserTable();
                             sqlite.insertUser(authResponse.getToken(), authResponse.getUserId(), authResponse.getBoxId());
 
@@ -186,7 +189,7 @@ public class LoginForm extends javax.swing.JFrame {
                         }
                     }
                 }
-                
+
                 @Override
                 public void onFailure(Call<AuthResponse> call, Throwable t) {
                     System.out.println(t.getLocalizedMessage());

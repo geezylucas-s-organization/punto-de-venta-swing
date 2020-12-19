@@ -21,6 +21,7 @@ public class MainApplication extends javax.swing.JFrame {
 
     private void myInitComponents() {
         panelSectionSell.setVisible(true);
+        panelSell1.setVisible(true);
     }
 
     /**
@@ -38,6 +39,7 @@ public class MainApplication extends javax.swing.JFrame {
         panelCentral = new javax.swing.JPanel();
         panelSections = new javax.swing.JPanel();
         panelSectionSell = new javax.swing.JPanel();
+        panelSell1 = new com.mycompany.mavenproject1.sell.PanelSell();
         menuBar = new javax.swing.JMenuBar();
         sellMenu = new javax.swing.JMenu();
         sellMenuItem = new javax.swing.JMenuItem();
@@ -50,8 +52,9 @@ public class MainApplication extends javax.swing.JFrame {
 
         panelBackgroud.setLayout(new java.awt.BorderLayout());
 
-        panelTitle.setBackground(new java.awt.Color(38, 84, 124));
+        panelTitle.setBackground(new java.awt.Color(0, 166, 237));
         panelTitle.setForeground(new java.awt.Color(255, 255, 255));
+        panelTitle.setPreferredSize(new java.awt.Dimension(1200, 70));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Nadeem", 0, 24)); // NOI18N
@@ -72,7 +75,7 @@ public class MainApplication extends javax.swing.JFrame {
             panelTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTitleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -83,6 +86,8 @@ public class MainApplication extends javax.swing.JFrame {
         panelSections.setLayout(new java.awt.CardLayout());
 
         panelSectionSell.setLayout(new java.awt.CardLayout());
+        panelSectionSell.add(panelSell1, "card2");
+
         panelSections.add(panelSectionSell, "card2");
 
         panelCentral.add(panelSections, "card4");
@@ -90,7 +95,9 @@ public class MainApplication extends javax.swing.JFrame {
         panelBackgroud.add(panelCentral, java.awt.BorderLayout.CENTER);
 
         sellMenu.setText("Ventas");
+        sellMenu.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
 
+        sellMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
         sellMenuItem.setText("Vender");
         sellMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +106,7 @@ public class MainApplication extends javax.swing.JFrame {
         });
         sellMenu.add(sellMenuItem);
 
+        repaymentMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
         repaymentMenuItem.setText("Devoluciones");
         repaymentMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,7 +119,9 @@ public class MainApplication extends javax.swing.JFrame {
 
         helpMenu.setMnemonic('h');
         helpMenu.setText("Ayuda");
+        helpMenu.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
 
+        aboutMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
         aboutMenuItem.setMnemonic('a');
         aboutMenuItem.setText("Acerca de");
         helpMenu.add(aboutMenuItem);
@@ -128,7 +138,7 @@ public class MainApplication extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBackgroud, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+            .addComponent(panelBackgroud, javax.swing.GroupLayout.DEFAULT_SIZE, 677, Short.MAX_VALUE)
         );
 
         pack();
@@ -136,6 +146,7 @@ public class MainApplication extends javax.swing.JFrame {
 
     private void sellMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sellMenuItemActionPerformed
         // TODO add your handling code here:
+        panelSell1.setVisible(true);
     }//GEN-LAST:event_sellMenuItemActionPerformed
 
     private void repaymentMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repaymentMenuItemActionPerformed
@@ -180,6 +191,7 @@ public class MainApplication extends javax.swing.JFrame {
     private javax.swing.JPanel panelCentral;
     private javax.swing.JPanel panelSectionSell;
     private javax.swing.JPanel panelSections;
+    private com.mycompany.mavenproject1.sell.PanelSell panelSell1;
     private javax.swing.JPanel panelTitle;
     private javax.swing.JMenuItem repaymentMenuItem;
     private javax.swing.JMenu sellMenu;
