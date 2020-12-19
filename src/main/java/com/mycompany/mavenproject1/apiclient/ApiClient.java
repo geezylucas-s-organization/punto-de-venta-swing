@@ -17,8 +17,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class ApiClient {
 
-    public static final String MyPREFERENCES = "MyPrefs";
-
     private static Retrofit getRetrofit() {
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ssz")

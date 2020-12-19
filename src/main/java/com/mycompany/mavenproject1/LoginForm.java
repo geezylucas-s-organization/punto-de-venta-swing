@@ -5,6 +5,7 @@
  */
 package com.mycompany.mavenproject1;
 
+import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.apiclient.ApiClient;
 import com.mycompany.mavenproject1.apiclient.Auth.AuthRequest;
 import com.mycompany.mavenproject1.apiclient.Auth.AuthResponse;
@@ -13,6 +14,7 @@ import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,7 +33,7 @@ public class LoginForm extends javax.swing.JFrame {
         initComponents();
         scaleImage();
     }
-
+    
     private void scaleImage() {
         ImageIcon icon = new ImageIcon(getClass().getResource("/img_568656.png"));
         Image img = icon.getImage();
@@ -68,17 +70,17 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Comenzar un nuevo corte");
 
-        jLabel2.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
         jLabel2.setText("Usuario:");
 
-        txtUsername.setBorder(new TextBubbleBorder(Color.BLACK, 1, 4, 0));
-        txtUsername.setFont(new java.awt.Font("Nadeem", 0, 13)); // NOI18N
+        txtUsername.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
+        txtUsername.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
         jLabel3.setText("Contraseña:");
 
         btnIngresar.setBackground(new java.awt.Color(0, 102, 255));
-        btnIngresar.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        btnIngresar.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
         btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
         btnIngresar.setText("Ingresar");
         btnIngresar.setUI(new StyledButtonUI());
@@ -89,6 +91,7 @@ public class LoginForm extends javax.swing.JFrame {
         });
 
         txtPassword.setBorder(new TextBubbleBorder(Color.BLACK, 1, 4, 0));
+        txtPassword.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,9 +131,9 @@ public class LoginForm extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addComponent(btnIngresar)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -154,11 +157,11 @@ public class LoginForm extends javax.swing.JFrame {
         btnIngresar.setEnabled(false);
         if (!txtUsername.getText().equals("") && txtUsername.getText() != null && txtPassword.getPassword().length != 0) {
             String password = new String(txtPassword.getPassword());
-
+            
             AuthRequest authRequest = new AuthRequest();
             authRequest.setUsername(txtUsername.getText());
             authRequest.setPassword(password);
-
+            
             Call<AuthResponse> authResponseCall = ApiClient.getAuthService().login(authRequest);
             authResponseCall.enqueue(new Callback<AuthResponse>() {
                 @Override
@@ -168,21 +171,22 @@ public class LoginForm extends javax.swing.JFrame {
                     } else {
                         AuthResponse authResponse = response.body();
                         if (authResponse != null) {
-
+                            
                             SQLiteJDBC sqlite = new SQLiteJDBC();
-
+                            
                             sqlite.createUserTable();
                             sqlite.insertUser(authResponse.getToken(), authResponse.getUserId(), authResponse.getBoxId());
 
                             // SHOW MAIN APPLICATION
                             MainApplication mainApp = new MainApplication();
                             mainApp.setLocationRelativeTo(null);
+                            mainApp.setExtendedState(JFrame.MAXIMIZED_BOTH);
                             mainApp.setVisible(true);
                             dispose();
                         }
                     }
                 }
-
+                
                 @Override
                 public void onFailure(Call<AuthResponse> call, Throwable t) {
                     System.out.println(t.getLocalizedMessage());
