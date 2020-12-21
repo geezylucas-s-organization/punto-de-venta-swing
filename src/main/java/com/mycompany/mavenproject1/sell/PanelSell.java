@@ -36,6 +36,7 @@ public class PanelSell extends javax.swing.JPanel {
         txtCodeProduct = new javax.swing.JTextField();
         btnFindProduct = new javax.swing.JButton();
         btnAddProduct = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnCharge = new javax.swing.JButton();
         lblTotalMoney = new javax.swing.JLabel();
@@ -47,18 +48,18 @@ public class PanelSell extends javax.swing.JPanel {
         btnAssignClient = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblProducts = new javax.swing.JTable();
 
         setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
-        jPanel1.setPreferredSize(new java.awt.Dimension(1200, 70));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1200, 110));
 
         lblCodeProduct.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
         lblCodeProduct.setText("Código de producto:");
 
-        txtCodeProduct.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        txtCodeProduct.setFont(new java.awt.Font("Nadeem", 0, 17)); // NOI18N
         txtCodeProduct.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         btnFindProduct.setBackground(new java.awt.Color(0, 166, 237));
@@ -73,31 +74,39 @@ public class PanelSell extends javax.swing.JPanel {
         btnAddProduct.setText("Agregar");
         btnAddProduct.setUI(new StyledButtonUI());
 
+        jLabel3.setFont(new java.awt.Font("Nadeem", 1, 24)); // NOI18N
+        jLabel3.setText("Venta Ticket #1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblCodeProduct)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCodeProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnAddProduct)
-                .addGap(18, 18, 18)
-                .addComponent(btnFindProduct)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblCodeProduct)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCodeProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAddProduct)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnFindProduct))
+                    .addComponent(jLabel3))
                 .addContainerGap(408, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCodeProduct)
                     .addComponent(txtCodeProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFindProduct)
-                    .addComponent(btnAddProduct))
-                .addContainerGap(17, Short.MAX_VALUE))
+                    .addComponent(btnAddProduct)
+                    .addComponent(btnFindProduct))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
@@ -200,18 +209,24 @@ public class PanelSell extends javax.swing.JPanel {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblProducts.setFont(new java.awt.Font("Nadeem", 0, 12)); // NOI18N
+        tblProducts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Código de barras", "Producto", "Precio de venta", "Cantidad", "Importe", "Inventario"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblProducts);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -226,7 +241,7 @@ public class PanelSell extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -243,14 +258,15 @@ public class PanelSell extends javax.swing.JPanel {
     private javax.swing.JButton btnPendingSells;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblCodeProduct;
     private javax.swing.JLabel lblTotalMoney;
+    private javax.swing.JTable tblProducts;
     private javax.swing.JTextField txtCodeProduct;
     // End of variables declaration//GEN-END:variables
 }

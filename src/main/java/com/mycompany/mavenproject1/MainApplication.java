@@ -22,6 +22,8 @@ public class MainApplication extends javax.swing.JFrame {
     private void myInitComponents() {
         panelSectionSell.setVisible(true);
         panelSell1.setVisible(true);
+
+        panelSectionCategory.setVisible(false);
     }
 
     /**
@@ -40,10 +42,16 @@ public class MainApplication extends javax.swing.JFrame {
         panelSections = new javax.swing.JPanel();
         panelSectionSell = new javax.swing.JPanel();
         panelSell1 = new com.mycompany.mavenproject1.sell.PanelSell();
+        panelSectionCategory = new javax.swing.JPanel();
+        panelCategories1 = new com.mycompany.mavenproject1.products.PanelCategories();
+        panelAddProduct1 = new com.mycompany.mavenproject1.products.PanelAddProduct();
         menuBar = new javax.swing.JMenuBar();
         sellMenu = new javax.swing.JMenu();
         sellMenuItem = new javax.swing.JMenuItem();
         repaymentMenuItem = new javax.swing.JMenuItem();
+        productsMenu = new javax.swing.JMenu();
+        categoriesMenuItem = new javax.swing.JMenuItem();
+        addCategoryMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
@@ -90,6 +98,12 @@ public class MainApplication extends javax.swing.JFrame {
 
         panelSections.add(panelSectionSell, "card2");
 
+        panelSectionCategory.setLayout(new java.awt.CardLayout());
+        panelSectionCategory.add(panelCategories1, "card2");
+        panelSectionCategory.add(panelAddProduct1, "card3");
+
+        panelSections.add(panelSectionCategory, "card3");
+
         panelCentral.add(panelSections, "card4");
 
         panelBackgroud.add(panelCentral, java.awt.BorderLayout.CENTER);
@@ -116,6 +130,24 @@ public class MainApplication extends javax.swing.JFrame {
         sellMenu.add(repaymentMenuItem);
 
         menuBar.add(sellMenu);
+
+        productsMenu.setText("Productos");
+        productsMenu.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+
+        categoriesMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        categoriesMenuItem.setText("Departamentos");
+        categoriesMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoriesMenuItemActionPerformed(evt);
+            }
+        });
+        productsMenu.add(categoriesMenuItem);
+
+        addCategoryMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        addCategoryMenuItem.setText("Crear Departamento");
+        productsMenu.add(addCategoryMenuItem);
+
+        menuBar.add(productsMenu);
 
         helpMenu.setMnemonic('h');
         helpMenu.setText("Ayuda");
@@ -146,12 +178,21 @@ public class MainApplication extends javax.swing.JFrame {
 
     private void sellMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sellMenuItemActionPerformed
         // TODO add your handling code here:
+        panelSectionSell.setVisible(true);
+        panelSectionCategory.setVisible(false);
         panelSell1.setVisible(true);
     }//GEN-LAST:event_sellMenuItemActionPerformed
 
     private void repaymentMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repaymentMenuItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_repaymentMenuItemActionPerformed
+
+    private void categoriesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriesMenuItemActionPerformed
+        // TODO add your handling code here:
+        panelSectionSell.setVisible(false);
+        panelSectionCategory.setVisible(true);
+        panelCategories1.setVisible(true);
+    }//GEN-LAST:event_categoriesMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,15 +225,21 @@ public class MainApplication extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
+    private javax.swing.JMenuItem addCategoryMenuItem;
+    private javax.swing.JMenuItem categoriesMenuItem;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar menuBar;
+    private com.mycompany.mavenproject1.products.PanelAddProduct panelAddProduct1;
     private javax.swing.JPanel panelBackgroud;
+    private com.mycompany.mavenproject1.products.PanelCategories panelCategories1;
     private javax.swing.JPanel panelCentral;
+    private javax.swing.JPanel panelSectionCategory;
     private javax.swing.JPanel panelSectionSell;
     private javax.swing.JPanel panelSections;
     private com.mycompany.mavenproject1.sell.PanelSell panelSell1;
     private javax.swing.JPanel panelTitle;
+    private javax.swing.JMenu productsMenu;
     private javax.swing.JMenuItem repaymentMenuItem;
     private javax.swing.JMenu sellMenu;
     private javax.swing.JMenuItem sellMenuItem;
