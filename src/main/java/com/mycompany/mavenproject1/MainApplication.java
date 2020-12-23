@@ -5,6 +5,8 @@
  */
 package com.mycompany.mavenproject1;
 
+import com.mycompany.mavenproject1.products.DialogAddCategory;
+
 /**
  *
  * @author geezylucas
@@ -18,11 +20,11 @@ public class MainApplication extends javax.swing.JFrame {
         initComponents();
         myInitComponents();
     }
-
+    
     private void myInitComponents() {
         panelSectionSell.setVisible(true);
         panelSell1.setVisible(true);
-
+        
         panelSectionCategory.setVisible(false);
     }
 
@@ -145,6 +147,11 @@ public class MainApplication extends javax.swing.JFrame {
 
         addCategoryMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
         addCategoryMenuItem.setText("Crear Departamento");
+        addCategoryMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addCategoryMenuItemActionPerformed(evt);
+            }
+        });
         productsMenu.add(addCategoryMenuItem);
 
         menuBar.add(productsMenu);
@@ -193,6 +200,13 @@ public class MainApplication extends javax.swing.JFrame {
         panelSectionCategory.setVisible(true);
         panelCategories1.setVisible(true);
     }//GEN-LAST:event_categoriesMenuItemActionPerformed
+
+    private void addCategoryMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCategoryMenuItemActionPerformed
+        // TODO add your handling code here:
+        DialogAddCategory addCategory = new DialogAddCategory(this, true);
+        addCategory.setLocationRelativeTo(null);
+        addCategory.setVisible(true);
+    }//GEN-LAST:event_addCategoryMenuItemActionPerformed
 
     /**
      * @param args the command line arguments

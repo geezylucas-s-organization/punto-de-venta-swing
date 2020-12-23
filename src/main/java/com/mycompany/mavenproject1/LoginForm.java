@@ -7,8 +7,8 @@ package com.mycompany.mavenproject1;
 
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.apiclient.ApiClient;
-import com.mycompany.mavenproject1.apiclient.Auth.AuthRequest;
-import com.mycompany.mavenproject1.apiclient.Auth.AuthResponse;
+import com.mycompany.mavenproject1.apiclient.auth.AuthRequest;
+import com.mycompany.mavenproject1.apiclient.auth.AuthResponse;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
 import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.Color;

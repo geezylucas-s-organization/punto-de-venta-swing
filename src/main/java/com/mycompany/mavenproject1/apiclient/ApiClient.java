@@ -5,9 +5,11 @@
  */
 package com.mycompany.mavenproject1.apiclient;
 
-import com.mycompany.mavenproject1.apiclient.Auth.AuthService;
+import com.mycompany.mavenproject1.apiclient.auth.AuthService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.mycompany.mavenproject1.apiclient.products.CategoryService;
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -22,13 +24,23 @@ public class ApiClient {
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ssz")
                 .create();
 
+        OkHttpClient okHttpClient = new OkHttpClient()
+                .newBuilder()
+                .authenticator(new TokenAuthenticator())
+                .build();
+
         return new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(okHttpClient)
                 .baseUrl("http://localhost:8080")
                 .build();
     }
 
     public static AuthService getAuthService() {
         return getRetrofit().create(AuthService.class);
+    }
+
+    public static CategoryService getCategoryService() {
+        return getRetrofit().create(CategoryService.class);
     }
 }
