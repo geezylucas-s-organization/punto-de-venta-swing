@@ -5,9 +5,21 @@
  */
 package com.mycompany.mavenproject1.products;
 
+import com.mycompany.mavenproject1.apiclient.ApiClient;
+import com.mycompany.mavenproject1.apiclient.products.CategoriesResponse;
+import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
 import com.mycompany.mavenproject1.utils.TextBubbleBorder;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
+import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  *
@@ -20,6 +32,40 @@ public class PanelCategories extends javax.swing.JPanel {
      */
     public PanelCategories() {
         initComponents();
+        tblCategories.setRowHeight(30);
+        tblCategories.setShowGrid(true);
+        getCategories();
+    }
+
+    private void getCategories() {
+        SQLiteJDBC sqlite = new SQLiteJDBC();
+        String token = sqlite.getToken();
+        Call<List<CategoriesResponse>> categoriesResponseCall = ApiClient.getCategoryService().allCategories("Bearer " + token);
+        categoriesResponseCall.enqueue(new Callback<List<CategoriesResponse>>() {
+            @Override
+            public void onResponse(Call<List<CategoriesResponse>> call, Response<List<CategoriesResponse>> response) {
+                if (response.isSuccessful()) {
+                    List<CategoriesResponse> list = response.body();
+                    if (list != null) {
+                        DefaultTableModel model = (DefaultTableModel) tblCategories.getModel();
+
+                        list.forEach(item -> {
+                            model.addRow(new Object[]{
+                                item.getName(),
+                                item.getDescription(),
+                                item.getCreatedAt()
+                            });
+                        });
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<CategoriesResponse>> call, Throwable t) {
+                System.out.println(t.getLocalizedMessage());
+            }
+        });
     }
 
     /**
@@ -36,11 +82,13 @@ public class PanelCategories extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         btnSearch = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
+        btnRefresh = new javax.swing.JButton();
+        btnAddProduct = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblCategories = new javax.swing.JTable();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -62,6 +110,23 @@ public class PanelCategories extends javax.swing.JPanel {
         txtSearch.setFont(new java.awt.Font("Nadeem", 0, 17)); // NOI18N
         txtSearch.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
+        btnRefresh.setBackground(new java.awt.Color(0, 166, 237));
+        btnRefresh.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
+        btnRefresh.setText("Refrescar");
+        btnRefresh.setUI(new StyledButtonUI());
+
+        btnAddProduct.setBackground(new java.awt.Color(127, 184, 0));
+        btnAddProduct.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        btnAddProduct.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddProduct.setText("Agregar Producto");
+        btnAddProduct.setUI(new StyledButtonUI());
+        btnAddProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddProductActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -69,14 +134,20 @@ public class PanelCategories extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSearch)))
-                .addContainerGap(710, Short.MAX_VALUE))
+                        .addComponent(btnSearch)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAddProduct)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 379, Short.MAX_VALUE)
+                        .addComponent(btnRefresh)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,7 +158,9 @@ public class PanelCategories extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(btnSearch)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRefresh)
+                    .addComponent(btnAddProduct))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -121,16 +194,29 @@ public class PanelCategories extends javax.swing.JPanel {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setFont(new java.awt.Font("Nadeem", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblCategories.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        tblCategories.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nombre", "Total de productos", "Inventario total"
+                "Nombre", "Descripción", "Fecha de creación"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblCategories);
+        if (tblCategories.getColumnModel().getColumnCount() > 0) {
+            tblCategories.getColumnModel().getColumn(0).setHeaderValue("Nombre");
+            tblCategories.getColumnModel().getColumn(1).setHeaderValue("Descripción");
+            tblCategories.getColumnModel().getColumn(2).setHeaderValue("Fecha de creación");
+        }
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -152,8 +238,24 @@ public class PanelCategories extends javax.swing.JPanel {
         add(jPanel5, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductActionPerformed
+        // TODO add your handling code here:
+        int column = 0;
+        int row = tblCategories.getSelectedRow();
+        String category = tblCategories.getModel().getValueAt(row, column).toString();
+
+        PanelAddProduct addCategory = new PanelAddProduct(category);
+        Container c = this.getParent();
+        c.removeAll();
+        c.add(addCategory);
+        c.validate();
+        c.repaint();
+    }//GEN-LAST:event_btnAddProductActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddProduct;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -162,7 +264,7 @@ public class PanelCategories extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblCategories;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

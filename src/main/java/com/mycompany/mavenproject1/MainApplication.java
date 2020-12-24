@@ -6,6 +6,8 @@
 package com.mycompany.mavenproject1;
 
 import com.mycompany.mavenproject1.products.DialogAddCategory;
+import com.mycompany.mavenproject1.products.PanelCategories;
+import com.mycompany.mavenproject1.sell.PanelSell;
 
 /**
  *
@@ -18,14 +20,8 @@ public class MainApplication extends javax.swing.JFrame {
      */
     public MainApplication() {
         initComponents();
-        myInitComponents();
-    }
-    
-    private void myInitComponents() {
-        panelSectionSell.setVisible(true);
-        panelSell1.setVisible(true);
-        
-        panelSectionCategory.setVisible(false);
+        PanelSell sell = new PanelSell();
+        panelCentral.add(sell);
     }
 
     /**
@@ -41,12 +37,6 @@ public class MainApplication extends javax.swing.JFrame {
         panelTitle = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         panelCentral = new javax.swing.JPanel();
-        panelSections = new javax.swing.JPanel();
-        panelSectionSell = new javax.swing.JPanel();
-        panelSell1 = new com.mycompany.mavenproject1.sell.PanelSell();
-        panelSectionCategory = new javax.swing.JPanel();
-        panelCategories1 = new com.mycompany.mavenproject1.products.PanelCategories();
-        panelAddProduct1 = new com.mycompany.mavenproject1.products.PanelAddProduct();
         menuBar = new javax.swing.JMenuBar();
         sellMenu = new javax.swing.JMenu();
         sellMenuItem = new javax.swing.JMenuItem();
@@ -92,22 +82,6 @@ public class MainApplication extends javax.swing.JFrame {
         panelBackgroud.add(panelTitle, java.awt.BorderLayout.PAGE_START);
 
         panelCentral.setLayout(new java.awt.CardLayout());
-
-        panelSections.setLayout(new java.awt.CardLayout());
-
-        panelSectionSell.setLayout(new java.awt.CardLayout());
-        panelSectionSell.add(panelSell1, "card2");
-
-        panelSections.add(panelSectionSell, "card2");
-
-        panelSectionCategory.setLayout(new java.awt.CardLayout());
-        panelSectionCategory.add(panelCategories1, "card2");
-        panelSectionCategory.add(panelAddProduct1, "card3");
-
-        panelSections.add(panelSectionCategory, "card3");
-
-        panelCentral.add(panelSections, "card4");
-
         panelBackgroud.add(panelCentral, java.awt.BorderLayout.CENTER);
 
         sellMenu.setText("Ventas");
@@ -185,9 +159,11 @@ public class MainApplication extends javax.swing.JFrame {
 
     private void sellMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sellMenuItemActionPerformed
         // TODO add your handling code here:
-        panelSectionSell.setVisible(true);
-        panelSectionCategory.setVisible(false);
-        panelSell1.setVisible(true);
+        PanelSell sell = new PanelSell();
+        panelCentral.removeAll();
+        panelCentral.add(sell);
+        panelCentral.validate();
+        panelCentral.repaint();
     }//GEN-LAST:event_sellMenuItemActionPerformed
 
     private void repaymentMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repaymentMenuItemActionPerformed
@@ -196,9 +172,11 @@ public class MainApplication extends javax.swing.JFrame {
 
     private void categoriesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriesMenuItemActionPerformed
         // TODO add your handling code here:
-        panelSectionSell.setVisible(false);
-        panelSectionCategory.setVisible(true);
-        panelCategories1.setVisible(true);
+        PanelCategories categories = new PanelCategories();
+        panelCentral.removeAll();
+        panelCentral.add(categories);
+        panelCentral.validate();
+        panelCentral.repaint();
     }//GEN-LAST:event_categoriesMenuItemActionPerformed
 
     private void addCategoryMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCategoryMenuItemActionPerformed
@@ -244,14 +222,8 @@ public class MainApplication extends javax.swing.JFrame {
     private javax.swing.JMenu helpMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar menuBar;
-    private com.mycompany.mavenproject1.products.PanelAddProduct panelAddProduct1;
     private javax.swing.JPanel panelBackgroud;
-    private com.mycompany.mavenproject1.products.PanelCategories panelCategories1;
     private javax.swing.JPanel panelCentral;
-    private javax.swing.JPanel panelSectionCategory;
-    private javax.swing.JPanel panelSectionSell;
-    private javax.swing.JPanel panelSections;
-    private com.mycompany.mavenproject1.sell.PanelSell panelSell1;
     private javax.swing.JPanel panelTitle;
     private javax.swing.JMenu productsMenu;
     private javax.swing.JMenuItem repaymentMenuItem;

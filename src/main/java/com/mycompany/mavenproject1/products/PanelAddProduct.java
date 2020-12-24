@@ -14,11 +14,25 @@ import java.awt.Color;
  */
 public class PanelAddProduct extends javax.swing.JPanel {
 
+    private String category;
+
     /**
      * Creates new form PanelAddProduct
+     *
      */
     public PanelAddProduct() {
         initComponents();
+        myInit();
+    }
+
+    public PanelAddProduct(String category) {
+        this.category = category;
+        initComponents();
+        myInit();
+    }
+
+    private void myInit() {
+        this.lblDepartament.setText(this.category);
     }
 
     /**

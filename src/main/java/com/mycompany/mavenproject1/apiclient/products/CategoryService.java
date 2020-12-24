@@ -5,9 +5,11 @@
  */
 package com.mycompany.mavenproject1.apiclient.products;
 
+import java.util.List;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
@@ -21,4 +23,7 @@ public interface CategoryService {
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @POST("/api/fillcatalogs/categories")
     Call<ResponseBody> addCategory(@Body AddCategoryRequest category, @Header("Authorization") String authHeader);
+
+    @GET("/api/fillcatalogs/categories")
+    Call<List<CategoriesResponse>> allCategories(@Header("Authorization") String authHeader);
 }
