@@ -10,12 +10,9 @@ import com.mycompany.mavenproject1.apiclient.products.CategoriesResponse;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
 import com.mycompany.mavenproject1.utils.TextBubbleBorder;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.util.List;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,6 +29,9 @@ public class PanelCategories extends javax.swing.JPanel {
      */
     public PanelCategories() {
         initComponents();
+        tblCategories.getColumnModel().getColumn(3).setMinWidth(0);
+        tblCategories.getColumnModel().getColumn(3).setMaxWidth(0);
+        tblCategories.getColumnModel().getColumn(3).setWidth(0);
         tblCategories.setRowHeight(30);
         tblCategories.setShowGrid(true);
         getCategories();
@@ -53,7 +53,8 @@ public class PanelCategories extends javax.swing.JPanel {
                             model.addRow(new Object[]{
                                 item.getName(),
                                 item.getDescription(),
-                                item.getCreatedAt()
+                                item.getCreatedAt(),
+                                item.getId()
                             });
                         });
 
@@ -200,23 +201,25 @@ public class PanelCategories extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Nombre", "Descripción", "Fecha de creación"
+                "Nombre", "Descripción", "Fecha de creación", "Id"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
         jScrollPane1.setViewportView(tblCategories);
-        if (tblCategories.getColumnModel().getColumnCount() > 0) {
-            tblCategories.getColumnModel().getColumn(0).setHeaderValue("Nombre");
-            tblCategories.getColumnModel().getColumn(1).setHeaderValue("Descripción");
-            tblCategories.getColumnModel().getColumn(2).setHeaderValue("Fecha de creación");
-        }
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -243,8 +246,10 @@ public class PanelCategories extends javax.swing.JPanel {
         int column = 0;
         int row = tblCategories.getSelectedRow();
         String category = tblCategories.getModel().getValueAt(row, column).toString();
+        column = 3;
+        int categoryId = Integer.valueOf(tblCategories.getModel().getValueAt(row, column).toString());
 
-        PanelAddProduct addCategory = new PanelAddProduct(category);
+        PanelAddProduct addCategory = new PanelAddProduct(category, categoryId);
         Container c = this.getParent();
         c.removeAll();
         c.add(addCategory);
