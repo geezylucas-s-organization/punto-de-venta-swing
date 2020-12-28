@@ -119,4 +119,56 @@ public class SQLiteJDBC {
             return null;
         }
     }
+
+    public Integer getUserId() {
+        Connection conn;
+        Statement stmt;
+
+        try {
+            Class.forName("org.sqlite.JDBC");
+            conn = DriverManager.getConnection("jdbc:sqlite:local.db");
+            conn.setAutoCommit(false);
+            stmt = conn.createStatement();
+
+            int userId = 0;
+            try (ResultSet rs = stmt.executeQuery("SELECT user_id FROM USER;")) {
+                while (rs.next()) {
+                    userId = rs.getInt("user_id");
+                }
+            }
+            stmt.close();
+            conn.close();
+
+            return userId;
+        } catch (ClassNotFoundException | SQLException e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            return null;
+        }
+    }
+
+    public Integer getBoxId() {
+        Connection conn;
+        Statement stmt;
+
+        try {
+            Class.forName("org.sqlite.JDBC");
+            conn = DriverManager.getConnection("jdbc:sqlite:local.db");
+            conn.setAutoCommit(false);
+            stmt = conn.createStatement();
+
+            int userId = 0;
+            try (ResultSet rs = stmt.executeQuery("SELECT box_id FROM USER;")) {
+                while (rs.next()) {
+                    userId = rs.getInt("box_id");
+                }
+            }
+            stmt.close();
+            conn.close();
+
+            return userId;
+        } catch (ClassNotFoundException | SQLException e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            return null;
+        }
+    }
 }

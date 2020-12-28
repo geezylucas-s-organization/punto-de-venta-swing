@@ -74,7 +74,7 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel2.setText("Usuario:");
 
         txtUsername.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
-        txtUsername.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        txtUsername.setFont(new java.awt.Font("Nadeem", 0, 17)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
         jLabel3.setText("Contraseña:");
@@ -91,7 +91,7 @@ public class LoginForm extends javax.swing.JFrame {
         });
 
         txtPassword.setBorder(new TextBubbleBorder(Color.BLACK, 1, 4, 0));
-        txtPassword.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        txtPassword.setFont(new java.awt.Font("Nadeem", 0, 17)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
