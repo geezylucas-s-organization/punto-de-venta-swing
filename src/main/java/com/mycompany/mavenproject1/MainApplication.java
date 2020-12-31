@@ -44,6 +44,13 @@ public class MainApplication extends javax.swing.JFrame {
         productsMenu = new javax.swing.JMenu();
         categoriesMenuItem = new javax.swing.JMenuItem();
         addCategoryMenuItem = new javax.swing.JMenuItem();
+        productsMenuItem = new javax.swing.JMenuItem();
+        stockMenu = new javax.swing.JMenu();
+        restockMenuItem = new javax.swing.JMenuItem();
+        lowInventoryMenuItem = new javax.swing.JMenuItem();
+        inventoryMenuItem = new javax.swing.JMenuItem();
+        reportMovementsMenuItem = new javax.swing.JMenuItem();
+        kardexProductMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
@@ -52,7 +59,7 @@ public class MainApplication extends javax.swing.JFrame {
 
         panelBackgroud.setLayout(new java.awt.BorderLayout());
 
-        panelTitle.setBackground(new java.awt.Color(0, 166, 237));
+        panelTitle.setBackground(new java.awt.Color(13, 44, 84));
         panelTitle.setForeground(new java.awt.Color(255, 255, 255));
         panelTitle.setPreferredSize(new java.awt.Dimension(1200, 70));
 
@@ -107,7 +114,7 @@ public class MainApplication extends javax.swing.JFrame {
 
         menuBar.add(sellMenu);
 
-        productsMenu.setText("Productos");
+        productsMenu.setText("Departamentos y Productos");
         productsMenu.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
 
         categoriesMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
@@ -128,7 +135,36 @@ public class MainApplication extends javax.swing.JFrame {
         });
         productsMenu.add(addCategoryMenuItem);
 
+        productsMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        productsMenuItem.setText("Productos");
+        productsMenu.add(productsMenuItem);
+
         menuBar.add(productsMenu);
+
+        stockMenu.setText("Inventarios");
+        stockMenu.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+
+        restockMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        restockMenuItem.setText("Agregar inventario a producto");
+        stockMenu.add(restockMenuItem);
+
+        lowInventoryMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        lowInventoryMenuItem.setText("Productos bajos de inventario");
+        stockMenu.add(lowInventoryMenuItem);
+
+        inventoryMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        inventoryMenuItem.setText("Inventario de productos");
+        stockMenu.add(inventoryMenuItem);
+
+        reportMovementsMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        reportMovementsMenuItem.setText("Reporte de movimientos");
+        stockMenu.add(reportMovementsMenuItem);
+
+        kardexProductMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        kardexProductMenuItem.setText("Kardex de producto");
+        stockMenu.add(kardexProductMenuItem);
+
+        menuBar.add(stockMenu);
 
         helpMenu.setMnemonic('h');
         helpMenu.setText("Ayuda");
@@ -151,7 +187,7 @@ public class MainApplication extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBackgroud, javax.swing.GroupLayout.DEFAULT_SIZE, 677, Short.MAX_VALUE)
+            .addComponent(panelBackgroud, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
         );
 
         pack();
@@ -220,15 +256,22 @@ public class MainApplication extends javax.swing.JFrame {
     private javax.swing.JMenuItem addCategoryMenuItem;
     private javax.swing.JMenuItem categoriesMenuItem;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JMenuItem inventoryMenuItem;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuItem kardexProductMenuItem;
+    private javax.swing.JMenuItem lowInventoryMenuItem;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JPanel panelBackgroud;
     private javax.swing.JPanel panelCentral;
     private javax.swing.JPanel panelTitle;
     private javax.swing.JMenu productsMenu;
+    private javax.swing.JMenuItem productsMenuItem;
     private javax.swing.JMenuItem repaymentMenuItem;
+    private javax.swing.JMenuItem reportMovementsMenuItem;
+    private javax.swing.JMenuItem restockMenuItem;
     private javax.swing.JMenu sellMenu;
     private javax.swing.JMenuItem sellMenuItem;
+    private javax.swing.JMenu stockMenu;
     // End of variables declaration//GEN-END:variables
 
 }
