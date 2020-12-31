@@ -21,4 +21,6 @@ public interface ProductService {
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @POST("api/fillcatalogs/products")
     Call<ResponseBody> addProduct(@Body AddProductRequest product, @Header("Authorization") String authHeader);
+
+    Call<ProductsResponse> getProducts(@Header("Authorization") String authHeader);
 }

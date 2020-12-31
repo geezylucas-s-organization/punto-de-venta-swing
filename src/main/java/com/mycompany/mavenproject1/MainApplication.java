@@ -7,6 +7,7 @@ package com.mycompany.mavenproject1;
 
 import com.mycompany.mavenproject1.products.DialogAddCategory;
 import com.mycompany.mavenproject1.products.PanelCategories;
+import com.mycompany.mavenproject1.products.PanelProducts;
 import com.mycompany.mavenproject1.sell.PanelSell;
 
 /**
@@ -137,6 +138,11 @@ public class MainApplication extends javax.swing.JFrame {
 
         productsMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
         productsMenuItem.setText("Productos");
+        productsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productsMenuItemActionPerformed(evt);
+            }
+        });
         productsMenu.add(productsMenuItem);
 
         menuBar.add(productsMenu);
@@ -221,6 +227,15 @@ public class MainApplication extends javax.swing.JFrame {
         addCategory.setLocationRelativeTo(null);
         addCategory.setVisible(true);
     }//GEN-LAST:event_addCategoryMenuItemActionPerformed
+
+    private void productsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productsMenuItemActionPerformed
+        // TODO add your handling code here:
+        PanelProducts products = new PanelProducts();
+        panelCentral.removeAll();
+        panelCentral.add(products);
+        panelCentral.validate();
+        panelCentral.repaint();
+    }//GEN-LAST:event_productsMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
