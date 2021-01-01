@@ -95,10 +95,12 @@ public class PanelAddProduct extends javax.swing.JPanel {
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         btnSave.setBackground(new java.awt.Color(0, 166, 237));
-        btnSave.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        btnSave.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnSave.setForeground(new java.awt.Color(255, 255, 255));
         btnSave.setText("Crear");
-        btnSave.setPreferredSize(new java.awt.Dimension(250, 34));
+        btnSave.setMaximumSize(new java.awt.Dimension(81, 40));
+        btnSave.setMinimumSize(new java.awt.Dimension(81, 40));
+        btnSave.setPreferredSize(new java.awt.Dimension(250, 40));
         btnSave.setUI(new StyledButtonUI());
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,80 +118,83 @@ public class PanelAddProduct extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(1200, 580));
 
-        txtNameProduct.setFont(new java.awt.Font("Nadeem", 0, 17)); // NOI18N
+        txtNameProduct.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtNameProduct.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
-        txtSalePrice1.setFont(new java.awt.Font("Nadeem", 0, 17)); // NOI18N
+        txtSalePrice1.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtSalePrice1.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
-        jLabel10.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel10.setText("Mínimo en inventario:");
         jLabel10.setMaximumSize(new java.awt.Dimension(181, 26));
         jLabel10.setMinimumSize(new java.awt.Dimension(181, 26));
 
-        jLabel6.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel6.setText("Precio venta dinámico:");
 
-        txtCostPrice.setFont(new java.awt.Font("Nadeem", 0, 17)); // NOI18N
+        txtCostPrice.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtCostPrice.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
-        jLabel1.setFont(new java.awt.Font("Nadeem", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setText("Agregar nuevo producto");
 
-        txtMinimum.setFont(new java.awt.Font("Nadeem", 0, 17)); // NOI18N
+        txtMinimum.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtMinimum.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
-        txtSalePrice2.setFont(new java.awt.Font("Nadeem", 0, 17)); // NOI18N
+        txtSalePrice2.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtSalePrice2.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
-        jLabel12.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel12.setText("Se vende:");
 
-        jLabel2.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel2.setText("Código de barras:");
 
+        rbUnit.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroupUnit.add(rbUnit);
-        rbUnit.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        rbUnit.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         rbUnit.setText("Unidad");
 
-        jLabel7.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel7.setText("Precio venta mayoreo:");
         jLabel7.setPreferredSize(new java.awt.Dimension(181, 26));
 
+        rbPackage.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroupUnit.add(rbPackage);
-        rbPackage.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        rbPackage.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         rbPackage.setText("Paquete");
 
-        txtBarcode.setFont(new java.awt.Font("Nadeem", 0, 17)); // NOI18N
+        txtBarcode.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtBarcode.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
+        rbBulk.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroupUnit.add(rbBulk);
-        rbBulk.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        rbBulk.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         rbBulk.setText("Granel");
 
-        jLabel8.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel8.setText("Departamento:");
 
-        txtDescription.setFont(new java.awt.Font("Nadeem", 0, 17)); // NOI18N
+        txtDescription.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtDescription.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
-        jLabel4.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel4.setText("Precio costo:");
 
-        jLabel3.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel3.setText("Nombre producto:");
 
-        jLabel13.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel13.setText("Descripción:");
 
-        txtSalePrice.setFont(new java.awt.Font("Nadeem", 0, 17)); // NOI18N
+        txtSalePrice.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtSalePrice.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
-        lblDepartament.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        lblDepartament.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         lblDepartament.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblDepartament.setText("Salchichonería");
 
-        jLabel5.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel5.setText("Precio venta:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

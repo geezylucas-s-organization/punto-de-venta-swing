@@ -56,6 +56,7 @@ public class MainApplication extends javax.swing.JFrame {
         aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         setResizable(false);
 
         panelBackgroud.setLayout(new java.awt.BorderLayout());
@@ -65,7 +66,7 @@ public class MainApplication extends javax.swing.JFrame {
         panelTitle.setPreferredSize(new java.awt.Dimension(1200, 70));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Nadeem", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Bienvenido");
@@ -93,9 +94,9 @@ public class MainApplication extends javax.swing.JFrame {
         panelBackgroud.add(panelCentral, java.awt.BorderLayout.CENTER);
 
         sellMenu.setText("Ventas");
-        sellMenu.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        sellMenu.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
-        sellMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        sellMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         sellMenuItem.setText("Vender");
         sellMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,7 +105,7 @@ public class MainApplication extends javax.swing.JFrame {
         });
         sellMenu.add(sellMenuItem);
 
-        repaymentMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        repaymentMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         repaymentMenuItem.setText("Devoluciones");
         repaymentMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,9 +117,9 @@ public class MainApplication extends javax.swing.JFrame {
         menuBar.add(sellMenu);
 
         productsMenu.setText("Departamentos y Productos");
-        productsMenu.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        productsMenu.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
-        categoriesMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        categoriesMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         categoriesMenuItem.setText("Departamentos");
         categoriesMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +128,7 @@ public class MainApplication extends javax.swing.JFrame {
         });
         productsMenu.add(categoriesMenuItem);
 
-        addCategoryMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        addCategoryMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         addCategoryMenuItem.setText("Crear Departamento");
         addCategoryMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,7 +137,7 @@ public class MainApplication extends javax.swing.JFrame {
         });
         productsMenu.add(addCategoryMenuItem);
 
-        productsMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        productsMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         productsMenuItem.setText("Productos");
         productsMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,25 +149,25 @@ public class MainApplication extends javax.swing.JFrame {
         menuBar.add(productsMenu);
 
         stockMenu.setText("Inventarios");
-        stockMenu.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        stockMenu.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
-        restockMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        restockMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         restockMenuItem.setText("Agregar inventario a producto");
         stockMenu.add(restockMenuItem);
 
-        lowInventoryMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        lowInventoryMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lowInventoryMenuItem.setText("Productos bajos de inventario");
         stockMenu.add(lowInventoryMenuItem);
 
-        inventoryMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        inventoryMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         inventoryMenuItem.setText("Inventario de productos");
         stockMenu.add(inventoryMenuItem);
 
-        reportMovementsMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        reportMovementsMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         reportMovementsMenuItem.setText("Reporte de movimientos");
         stockMenu.add(reportMovementsMenuItem);
 
-        kardexProductMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        kardexProductMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         kardexProductMenuItem.setText("Kardex de producto");
         stockMenu.add(kardexProductMenuItem);
 
@@ -174,9 +175,9 @@ public class MainApplication extends javax.swing.JFrame {
 
         helpMenu.setMnemonic('h');
         helpMenu.setText("Ayuda");
-        helpMenu.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        helpMenu.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
-        aboutMenuItem.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
+        aboutMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         aboutMenuItem.setMnemonic('a');
         aboutMenuItem.setText("Acerca de");
         helpMenu.add(aboutMenuItem);
@@ -193,7 +194,7 @@ public class MainApplication extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBackgroud, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+            .addComponent(panelBackgroud, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
         );
 
         pack();

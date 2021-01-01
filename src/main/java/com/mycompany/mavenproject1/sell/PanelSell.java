@@ -56,25 +56,31 @@ public class PanelSell extends javax.swing.JPanel {
         jPanel1.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(1200, 110));
 
-        lblCodeProduct.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        lblCodeProduct.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         lblCodeProduct.setText("Código de producto:");
 
-        txtCodeProduct.setFont(new java.awt.Font("Nadeem", 0, 17)); // NOI18N
+        txtCodeProduct.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtCodeProduct.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         btnFindProduct.setBackground(new java.awt.Color(0, 166, 237));
-        btnFindProduct.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        btnFindProduct.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnFindProduct.setForeground(new java.awt.Color(255, 255, 255));
         btnFindProduct.setText("Buscar producto");
+        btnFindProduct.setMaximumSize(new java.awt.Dimension(163, 40));
+        btnFindProduct.setMinimumSize(new java.awt.Dimension(163, 40));
+        btnFindProduct.setPreferredSize(new java.awt.Dimension(163, 40));
         btnFindProduct.setUI(new StyledButtonUI());
 
         btnAddProduct.setBackground(new java.awt.Color(0, 166, 237));
-        btnAddProduct.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        btnAddProduct.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnAddProduct.setForeground(new java.awt.Color(255, 255, 255));
         btnAddProduct.setText("Agregar");
+        btnAddProduct.setMaximumSize(new java.awt.Dimension(95, 40));
+        btnAddProduct.setMinimumSize(new java.awt.Dimension(95, 40));
+        btnAddProduct.setPreferredSize(new java.awt.Dimension(95, 40));
         btnAddProduct.setUI(new StyledButtonUI());
 
-        jLabel3.setFont(new java.awt.Font("Nadeem", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel3.setText("Venta Ticket #1");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -89,11 +95,11 @@ public class PanelSell extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCodeProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnAddProduct)
+                        .addComponent(btnAddProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnFindProduct))
+                        .addComponent(btnFindProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel3))
-                .addContainerGap(408, Short.MAX_VALUE))
+                .addContainerGap(383, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,9 +110,9 @@ public class PanelSell extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCodeProduct)
                     .addComponent(txtCodeProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAddProduct)
-                    .addComponent(btnFindProduct))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addComponent(btnAddProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFindProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
@@ -115,36 +121,44 @@ public class PanelSell extends javax.swing.JPanel {
         jPanel2.setPreferredSize(new java.awt.Dimension(1200, 150));
 
         btnCharge.setBackground(new java.awt.Color(255, 180, 0));
-        btnCharge.setFont(new java.awt.Font("Nadeem", 0, 36)); // NOI18N
+        btnCharge.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         btnCharge.setText("Cobrar");
         btnCharge.setUI(new StyledButtonUI());
+        btnCharge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChargeActionPerformed(evt);
+            }
+        });
 
-        lblTotalMoney.setFont(new java.awt.Font("Nadeem", 1, 48)); // NOI18N
+        lblTotalMoney.setFont(new java.awt.Font("SansSerif", 1, 48)); // NOI18N
         lblTotalMoney.setText("$0.00");
 
-        jLabel1.setFont(new java.awt.Font("Nadeem", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Total productos: 0");
 
-        jLabel2.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel2.setText("Funciones adicionales:");
 
         btnPendingSell.setBackground(new java.awt.Color(127, 184, 0));
-        btnPendingSell.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        btnPendingSell.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnPendingSell.setForeground(new java.awt.Color(255, 255, 255));
         btnPendingSell.setText("Venta pendiente");
         btnPendingSell.setUI(new StyledButtonUI());
 
         btnPendingSells.setBackground(new java.awt.Color(127, 184, 0));
-        btnPendingSells.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        btnPendingSells.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnPendingSells.setForeground(new java.awt.Color(255, 255, 255));
         btnPendingSells.setText("Pendientes");
         btnPendingSells.setUI(new StyledButtonUI());
 
         btnAssignClient.setBackground(new java.awt.Color(127, 184, 0));
-        btnAssignClient.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        btnAssignClient.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnAssignClient.setForeground(new java.awt.Color(255, 255, 255));
         btnAssignClient.setText("Asignar a cliente");
+        btnAssignClient.setMaximumSize(new java.awt.Dimension(165, 40));
+        btnAssignClient.setMinimumSize(new java.awt.Dimension(165, 40));
+        btnAssignClient.setPreferredSize(new java.awt.Dimension(165, 40));
         btnAssignClient.setUI(new StyledButtonUI());
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -153,26 +167,25 @@ public class PanelSell extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(btnAssignClient)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnPendingSell)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnPendingSells)))
-                .addGap(230, 230, 230))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAssignClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnPendingSell)
+                .addGap(18, 18, 18)
+                .addComponent(btnPendingSells)
+                .addGap(212, 212, 212))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPendingSell, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-                    .addComponent(btnPendingSells, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-                    .addComponent(btnAssignClient, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
+                    .addComponent(btnAssignClient, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPendingSell, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPendingSells, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -185,7 +198,7 @@ public class PanelSell extends javax.swing.JPanel {
                 .addComponent(btnCharge, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblTotalMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -197,19 +210,21 @@ public class PanelSell extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTotalMoney, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCharge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(10, 10, 10))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(lblTotalMoney, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCharge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        tblProducts.setFont(new java.awt.Font("Nadeem", 0, 12)); // NOI18N
+        tblProducts.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tblProducts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -234,19 +249,23 @@ public class PanelSell extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1188, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1180, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         add(jPanel3, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnChargeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChargeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnChargeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

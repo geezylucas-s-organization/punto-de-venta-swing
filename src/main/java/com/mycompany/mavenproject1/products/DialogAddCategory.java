@@ -56,22 +56,25 @@ public class DialogAddCategory extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Nadeem", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setText("Agregar departamento:");
 
-        jLabel2.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel2.setText("Nombre:");
 
-        txtName.setFont(new java.awt.Font("Nadeem", 0, 17)); // NOI18N
+        txtName.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtName.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
-        jLabel3.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel3.setText("Descripción:");
 
         btnSave.setBackground(new java.awt.Color(0, 166, 237));
-        btnSave.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        btnSave.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnSave.setForeground(new java.awt.Color(255, 255, 255));
         btnSave.setText("Crear");
+        btnSave.setMaximumSize(new java.awt.Dimension(81, 40));
+        btnSave.setMinimumSize(new java.awt.Dimension(81, 40));
+        btnSave.setPreferredSize(new java.awt.Dimension(81, 40));
         btnSave.setUI(new StyledButtonUI());
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,7 +82,7 @@ public class DialogAddCategory extends javax.swing.JDialog {
             }
         });
 
-        txtDescription.setFont(new java.awt.Font("Nadeem", 0, 17)); // NOI18N
+        txtDescription.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtDescription.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -120,7 +123,7 @@ public class DialogAddCategory extends javax.swing.JDialog {
                     .addComponent(jLabel3)
                     .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnSave)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 

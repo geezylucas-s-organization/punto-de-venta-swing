@@ -96,31 +96,40 @@ public class PanelCategories extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(1200, 110));
 
-        jLabel1.setFont(new java.awt.Font("Nadeem", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setText("Departamentos");
 
-        jLabel3.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel3.setText("Buscar:");
 
         btnSearch.setBackground(new java.awt.Color(0, 166, 237));
-        btnSearch.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        btnSearch.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnSearch.setForeground(new java.awt.Color(255, 255, 255));
         btnSearch.setText("Buscar");
+        btnSearch.setMaximumSize(new java.awt.Dimension(89, 40));
+        btnSearch.setMinimumSize(new java.awt.Dimension(89, 40));
+        btnSearch.setPreferredSize(new java.awt.Dimension(89, 40));
         btnSearch.setUI(new StyledButtonUI());
 
-        txtSearch.setFont(new java.awt.Font("Nadeem", 0, 17)); // NOI18N
+        txtSearch.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtSearch.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         btnRefresh.setBackground(new java.awt.Color(0, 166, 237));
-        btnRefresh.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        btnRefresh.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
         btnRefresh.setText("Refrescar");
+        btnRefresh.setMaximumSize(new java.awt.Dimension(117, 40));
+        btnRefresh.setMinimumSize(new java.awt.Dimension(117, 40));
+        btnRefresh.setPreferredSize(new java.awt.Dimension(117, 40));
         btnRefresh.setUI(new StyledButtonUI());
 
         btnAddProduct.setBackground(new java.awt.Color(127, 184, 0));
-        btnAddProduct.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        btnAddProduct.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnAddProduct.setForeground(new java.awt.Color(255, 255, 255));
         btnAddProduct.setText("Agregar Producto");
+        btnAddProduct.setMaximumSize(new java.awt.Dimension(187, 40));
+        btnAddProduct.setMinimumSize(new java.awt.Dimension(187, 40));
+        btnAddProduct.setPreferredSize(new java.awt.Dimension(187, 40));
         btnAddProduct.setUI(new StyledButtonUI());
         btnAddProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,9 +154,9 @@ public class PanelCategories extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnAddProduct)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 379, Short.MAX_VALUE)
-                        .addComponent(btnRefresh)))
+                        .addComponent(btnAddProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 375, Short.MAX_VALUE)
+                        .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -158,11 +167,11 @@ public class PanelCategories extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(btnSearch)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRefresh)
-                    .addComponent(btnAddProduct))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAddProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(jPanel3, java.awt.BorderLayout.PAGE_START);
@@ -170,7 +179,7 @@ public class PanelCategories extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setPreferredSize(new java.awt.Dimension(1200, 45));
 
-        jLabel2.setFont(new java.awt.Font("Nadeem", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Total de departamentos: 0");
 
@@ -179,8 +188,8 @@ public class PanelCategories extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(909, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(830, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -195,7 +204,7 @@ public class PanelCategories extends javax.swing.JPanel {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        tblCategories.setFont(new java.awt.Font("Nadeem", 0, 12)); // NOI18N
+        tblCategories.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tblCategories.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

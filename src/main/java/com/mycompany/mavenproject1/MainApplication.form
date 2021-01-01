@@ -8,14 +8,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ventas"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Nadeem" size="14" style="0"/>
+              <Font name="SansSerif" size="14" style="0"/>
             </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="sellMenuItem">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nadeem" size="14" style="0"/>
+                  <Font name="SansSerif" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Vender"/>
               </Properties>
@@ -26,7 +26,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="repaymentMenuItem">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nadeem" size="14" style="0"/>
+                  <Font name="SansSerif" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Devoluciones"/>
               </Properties>
@@ -40,14 +40,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Departamentos y Productos"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Nadeem" size="14" style="0"/>
+              <Font name="SansSerif" size="14" style="0"/>
             </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="categoriesMenuItem">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nadeem" size="14" style="0"/>
+                  <Font name="SansSerif" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Departamentos"/>
               </Properties>
@@ -58,7 +58,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="addCategoryMenuItem">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nadeem" size="14" style="0"/>
+                  <Font name="SansSerif" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Crear Departamento"/>
               </Properties>
@@ -69,7 +69,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="productsMenuItem">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nadeem" size="14" style="0"/>
+                  <Font name="SansSerif" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Productos"/>
               </Properties>
@@ -83,14 +83,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Inventarios"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Nadeem" size="14" style="0"/>
+              <Font name="SansSerif" size="14" style="0"/>
             </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="restockMenuItem">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nadeem" size="14" style="0"/>
+                  <Font name="SansSerif" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Agregar inventario a producto"/>
               </Properties>
@@ -98,7 +98,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="lowInventoryMenuItem">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nadeem" size="14" style="0"/>
+                  <Font name="SansSerif" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Productos bajos de inventario"/>
               </Properties>
@@ -106,7 +106,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="inventoryMenuItem">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nadeem" size="14" style="0"/>
+                  <Font name="SansSerif" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Inventario de productos"/>
               </Properties>
@@ -114,7 +114,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="reportMovementsMenuItem">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nadeem" size="14" style="0"/>
+                  <Font name="SansSerif" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Reporte de movimientos"/>
               </Properties>
@@ -122,7 +122,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="kardexProductMenuItem">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nadeem" size="14" style="0"/>
+                  <Font name="SansSerif" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Kardex de producto"/>
               </Properties>
@@ -134,14 +134,14 @@
             <Property name="mnemonic" type="int" value="104"/>
             <Property name="text" type="java.lang.String" value="Ayuda"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Nadeem" size="14" style="0"/>
+              <Font name="SansSerif" size="14" style="0"/>
             </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="aboutMenuItem">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nadeem" size="14" style="0"/>
+                  <Font name="SansSerif" size="14" style="0"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="97"/>
                 <Property name="text" type="java.lang.String" value="Acerca de"/>
@@ -154,6 +154,9 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+      <Font name="SansSerif" size="14" style="0"/>
+    </Property>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -181,7 +184,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="panelBackgroud" alignment="0" pref="678" max="32767" attributes="0"/>
+          <Component id="panelBackgroud" alignment="0" pref="675" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -235,7 +238,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nadeem" size="24" style="0"/>
+                  <Font name="SansSerif" size="24" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
