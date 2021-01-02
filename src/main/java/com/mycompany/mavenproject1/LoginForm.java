@@ -66,23 +66,26 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Nadeem", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Comenzar un nuevo corte");
 
-        jLabel2.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel2.setText("Usuario:");
 
         txtUsername.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
-        txtUsername.setFont(new java.awt.Font("Nadeem", 0, 17)); // NOI18N
+        txtUsername.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel3.setText("Contraseña:");
 
         btnIngresar.setBackground(new java.awt.Color(0, 166, 237));
-        btnIngresar.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
+        btnIngresar.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
         btnIngresar.setText("Ingresar");
+        btnIngresar.setMaximumSize(new java.awt.Dimension(95, 40));
+        btnIngresar.setMinimumSize(new java.awt.Dimension(95, 40));
+        btnIngresar.setPreferredSize(new java.awt.Dimension(95, 40));
         btnIngresar.setUI(new StyledButtonUI());
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +94,7 @@ public class LoginForm extends javax.swing.JFrame {
         });
 
         txtPassword.setBorder(new TextBubbleBorder(Color.BLACK, 1, 4, 0));
-        txtPassword.setFont(new java.awt.Font("Nadeem", 0, 17)); // NOI18N
+        txtPassword.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -132,7 +135,7 @@ public class LoginForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnIngresar)
+                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 

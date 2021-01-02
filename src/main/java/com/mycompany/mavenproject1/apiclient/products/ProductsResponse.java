@@ -5,6 +5,8 @@
  */
 package com.mycompany.mavenproject1.apiclient.products;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author geezylucas
@@ -17,18 +19,16 @@ public class ProductsResponse {
     private String name;
     private String description;
     private int inventoryMin;
-    private Double priceIn;
-    private Double priceOut1;
-    private Double priceOut2;
-    private Double priceOut3;
+    private BigDecimal priceIn;
+    private BigDecimal priceOut1;
+    private BigDecimal priceOut2;
+    private BigDecimal priceOut3;
     private String unit;
     private String presentation;
-    private String createdAt;
-    private String updatedAt;
-    private int userByUserId;
-    private int categoryByCategoryId;
     private boolean active;
     private boolean bulk;
+    private String category;
+    private Integer stock;
 
     public int getId() {
         return id;
@@ -78,35 +78,35 @@ public class ProductsResponse {
         this.inventoryMin = inventoryMin;
     }
 
-    public Double getPriceIn() {
+    public BigDecimal getPriceIn() {
         return priceIn;
     }
 
-    public void setPriceIn(Double priceIn) {
+    public void setPriceIn(BigDecimal priceIn) {
         this.priceIn = priceIn;
     }
 
-    public Double getPriceOut1() {
+    public BigDecimal getPriceOut1() {
         return priceOut1;
     }
 
-    public void setPriceOut1(Double priceOut1) {
+    public void setPriceOut1(BigDecimal priceOut1) {
         this.priceOut1 = priceOut1;
     }
 
-    public Double getPriceOut2() {
+    public BigDecimal getPriceOut2() {
         return priceOut2;
     }
 
-    public void setPriceOut2(Double priceOut2) {
+    public void setPriceOut2(BigDecimal priceOut2) {
         this.priceOut2 = priceOut2;
     }
 
-    public Double getPriceOut3() {
+    public BigDecimal getPriceOut3() {
         return priceOut3;
     }
 
-    public void setPriceOut3(Double priceOut3) {
+    public void setPriceOut3(BigDecimal priceOut3) {
         this.priceOut3 = priceOut3;
     }
 
@@ -126,38 +126,6 @@ public class ProductsResponse {
         this.presentation = presentation;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public int getUserByUserId() {
-        return userByUserId;
-    }
-
-    public void setUserByUserId(int userByUserId) {
-        this.userByUserId = userByUserId;
-    }
-
-    public int getCategoryByCategoryId() {
-        return categoryByCategoryId;
-    }
-
-    public void setCategoryByCategoryId(int categoryByCategoryId) {
-        this.categoryByCategoryId = categoryByCategoryId;
-    }
-
     public boolean isActive() {
         return active;
     }
@@ -172,6 +140,22 @@ public class ProductsResponse {
 
     public void setBulk(boolean bulk) {
         this.bulk = bulk;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
     }
 
 }

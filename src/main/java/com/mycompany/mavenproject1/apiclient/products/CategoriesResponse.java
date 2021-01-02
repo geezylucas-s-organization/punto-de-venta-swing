@@ -15,7 +15,7 @@ public class CategoriesResponse {
     private String image;
     private String name;
     private String description;
-    private String createdAt;
+    private int products;
 
     public int getId() {
         return id;
@@ -49,12 +49,12 @@ public class CategoriesResponse {
         this.description = description;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
+    public int getProducts() {
+        return products;
     }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
+    public void setProducts(int products) {
+        this.products = products;
     }
 
 }

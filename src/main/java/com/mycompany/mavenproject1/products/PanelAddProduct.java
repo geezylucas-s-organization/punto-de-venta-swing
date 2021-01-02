@@ -153,6 +153,7 @@ public class PanelAddProduct extends javax.swing.JPanel {
         rbUnit.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroupUnit.add(rbUnit);
         rbUnit.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        rbUnit.setSelected(true);
         rbUnit.setText("Unidad");
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N

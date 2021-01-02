@@ -5,9 +5,17 @@
  */
 package com.mycompany.mavenproject1.products;
 
+import com.mycompany.mavenproject1.apiclient.ApiClient;
+import com.mycompany.mavenproject1.apiclient.products.ProductsResponse;
+import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
 import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.Color;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  *
@@ -20,6 +28,50 @@ public class PanelProducts extends javax.swing.JPanel {
      */
     public PanelProducts() {
         initComponents();
+        tblProducts.getColumnModel().getColumn(0).setMinWidth(0);
+        tblProducts.getColumnModel().getColumn(0).setMaxWidth(0);
+        tblProducts.getColumnModel().getColumn(0).setWidth(0);
+        tblProducts.setRowHeight(30);
+        tblProducts.setShowGrid(true);
+        getProducts();
+    }
+
+    private void getProducts() {
+        SQLiteJDBC sqlite = new SQLiteJDBC();
+        String token = sqlite.getToken();
+        Call<List<ProductsResponse>> productsResponseCall = ApiClient.getProductService().getProducts("Bearer " + token);
+        productsResponseCall.enqueue(new Callback<List<ProductsResponse>>() {
+            @Override
+            public void onResponse(Call<List<ProductsResponse>> call, Response<List<ProductsResponse>> response) {
+                if (response.isSuccessful()) {
+                    List<ProductsResponse> list = response.body();
+                    if (list != null) {
+                        DefaultTableModel model = (DefaultTableModel) tblProducts.getModel();
+
+                        list.forEach(item -> {
+                            model.addRow(new Object[]{
+                                item.getId(),
+                                item.getBarcode(),
+                                item.getName(),
+                                item.getDescription(),
+                                item.getPriceIn(),
+                                item.getPriceOut1(),
+                                item.getPriceOut2(),
+                                item.getPriceOut3(),
+                                item.getInventoryMin(),
+                                item.getStock(),
+                                item.getUnit(),
+                                item.getCategory(),});
+                        });
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<ProductsResponse>> call, Throwable t) {
+                System.out.println(t.getLocalizedMessage());
+            }
+        });
     }
 
     /**
@@ -149,7 +201,7 @@ public class PanelProducts extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false, false, false, false

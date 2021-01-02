@@ -251,10 +251,10 @@
                     <Column editable="false" title="C&#xf3;digo de barras" type="java.lang.String"/>
                     <Column editable="false" title="Nombre" type="java.lang.String"/>
                     <Column editable="false" title="Descripci&#xf3;n" type="java.lang.String"/>
-                    <Column editable="false" title="Precio costo" type="java.lang.Double"/>
-                    <Column editable="false" title="Precio venta" type="java.lang.Double"/>
-                    <Column editable="false" title="Precio din&#xe1;mico" type="java.lang.Double"/>
-                    <Column editable="false" title="Precio mayoreo" type="java.lang.Double"/>
+                    <Column editable="false" title="Precio costo" type="java.lang.Object"/>
+                    <Column editable="false" title="Precio venta" type="java.lang.Object"/>
+                    <Column editable="false" title="Precio din&#xe1;mico" type="java.lang.Object"/>
+                    <Column editable="false" title="Precio mayoreo" type="java.lang.Object"/>
                     <Column editable="false" title="Inv. M&#xed;nimo" type="java.lang.Integer"/>
                     <Column editable="false" title="Existencia" type="java.lang.Double"/>
                     <Column editable="false" title="Tipo venta" type="java.lang.String"/>

@@ -53,7 +53,7 @@ public class PanelCategories extends javax.swing.JPanel {
                             model.addRow(new Object[]{
                                 item.getName(),
                                 item.getDescription(),
-                                item.getCreatedAt(),
+                                item.getProducts(),
                                 item.getId()
                             });
                         });
@@ -210,11 +210,11 @@ public class PanelCategories extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Nombre", "Descripción", "Fecha de creación", "Id"
+                "Nombre", "Descripción", "Total de productos", "Id"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false

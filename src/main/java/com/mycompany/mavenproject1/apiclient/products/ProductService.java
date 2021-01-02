@@ -5,9 +5,11 @@
  */
 package com.mycompany.mavenproject1.apiclient.products;
 
+import java.util.List;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
@@ -22,5 +24,6 @@ public interface ProductService {
     @POST("api/fillcatalogs/products")
     Call<ResponseBody> addProduct(@Body AddProductRequest product, @Header("Authorization") String authHeader);
 
-    Call<ProductsResponse> getProducts(@Header("Authorization") String authHeader);
+    @GET("api/fillcatalogs/products")
+    Call<List<ProductsResponse>> getProducts(@Header("Authorization") String authHeader);
 }
