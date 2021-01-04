@@ -6,6 +6,7 @@
 package com.mycompany.mavenproject1;
 
 import com.mycompany.mavenproject1.inventory.DialogAddInventory;
+import com.mycompany.mavenproject1.inventory.PanelKardexProduct;
 import com.mycompany.mavenproject1.products.DialogAddCategory;
 import com.mycompany.mavenproject1.products.PanelCategories;
 import com.mycompany.mavenproject1.products.PanelProducts;
@@ -164,6 +165,11 @@ public class MainApplication extends javax.swing.JFrame {
 
         kardexProductMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         kardexProductMenuItem.setText("Kardex de producto");
+        kardexProductMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kardexProductMenuItemActionPerformed(evt);
+            }
+        });
         stockMenu.add(kardexProductMenuItem);
 
         menuBar.add(stockMenu);
@@ -256,6 +262,15 @@ public class MainApplication extends javax.swing.JFrame {
         addInventory.setLocationRelativeTo(null);
         addInventory.setVisible(true);
     }//GEN-LAST:event_restockMenuItemActionPerformed
+
+    private void kardexProductMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kardexProductMenuItemActionPerformed
+        // TODO add your handling code here:
+        PanelKardexProduct kardexProduct = new PanelKardexProduct();
+        panelCentral.removeAll();
+        panelCentral.add(kardexProduct);
+        panelCentral.validate();
+        panelCentral.repaint();
+    }//GEN-LAST:event_kardexProductMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
