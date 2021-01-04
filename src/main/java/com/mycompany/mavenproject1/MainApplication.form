@@ -94,23 +94,28 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Agregar inventario a producto"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="restockMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="lowInventoryMenuItem">
+            <MenuItem class="javax.swing.JMenuItem" name="kardexProductMenuItem">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="14" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Productos bajos de inventario"/>
+                <Property name="text" type="java.lang.String" value="Kardex de producto"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="inventoryMenuItem">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Inventario de productos"/>
-              </Properties>
-            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="ReportsMenu">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Reportes"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="14" style="0"/>
+            </Property>
+          </Properties>
+          <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="reportMovementsMenuItem">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -119,12 +124,20 @@
                 <Property name="text" type="java.lang.String" value="Reporte de movimientos"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="kardexProductMenuItem">
+            <MenuItem class="javax.swing.JMenuItem" name="ReportSalesMenuItem">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="14" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Kardex de producto"/>
+                <Property name="text" type="java.lang.String" value="Reporte de ventas"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="ReportClientMenuItem">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="SansSerif" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Reporte de clientes"/>
               </Properties>
             </MenuItem>
           </SubComponents>

@@ -89,6 +89,7 @@ public class PanelProducts extends javax.swing.JPanel {
         btnSearch = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
         btnRefresh = new javax.swing.JButton();
+        btnLowInventory = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -127,6 +128,15 @@ public class PanelProducts extends javax.swing.JPanel {
         btnRefresh.setPreferredSize(new java.awt.Dimension(117, 40));
         btnRefresh.setUI(new StyledButtonUI());
 
+        btnLowInventory.setBackground(new java.awt.Color(127, 184, 0));
+        btnLowInventory.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        btnLowInventory.setForeground(new java.awt.Color(255, 255, 255));
+        btnLowInventory.setText("Productos bajos de inventario");
+        btnLowInventory.setMaximumSize(new java.awt.Dimension(165, 40));
+        btnLowInventory.setMinimumSize(new java.awt.Dimension(165, 40));
+        btnLowInventory.setPreferredSize(new java.awt.Dimension(165, 40));
+        btnLowInventory.setUI(new StyledButtonUI());
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -143,7 +153,9 @@ public class PanelProducts extends javax.swing.JPanel {
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 580, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnLowInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 269, Short.MAX_VALUE)
                         .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -157,8 +169,9 @@ public class PanelProducts extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLowInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         add(jPanel3, java.awt.BorderLayout.PAGE_START);
@@ -239,6 +252,7 @@ public class PanelProducts extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLowInventory;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSearch;
     private javax.swing.JLabel jLabel1;

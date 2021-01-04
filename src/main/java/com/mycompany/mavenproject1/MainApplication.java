@@ -5,6 +5,7 @@
  */
 package com.mycompany.mavenproject1;
 
+import com.mycompany.mavenproject1.inventory.DialogAddInventory;
 import com.mycompany.mavenproject1.products.DialogAddCategory;
 import com.mycompany.mavenproject1.products.PanelCategories;
 import com.mycompany.mavenproject1.products.PanelProducts;
@@ -48,10 +49,11 @@ public class MainApplication extends javax.swing.JFrame {
         productsMenuItem = new javax.swing.JMenuItem();
         stockMenu = new javax.swing.JMenu();
         restockMenuItem = new javax.swing.JMenuItem();
-        lowInventoryMenuItem = new javax.swing.JMenuItem();
-        inventoryMenuItem = new javax.swing.JMenuItem();
-        reportMovementsMenuItem = new javax.swing.JMenuItem();
         kardexProductMenuItem = new javax.swing.JMenuItem();
+        ReportsMenu = new javax.swing.JMenu();
+        reportMovementsMenuItem = new javax.swing.JMenuItem();
+        ReportSalesMenuItem = new javax.swing.JMenuItem();
+        ReportClientMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
@@ -153,25 +155,35 @@ public class MainApplication extends javax.swing.JFrame {
 
         restockMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         restockMenuItem.setText("Agregar inventario a producto");
+        restockMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                restockMenuItemActionPerformed(evt);
+            }
+        });
         stockMenu.add(restockMenuItem);
-
-        lowInventoryMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lowInventoryMenuItem.setText("Productos bajos de inventario");
-        stockMenu.add(lowInventoryMenuItem);
-
-        inventoryMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        inventoryMenuItem.setText("Inventario de productos");
-        stockMenu.add(inventoryMenuItem);
-
-        reportMovementsMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        reportMovementsMenuItem.setText("Reporte de movimientos");
-        stockMenu.add(reportMovementsMenuItem);
 
         kardexProductMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         kardexProductMenuItem.setText("Kardex de producto");
         stockMenu.add(kardexProductMenuItem);
 
         menuBar.add(stockMenu);
+
+        ReportsMenu.setText("Reportes");
+        ReportsMenu.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        reportMovementsMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        reportMovementsMenuItem.setText("Reporte de movimientos");
+        ReportsMenu.add(reportMovementsMenuItem);
+
+        ReportSalesMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        ReportSalesMenuItem.setText("Reporte de ventas");
+        ReportsMenu.add(ReportSalesMenuItem);
+
+        ReportClientMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        ReportClientMenuItem.setText("Reporte de clientes");
+        ReportsMenu.add(ReportClientMenuItem);
+
+        menuBar.add(ReportsMenu);
 
         helpMenu.setMnemonic('h');
         helpMenu.setText("Ayuda");
@@ -238,6 +250,13 @@ public class MainApplication extends javax.swing.JFrame {
         panelCentral.repaint();
     }//GEN-LAST:event_productsMenuItemActionPerformed
 
+    private void restockMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restockMenuItemActionPerformed
+        // TODO add your handling code here:
+        DialogAddInventory addInventory = new DialogAddInventory(this, true);
+        addInventory.setLocationRelativeTo(null);
+        addInventory.setVisible(true);
+    }//GEN-LAST:event_restockMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -268,14 +287,15 @@ public class MainApplication extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ReportClientMenuItem;
+    private javax.swing.JMenuItem ReportSalesMenuItem;
+    private javax.swing.JMenu ReportsMenu;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem addCategoryMenuItem;
     private javax.swing.JMenuItem categoriesMenuItem;
     private javax.swing.JMenu helpMenu;
-    private javax.swing.JMenuItem inventoryMenuItem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem kardexProductMenuItem;
-    private javax.swing.JMenuItem lowInventoryMenuItem;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JPanel panelBackgroud;
     private javax.swing.JPanel panelCentral;
