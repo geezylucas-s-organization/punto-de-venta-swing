@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.mavenproject1.inventory;
+package com.mycompany.mavenproject1.reports;
 
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
 import com.mycompany.mavenproject1.utils.TextBubbleBorder;
@@ -13,12 +13,12 @@ import java.awt.Color;
  *
  * @author User
  */
-public class PanelKardexProduct extends javax.swing.JPanel {
+public class PanelReportMovements extends javax.swing.JPanel {
 
     /**
-     * Creates new form PanelKardexProduct
+     * Creates new form PanelReportMovements
      */
-    public PanelKardexProduct() {
+    public PanelReportMovements() {
         initComponents();
     }
 
@@ -33,18 +33,20 @@ public class PanelKardexProduct extends javax.swing.JPanel {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         btnSearch = new javax.swing.JButton();
-        txtSearch = new javax.swing.JTextField();
         btnRefresh = new javax.swing.JButton();
         datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
         datePicker2 = new com.github.lgooddatepicker.components.DatePicker();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         btnExport = new javax.swing.JButton();
         btnPrint = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
@@ -52,23 +54,17 @@ public class PanelKardexProduct extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(1200, 110));
 
-        jLabel1.setText("Kardex de producto");
+        jLabel1.setText("Historial de movimientos");
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
 
-        jLabel3.setText("Buscar:");
-        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-
-        btnSearch.setText("Buscar");
         btnSearch.setBackground(new java.awt.Color(0, 166, 237));
         btnSearch.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnSearch.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearch.setText("Buscar");
         btnSearch.setMaximumSize(new java.awt.Dimension(93, 40));
         btnSearch.setMinimumSize(new java.awt.Dimension(93, 40));
         btnSearch.setPreferredSize(new java.awt.Dimension(93, 40));
         btnSearch.setUI(new StyledButtonUI());
-
-        txtSearch.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtSearch.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         btnRefresh.setText("Refrescar");
         btnRefresh.setBackground(new java.awt.Color(0, 166, 237));
@@ -80,9 +76,9 @@ public class PanelKardexProduct extends javax.swing.JPanel {
         btnRefresh.setUI(new StyledButtonUI());
 
         datePicker1.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        datePicker1.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
         datePicker1.setMinimumSize(new java.awt.Dimension(174, 30));
         datePicker1.setPreferredSize(new java.awt.Dimension(174, 30));
+        datePicker1.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         datePicker2.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         datePicker2.setMinimumSize(new java.awt.Dimension(174, 30));
@@ -92,8 +88,18 @@ public class PanelKardexProduct extends javax.swing.JPanel {
         jLabel4.setText("Inicio:");
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        jLabel5.setText("Fin:");
+        jLabel5.setText("Tipo:");
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+
+        jLabel6.setText("Fin:");
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox1.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
+        jComboBox1.setMinimumSize(new java.awt.Dimension(69, 30));
+        jComboBox1.setPreferredSize(new java.awt.Dimension(69, 30));
+        jComboBox1.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -104,22 +110,22 @@ public class PanelKardexProduct extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(179, 179, 179))
+                        .addGap(339, 339, 339))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel5)
+                        .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(datePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
                         .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
@@ -132,22 +138,22 @@ public class PanelKardexProduct extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
                         .addComponent(jLabel4))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(jLabel5))
+                        .addComponent(jLabel6))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(datePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -200,15 +206,35 @@ public class PanelKardexProduct extends javax.swing.JPanel {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
+        jTable1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1200, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1188, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 475, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         add(jPanel5, java.awt.BorderLayout.CENTER);
@@ -222,13 +248,15 @@ public class PanelKardexProduct extends javax.swing.JPanel {
     private javax.swing.JButton btnSearch;
     private com.github.lgooddatepicker.components.DatePicker datePicker1;
     private com.github.lgooddatepicker.components.DatePicker datePicker2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JTextField txtSearch;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

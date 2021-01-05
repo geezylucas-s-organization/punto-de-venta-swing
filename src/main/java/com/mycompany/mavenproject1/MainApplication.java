@@ -10,6 +10,7 @@ import com.mycompany.mavenproject1.inventory.PanelKardexProduct;
 import com.mycompany.mavenproject1.products.DialogAddCategory;
 import com.mycompany.mavenproject1.products.PanelCategories;
 import com.mycompany.mavenproject1.products.PanelProducts;
+import com.mycompany.mavenproject1.reports.PanelReportMovements;
 import com.mycompany.mavenproject1.sell.PanelSell;
 
 /**
@@ -179,6 +180,11 @@ public class MainApplication extends javax.swing.JFrame {
 
         reportMovementsMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         reportMovementsMenuItem.setText("Reporte de movimientos");
+        reportMovementsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportMovementsMenuItemActionPerformed(evt);
+            }
+        });
         ReportsMenu.add(reportMovementsMenuItem);
 
         ReportSalesMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -271,6 +277,15 @@ public class MainApplication extends javax.swing.JFrame {
         panelCentral.validate();
         panelCentral.repaint();
     }//GEN-LAST:event_kardexProductMenuItemActionPerformed
+
+    private void reportMovementsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportMovementsMenuItemActionPerformed
+        // TODO add your handling code here:
+        PanelReportMovements reportMovements = new PanelReportMovements();
+        panelCentral.removeAll();
+        panelCentral.add(reportMovements);
+        panelCentral.validate();
+        panelCentral.repaint();
+    }//GEN-LAST:event_reportMovementsMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
