@@ -5,11 +5,14 @@
  */
 package com.mycompany.mavenproject1;
 
+import com.mycompany.mavenproject1.clients.DialogAddClient;
+import com.mycompany.mavenproject1.clients.PanelClients;
 import com.mycompany.mavenproject1.inventory.DialogAddInventory;
 import com.mycompany.mavenproject1.inventory.PanelKardexProduct;
 import com.mycompany.mavenproject1.products.DialogAddCategory;
 import com.mycompany.mavenproject1.products.PanelCategories;
 import com.mycompany.mavenproject1.products.PanelProducts;
+import com.mycompany.mavenproject1.reports.PanelReportClients;
 import com.mycompany.mavenproject1.reports.PanelReportMovements;
 import com.mycompany.mavenproject1.sell.PanelSell;
 
@@ -45,9 +48,12 @@ public class MainApplication extends javax.swing.JFrame {
         sellMenu = new javax.swing.JMenu();
         sellMenuItem = new javax.swing.JMenuItem();
         repaymentMenuItem = new javax.swing.JMenuItem();
+        ClientsMenu = new javax.swing.JMenu();
+        AddClientMenuItem = new javax.swing.JMenuItem();
+        ClientsMenuItem = new javax.swing.JMenuItem();
         productsMenu = new javax.swing.JMenu();
-        categoriesMenuItem = new javax.swing.JMenuItem();
         addCategoryMenuItem = new javax.swing.JMenuItem();
+        categoriesMenuItem = new javax.swing.JMenuItem();
         productsMenuItem = new javax.swing.JMenuItem();
         stockMenu = new javax.swing.JMenu();
         restockMenuItem = new javax.swing.JMenuItem();
@@ -120,17 +126,31 @@ public class MainApplication extends javax.swing.JFrame {
 
         menuBar.add(sellMenu);
 
-        productsMenu.setText("Departamentos y Productos");
-        productsMenu.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        ClientsMenu.setText("Clientes");
+        ClientsMenu.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
-        categoriesMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        categoriesMenuItem.setText("Departamentos");
-        categoriesMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        AddClientMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        AddClientMenuItem.setText("Crear Cliente");
+        AddClientMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                categoriesMenuItemActionPerformed(evt);
+                AddClientMenuItemActionPerformed(evt);
             }
         });
-        productsMenu.add(categoriesMenuItem);
+        ClientsMenu.add(AddClientMenuItem);
+
+        ClientsMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        ClientsMenuItem.setText("Clientes");
+        ClientsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClientsMenuItemActionPerformed(evt);
+            }
+        });
+        ClientsMenu.add(ClientsMenuItem);
+
+        menuBar.add(ClientsMenu);
+
+        productsMenu.setText("Departamentos y Productos");
+        productsMenu.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
         addCategoryMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         addCategoryMenuItem.setText("Crear Departamento");
@@ -140,6 +160,15 @@ public class MainApplication extends javax.swing.JFrame {
             }
         });
         productsMenu.add(addCategoryMenuItem);
+
+        categoriesMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        categoriesMenuItem.setText("Departamentos");
+        categoriesMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoriesMenuItemActionPerformed(evt);
+            }
+        });
+        productsMenu.add(categoriesMenuItem);
 
         productsMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         productsMenuItem.setText("Productos");
@@ -193,6 +222,11 @@ public class MainApplication extends javax.swing.JFrame {
 
         ReportClientMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         ReportClientMenuItem.setText("Reporte de clientes");
+        ReportClientMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReportClientMenuItemActionPerformed(evt);
+            }
+        });
         ReportsMenu.add(ReportClientMenuItem);
 
         menuBar.add(ReportsMenu);
@@ -287,6 +321,31 @@ public class MainApplication extends javax.swing.JFrame {
         panelCentral.repaint();
     }//GEN-LAST:event_reportMovementsMenuItemActionPerformed
 
+    private void ReportClientMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportClientMenuItemActionPerformed
+        // TODO add your handling code here:
+        PanelReportClients reportClientes = new PanelReportClients();
+        panelCentral.removeAll();
+        panelCentral.add(reportClientes);
+        panelCentral.validate();
+        panelCentral.repaint();
+    }//GEN-LAST:event_ReportClientMenuItemActionPerformed
+
+    private void ClientsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientsMenuItemActionPerformed
+        // TODO add your handling code here:
+        PanelClients clientes = new PanelClients();
+        panelCentral.removeAll();
+        panelCentral.add(clientes);
+        panelCentral.validate();
+        panelCentral.repaint();
+    }//GEN-LAST:event_ClientsMenuItemActionPerformed
+
+    private void AddClientMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddClientMenuItemActionPerformed
+        // TODO add your handling code here:
+        DialogAddClient addClient = new DialogAddClient(this, true);
+        addClient.setLocationRelativeTo(null);
+        addClient.setVisible(true);
+    }//GEN-LAST:event_AddClientMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -317,6 +376,9 @@ public class MainApplication extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem AddClientMenuItem;
+    private javax.swing.JMenu ClientsMenu;
+    private javax.swing.JMenuItem ClientsMenuItem;
     private javax.swing.JMenuItem ReportClientMenuItem;
     private javax.swing.JMenuItem ReportSalesMenuItem;
     private javax.swing.JMenu ReportsMenu;
