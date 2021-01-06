@@ -13,19 +13,29 @@ import java.math.BigDecimal;
  */
 public class AddProductRequest {
 
+    private String image;
     private String barcode;
     private String name;
     private String description;
+    private int inventoryMin;
     private BigDecimal priceIn;
     private BigDecimal priceOut1;
     private BigDecimal priceOut2;
     private BigDecimal priceOut3;
-    private int inventoryMin;
-    private boolean active;
     private String unit;
-    private boolean bulk;
-    private UserByUserId userByUserId;
-    private CategoryByCategoryId categoryByCategoryId;
+    private String presentation;
+    private boolean isActive;
+    private boolean isBulk;
+    private int userId;
+    private int categoryId;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public String getBarcode() {
         return barcode;
@@ -49,6 +59,14 @@ public class AddProductRequest {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getInventoryMin() {
+        return inventoryMin;
+    }
+
+    public void setInventoryMin(int inventoryMin) {
+        this.inventoryMin = inventoryMin;
     }
 
     public BigDecimal getPriceIn() {
@@ -83,22 +101,6 @@ public class AddProductRequest {
         this.priceOut3 = priceOut3;
     }
 
-    public int getInventoryMin() {
-        return inventoryMin;
-    }
-
-    public void setInventoryMin(int inventoryMin) {
-        this.inventoryMin = inventoryMin;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
     public String getUnit() {
         return unit;
     }
@@ -107,28 +109,44 @@ public class AddProductRequest {
         this.unit = unit;
     }
 
+    public String getPresentation() {
+        return presentation;
+    }
+
+    public void setPresentation(String presentation) {
+        this.presentation = presentation;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
     public boolean isBulk() {
-        return bulk;
+        return isBulk;
     }
 
-    public void setBulk(boolean bulk) {
-        this.bulk = bulk;
+    public void setBulk(boolean isBulk) {
+        this.isBulk = isBulk;
     }
 
-    public UserByUserId getUserByUserId() {
-        return userByUserId;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUserByUserId(UserByUserId userByUserId) {
-        this.userByUserId = userByUserId;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public CategoryByCategoryId getCategoryByCategoryId() {
-        return categoryByCategoryId;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategoryByCategoryId(CategoryByCategoryId categoryByCategoryId) {
-        this.categoryByCategoryId = categoryByCategoryId;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
 }

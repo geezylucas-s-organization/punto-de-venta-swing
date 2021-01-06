@@ -7,8 +7,6 @@ package com.mycompany.mavenproject1.products;
 
 import com.mycompany.mavenproject1.apiclient.ApiClient;
 import com.mycompany.mavenproject1.apiclient.products.AddProductRequest;
-import com.mycompany.mavenproject1.apiclient.products.CategoryByCategoryId;
-import com.mycompany.mavenproject1.apiclient.products.UserByUserId;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
 import com.mycompany.mavenproject1.utils.TextBubbleBorder;
@@ -326,8 +324,8 @@ public class PanelAddProduct extends javax.swing.JPanel {
         btnSave.setBackground(Color.GRAY);
         btnSave.setEnabled(false);
         if (!txtBarcode.getText().equals("") && !txtNameProduct.getText().equals("")
-            && !txtCostPrice.getText().equals("") && !txtSalePrice.getText().equals("")
-            && !txtMinimum.getText().equals("")) {
+                && !txtCostPrice.getText().equals("") && !txtSalePrice.getText().equals("")
+                && !txtMinimum.getText().equals("")) {
             SQLiteJDBC sqlite = new SQLiteJDBC();
             String token = sqlite.getToken();
             Integer userId = sqlite.getUserId();
@@ -345,18 +343,17 @@ public class PanelAddProduct extends javax.swing.JPanel {
                 addProduct.setPriceOut3(new BigDecimal(txtSalePrice2.getText()));
             }
             addProduct.setInventoryMin(Integer.valueOf(txtMinimum.getText()));
+            addProduct.setBulk(false);
             if (rbUnit.isSelected()) {
                 addProduct.setUnit("UD");
-                addProduct.setBulk(false);
             } else if (rbPackage.isSelected()) {
                 addProduct.setUnit("PKG");
-                addProduct.setBulk(false);
             } else if (rbBulk.isSelected()) {
                 addProduct.setBulk(true);
             }
             addProduct.setActive(true);
-            addProduct.setUserByUserId(new UserByUserId(userId));
-            addProduct.setCategoryByCategoryId(new CategoryByCategoryId(this.categoryId));
+            addProduct.setUserId(userId);
+            addProduct.setCategoryId(this.categoryId);
 
             Call<ResponseBody> addCategoryResponseCall = ApiClient.getProductService().addProduct(addProduct, "Bearer " + token);
             addCategoryResponseCall.enqueue(new Callback<ResponseBody>() {
