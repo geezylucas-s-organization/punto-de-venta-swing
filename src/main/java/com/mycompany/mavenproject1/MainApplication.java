@@ -14,6 +14,7 @@ import com.mycompany.mavenproject1.products.PanelCategories;
 import com.mycompany.mavenproject1.products.PanelProducts;
 import com.mycompany.mavenproject1.reports.PanelReportClients;
 import com.mycompany.mavenproject1.reports.PanelReportMovements;
+import com.mycompany.mavenproject1.sell.DialogRefunds;
 import com.mycompany.mavenproject1.sell.PanelSell;
 
 /**
@@ -269,6 +270,9 @@ public class MainApplication extends javax.swing.JFrame {
 
     private void repaymentMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repaymentMenuItemActionPerformed
         // TODO add your handling code here:
+        DialogRefunds refunds = new DialogRefunds(this, true);
+        refunds.setLocationRelativeTo(null);
+        refunds.setVisible(true);
     }//GEN-LAST:event_repaymentMenuItemActionPerformed
 
     private void categoriesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriesMenuItemActionPerformed
