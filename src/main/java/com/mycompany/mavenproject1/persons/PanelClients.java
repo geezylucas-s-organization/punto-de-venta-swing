@@ -3,11 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.mavenproject1.clients;
+package com.mycompany.mavenproject1.persons;
 
+import com.mycompany.mavenproject1.apiclient.ApiClient;
+import com.mycompany.mavenproject1.apiclient.persons.PersonsResponse;
+import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
 import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.Color;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  *
@@ -20,6 +28,42 @@ public class PanelClients extends javax.swing.JPanel {
      */
     public PanelClients() {
         initComponents();
+        tblClients.setRowHeight(30);
+        tblClients.setShowGrid(true);
+        getClients();
+    }
+
+    private void getClients() {
+        SQLiteJDBC sqlite = new SQLiteJDBC();
+        String token = sqlite.getToken();
+        Call<List<PersonsResponse>> clientsResponseCall = ApiClient.getPersonsService().getClients("Bearer " + token);
+        clientsResponseCall.enqueue(new Callback<List<PersonsResponse>>() {
+            @Override
+            public void onResponse(Call<List<PersonsResponse>> call, Response<List<PersonsResponse>> response) {
+                if (response.isSuccessful()) {
+                    List<PersonsResponse> list = response.body();
+                    if (list != null) {
+                        DefaultTableModel model = (DefaultTableModel) tblClients.getModel();
+
+                        list.forEach(item -> {
+                            model.addRow(new Object[]{
+                                item.getId(),
+                                item.getName() + " " + item.getLastname(),
+                                item.getEmail1(),
+                                item.getPhone1(),
+                                item.getCreatedAt()
+                            });
+                        });
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<PersonsResponse>> call, Throwable t) {
+                System.out.println(t.getLocalizedMessage());
+            }
+        });
     }
 
     /**
@@ -41,7 +85,7 @@ public class PanelClients extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblCategories = new javax.swing.JTable();
+        tblClients = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
@@ -140,8 +184,8 @@ public class PanelClients extends javax.swing.JPanel {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        tblCategories.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        tblCategories.setModel(new javax.swing.table.DefaultTableModel(
+        tblClients.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        tblClients.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -164,7 +208,7 @@ public class PanelClients extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblCategories);
+        jScrollPane1.setViewportView(tblClients);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -197,7 +241,7 @@ public class PanelClients extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblCategories;
+    private javax.swing.JTable tblClients;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

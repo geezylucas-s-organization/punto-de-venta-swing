@@ -8,6 +8,7 @@ package com.mycompany.mavenproject1.apiclient;
 import com.mycompany.mavenproject1.apiclient.auth.AuthService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.mycompany.mavenproject1.apiclient.persons.PersonsService;
 import com.mycompany.mavenproject1.apiclient.products.CategoryService;
 import com.mycompany.mavenproject1.apiclient.products.ProductService;
 import okhttp3.OkHttpClient;
@@ -47,5 +48,9 @@ public class ApiClient {
 
     public static ProductService getProductService() {
         return getRetrofit().create(ProductService.class);
+    }
+
+    public static PersonsService getPersonsService() {
+        return getRetrofit().create(PersonsService.class);
     }
 }

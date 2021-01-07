@@ -5,9 +5,18 @@
  */
 package com.mycompany.mavenproject1.sell;
 
+import com.mycompany.mavenproject1.apiclient.ApiClient;
+import com.mycompany.mavenproject1.apiclient.products.ProductsResponse;
+import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
 import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.Color;
+import java.math.BigDecimal;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  *
@@ -20,6 +29,11 @@ public class PanelSell extends javax.swing.JPanel {
      */
     public PanelSell() {
         initComponents();
+        tblProducts.getColumnModel().getColumn(0).setMinWidth(0);
+        tblProducts.getColumnModel().getColumn(0).setMaxWidth(0);
+        tblProducts.getColumnModel().getColumn(0).setWidth(0);
+        tblProducts.setRowHeight(30);
+        //tblProducts.setShowGrid(true);
     }
 
     /**
@@ -40,7 +54,7 @@ public class PanelSell extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         btnCharge = new javax.swing.JButton();
         lblTotalMoney = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblTotalProducts = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         btnPendingSell = new javax.swing.JButton();
@@ -79,6 +93,11 @@ public class PanelSell extends javax.swing.JPanel {
         btnAddProduct.setMinimumSize(new java.awt.Dimension(95, 40));
         btnAddProduct.setPreferredSize(new java.awt.Dimension(95, 40));
         btnAddProduct.setUI(new StyledButtonUI());
+        btnAddProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddProductActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel3.setText("Venta Ticket #1");
@@ -133,9 +152,9 @@ public class PanelSell extends javax.swing.JPanel {
         lblTotalMoney.setFont(new java.awt.Font("SansSerif", 1, 48)); // NOI18N
         lblTotalMoney.setText("$0.00");
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Total productos: 0");
+        lblTotalProducts.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        lblTotalProducts.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTotalProducts.setText("Total productos: 0");
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel2.setText("Funciones adicionales:");
@@ -200,7 +219,7 @@ public class PanelSell extends javax.swing.JPanel {
                 .addComponent(lblTotalMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTotalProducts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -215,7 +234,7 @@ public class PanelSell extends javax.swing.JPanel {
                             .addComponent(btnCharge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(10, 10, 10))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lblTotalProducts)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -230,15 +249,22 @@ public class PanelSell extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Código de barras", "Producto", "Precio de venta", "Cantidad", "Importe", "Inventario"
+                "id", "Código de barras", "Producto", "Precio de venta", "Cantidad", "Importe", "Inventario"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(tblProducts);
@@ -267,6 +293,97 @@ public class PanelSell extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnChargeActionPerformed
 
+    private void btnAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductActionPerformed
+        // TODO add your handling code here:
+        btnAddProduct.setBackground(Color.GRAY);
+        btnAddProduct.setEnabled(false);
+        if (!txtCodeProduct.getText().equals("")) {
+            SQLiteJDBC sqlite = new SQLiteJDBC();
+            String token = sqlite.getToken();
+            Call<ProductsResponse> productResponseCall = ApiClient.getProductService().getProductByBarcodeWithQuantity(txtCodeProduct.getText(), "Bearer " + token);
+            productResponseCall.enqueue(new Callback<ProductsResponse>() {
+                @Override
+                public void onResponse(Call<ProductsResponse> call, Response<ProductsResponse> response) {
+                    if (response.isSuccessful()) {
+                        ProductsResponse product = response.body();
+                        if (product != null) {
+                            DefaultTableModel model = (DefaultTableModel) tblProducts.getModel();
+                            if (tblProducts.getRowCount() > 0) {
+                                int row = -1;
+                                for (int i = 0; i < tblProducts.getRowCount(); i++) {//For each row
+                                    if (tblProducts.getModel().getValueAt(i, 0).equals(product.getId())) {//Search the model
+                                        row = i;
+                                        break;
+                                    }
+                                }//For loop outer   
+                                if (row != -1) {
+                                    int quantity = (int) tblProducts.getModel().getValueAt(row, 4) + 1;
+                                    double stock = product.getStock() - quantity;
+                                    if (stock >= 0) {
+                                        tblProducts.getModel().setValueAt(quantity, row, 4);
+                                        BigDecimal total = product.getPriceOut1().multiply(new BigDecimal(quantity));
+                                        tblProducts.getModel().setValueAt(total, row, 5);
+                                        tblProducts.getModel().setValueAt(stock, row, 6);
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Ya no quedan productos de " + product.getName() + "", "Producto", JOptionPane.ERROR_MESSAGE);
+                                    }
+                                } else {
+                                    if (product.getStock() != null) {
+                                        model.addRow(new Object[]{
+                                            product.getId(),
+                                            product.getBarcode(),
+                                            product.getName(),
+                                            product.getPriceOut1(),
+                                            1,
+                                            (product.getPriceOut1().multiply(new BigDecimal(1))),
+                                            product.getStock() - 1
+                                        });
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Ya no quedan productos de " + product.getName() + "", "Producto", JOptionPane.ERROR_MESSAGE);
+                                    }
+                                }
+                            } else {
+                                if (product.getStock() != null) {
+                                    model.addRow(new Object[]{
+                                        product.getId(),
+                                        product.getBarcode(),
+                                        product.getName(),
+                                        product.getPriceOut1(),
+                                        1,
+                                        product.getPriceOut1().multiply(new BigDecimal(1)),
+                                        product.getStock() - 1
+                                    });
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Ya no quedan productos de " + product.getName() + "", "Producto", JOptionPane.ERROR_MESSAGE);
+                                }
+                            }
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No existe el producto", "Producto", JOptionPane.ERROR_MESSAGE);
+                    }
+                    int totalProducts = 0;
+                    BigDecimal totalMoney = new BigDecimal(0);
+                    for (int i = 0; i < tblProducts.getRowCount(); i++) {//For each row
+                        totalProducts += (int) tblProducts.getValueAt(i, 4);
+                        String value = String.valueOf(tblProducts.getValueAt(i, 5));
+                        totalMoney = totalMoney.add(new BigDecimal(value));
+                    }//For loop outer   
+                    lblTotalProducts.setText("Total productos: " + totalProducts);
+                    lblTotalMoney.setText("$" + totalMoney);
+                    btnAddProduct.setBackground(new java.awt.Color(0, 166, 237));
+                    btnAddProduct.setEnabled(true);
+                    txtCodeProduct.setText("");
+                }
+
+                @Override
+                public void onFailure(Call<ProductsResponse> call, Throwable t) {
+                    System.out.println(t.getLocalizedMessage());
+                }
+            }
+            );
+        }
+    }//GEN-LAST:event_btnAddProductActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddProduct;
@@ -275,7 +392,6 @@ public class PanelSell extends javax.swing.JPanel {
     private javax.swing.JButton btnFindProduct;
     private javax.swing.JButton btnPendingSell;
     private javax.swing.JButton btnPendingSells;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -285,6 +401,7 @@ public class PanelSell extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCodeProduct;
     private javax.swing.JLabel lblTotalMoney;
+    private javax.swing.JLabel lblTotalProducts;
     private javax.swing.JTable tblProducts;
     private javax.swing.JTextField txtCodeProduct;
     // End of variables declaration//GEN-END:variables

@@ -5,8 +5,8 @@
  */
 package com.mycompany.mavenproject1;
 
-import com.mycompany.mavenproject1.clients.DialogAddClient;
-import com.mycompany.mavenproject1.clients.PanelClients;
+import com.mycompany.mavenproject1.persons.DialogAddClient;
+import com.mycompany.mavenproject1.persons.PanelClients;
 import com.mycompany.mavenproject1.inventory.DialogAddInventory;
 import com.mycompany.mavenproject1.inventory.PanelKardexProduct;
 import com.mycompany.mavenproject1.products.DialogAddCategory;
