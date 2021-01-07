@@ -8,6 +8,7 @@ package com.mycompany.mavenproject1.products;
 import com.mycompany.mavenproject1.apiclient.ApiClient;
 import com.mycompany.mavenproject1.apiclient.products.AddProductRequest;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
+import com.mycompany.mavenproject1.utils.MaxLengthTextDocument;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
 import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.Color;
@@ -45,6 +46,10 @@ public class PanelAddProduct extends javax.swing.JPanel {
 
     private void myInit() {
         this.lblDepartament.setText(this.category);
+        MaxLengthTextDocument maxLength = new MaxLengthTextDocument();
+        maxLength.setMaxChars(50);
+
+        txtNameProduct.setDocument(maxLength);
     }
 
     /**

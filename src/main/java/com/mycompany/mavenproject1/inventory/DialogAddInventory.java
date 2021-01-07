@@ -5,9 +5,22 @@
  */
 package com.mycompany.mavenproject1.inventory;
 
+import com.mycompany.mavenproject1.apiclient.ApiClient;
+import com.mycompany.mavenproject1.apiclient.products.AddStockRequest;
+import com.mycompany.mavenproject1.apiclient.products.ProductsResponse;
+import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
 import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.Color;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  *
@@ -17,6 +30,7 @@ public class DialogAddInventory extends javax.swing.JDialog {
 
     /**
      * Creates new form DialogAddInventory
+     *
      * @param parent
      * @param modal
      */
@@ -24,6 +38,38 @@ public class DialogAddInventory extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         datePicker1.setEnabled(false);
+        lblIdProduct.setVisible(false);
+
+        txtAdd.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            public void warn() {
+                try {
+                    if (Integer.parseInt(txtAdd.getText()) <= 0) {
+                        JOptionPane.showMessageDialog(null,
+                                "Error: Please enter number bigger than 0", "Error Massage",
+                                JOptionPane.ERROR_MESSAGE);
+                    } else if (Integer.parseInt(txtAdd.getText()) > 0) {
+                        lblTotal.setText(String.format("$%,.2f", (Double.valueOf(txtCostPrice.getText()) * Integer.valueOf(txtAdd.getText()))));
+                    }
+                } catch (NumberFormatException e) {
+                    lblTotal.setText("$0.00");
+                }
+            }
+        });
     }
 
     /**
@@ -43,7 +89,7 @@ public class DialogAddInventory extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        lblName1 = new javax.swing.JLabel();
+        lblStock = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtCodeProduct = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -60,6 +106,7 @@ public class DialogAddInventory extends javax.swing.JDialog {
         jCheckBox1 = new javax.swing.JCheckBox();
         jLabel11 = new javax.swing.JLabel();
         datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
+        lblIdProduct = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -75,14 +122,19 @@ public class DialogAddInventory extends javax.swing.JDialog {
         txtAdd.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtAdd.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
+        btnSearch.setText("Buscar");
         btnSearch.setBackground(new java.awt.Color(0, 166, 237));
         btnSearch.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnSearch.setForeground(new java.awt.Color(255, 255, 255));
-        btnSearch.setText("Buscar");
         btnSearch.setMaximumSize(new java.awt.Dimension(95, 40));
         btnSearch.setMinimumSize(new java.awt.Dimension(95, 40));
         btnSearch.setPreferredSize(new java.awt.Dimension(95, 40));
         btnSearch.setUI(new StyledButtonUI());
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Nombre:");
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -93,8 +145,8 @@ public class DialogAddInventory extends javax.swing.JDialog {
         jLabel4.setText("Hay:");
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        lblName1.setText("-");
-        lblName1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        lblStock.setText("-");
+        lblStock.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         jLabel5.setText("Agregar:");
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -107,24 +159,28 @@ public class DialogAddInventory extends javax.swing.JDialog {
 
         txtCostPrice.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtCostPrice.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
+        txtCostPrice.setEditable(false);
 
         jLabel7.setText("Precio venta:");
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         txtSalePrice.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtSalePrice.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
+        txtSalePrice.setEditable(false);
 
         jLabel8.setText("Precio dinámico:");
         jLabel8.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         txtSalePrice1.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtSalePrice1.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
+        txtSalePrice1.setEditable(false);
 
         jLabel9.setText("Precio mayoreo:");
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         txtSalePrice2.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtSalePrice2.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
+        txtSalePrice2.setEditable(false);
 
         jLabel10.setText("Total:");
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -163,6 +219,8 @@ public class DialogAddInventory extends javax.swing.JDialog {
         datePicker1.setPreferredSize(new java.awt.Dimension(174, 30));
         datePicker1.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
+        lblIdProduct.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -178,7 +236,9 @@ public class DialogAddInventory extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(txtCodeProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblIdProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel3)
@@ -188,7 +248,7 @@ public class DialogAddInventory extends javax.swing.JDialog {
                         .addGap(6, 6, 6)
                         .addComponent(jLabel4)
                         .addGap(113, 113, 113)
-                        .addComponent(lblName1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblStock, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel5)
@@ -243,7 +303,9 @@ public class DialogAddInventory extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(txtCodeProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblIdProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -251,7 +313,7 @@ public class DialogAddInventory extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(lblName1))
+                    .addComponent(lblStock))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -320,7 +382,109 @@ public class DialogAddInventory extends javax.swing.JDialog {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        btnAdd.setBackground(Color.GRAY);
+        btnAdd.setEnabled(false);
+        if (!txtAdd.getText().equals("") && !lblIdProduct.getText().equals("")) {
+            SQLiteJDBC sqlite = new SQLiteJDBC();
+            String token = sqlite.getToken();
+            Integer userId = sqlite.getUserId();
+            Integer boxId = sqlite.getBoxId();
+
+            AddStockRequest addStockRequest = new AddStockRequest();
+            addStockRequest.setUserId(userId);
+            addStockRequest.setBoxId(boxId);
+            // TODO: add person when necessary
+            addStockRequest.setPersonId(1);
+            addStockRequest.setProductId(Integer.valueOf(lblIdProduct.getText()));
+            addStockRequest.setQuantity(Integer.valueOf(txtAdd.getText()));
+            addStockRequest.setDateExpiry(null);
+            if (jCheckBox1.isSelected()) {
+                LocalDate pickerDate = datePicker1.getDate();
+                DateTimeFormatter iso_8601_formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                addStockRequest.setDateExpiry(pickerDate.format(iso_8601_formatter) + " 00:00:00");
+            }
+
+            Call<ResponseBody> restockResponseCall = ApiClient.getProductService().addStock(addStockRequest, "Bearer " + token);
+            restockResponseCall.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    if (response.isSuccessful()) {
+                        JOptionPane.showMessageDialog(null, "Se agregó " + txtAdd.getText() + " productos a " + lblName.getText() + " exitosamente", "Agregar inventario", JOptionPane.INFORMATION_MESSAGE);
+                        btnAdd.setBackground(new java.awt.Color(0, 166, 237));
+                        btnAdd.setEnabled(true);
+
+                        jCheckBox1.setSelected(false);
+                        datePicker1.setDate(null);
+                        datePicker1.setEnabled(false);
+                        txtCodeProduct.setText("");
+                        txtAdd.setText("");
+                        lblIdProduct.setText("");
+                        lblName.setText("-");
+                        lblStock.setText("-");
+                        txtCostPrice.setText("");
+                        txtSalePrice.setText("");
+                        txtSalePrice1.setText("");
+                        txtSalePrice2.setText("");
+                        lblTotal.setText("$0.00");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    System.out.println(t.getLocalizedMessage());
+                }
+            });
+        } else {
+            JOptionPane.showMessageDialog(null, "Faltan campos obligatorios por llenar", "Agregar inventario", JOptionPane.ERROR_MESSAGE);
+            btnAdd.setBackground(new java.awt.Color(0, 166, 237));
+            btnAdd.setEnabled(true);
+        }
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        if (!txtCodeProduct.getText().equals("")) {
+            SQLiteJDBC sqlite = new SQLiteJDBC();
+            String token = sqlite.getToken();
+            Call<ProductsResponse> productResponseCall = ApiClient.getProductService().getProductByBarcodeWithQuantity(txtCodeProduct.getText(), "Bearer " + token);
+            productResponseCall.enqueue(new Callback<ProductsResponse>() {
+                @Override
+                public void onResponse(Call<ProductsResponse> call, Response<ProductsResponse> response) {
+                    if (response.isSuccessful()) {
+                        ProductsResponse product = response.body();
+                        if (product != null) {
+                            lblIdProduct.setText(String.valueOf(product.getId()));
+                            lblName.setText(product.getName());
+                            lblStock.setText(product.getStock() == null ? "0.00" : product.getStock().toString());
+                            txtCostPrice.setText(product.getPriceIn().toString());
+                            txtSalePrice.setText(product.getPriceOut1().toString());
+                            txtSalePrice1.setText(product.getPriceOut2() == null ? "0.00" : product.getPriceOut1().toString());
+                            txtSalePrice2.setText(product.getPriceOut3() == null ? "0.00" : product.getPriceOut2().toString());
+                        }
+                    } else {
+                        jCheckBox1.setSelected(false);
+                        datePicker1.setDate(null);
+                        datePicker1.setEnabled(false);
+                        txtCodeProduct.setText("");
+                        txtAdd.setText("");
+                        lblIdProduct.setText("");
+                        lblName.setText("-");
+                        lblStock.setText("-");
+                        txtCostPrice.setText("");
+                        txtSalePrice.setText("");
+                        txtSalePrice1.setText("");
+                        txtSalePrice2.setText("");
+                        lblTotal.setText("$0.00");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ProductsResponse> call, Throwable t) {
+                    System.out.println(t.getLocalizedMessage());
+                }
+            });
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,13 +503,17 @@ public class DialogAddInventory extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DialogAddInventory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogAddInventory.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DialogAddInventory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogAddInventory.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DialogAddInventory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogAddInventory.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DialogAddInventory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogAddInventory.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -379,8 +547,9 @@ public class DialogAddInventory extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblIdProduct;
     private javax.swing.JLabel lblName;
-    private javax.swing.JLabel lblName1;
+    private javax.swing.JLabel lblStock;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JTextField txtAdd;
     private javax.swing.JTextField txtCodeProduct;

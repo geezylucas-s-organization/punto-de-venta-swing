@@ -13,6 +13,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 /**
  *
@@ -26,4 +27,11 @@ public interface ProductService {
 
     @GET("api/fillcatalogs/products")
     Call<List<ProductsResponse>> getProducts(@Header("Authorization") String authHeader);
+
+    @GET("api/restock/productbybarcode/{barcode}")
+    Call<ProductsResponse> getProductByBarcodeWithQuantity(@Path("barcode") String barcode, @Header("Authorization") String authHeader);
+
+    @Headers({"Content-Type: application/json;charset=UTF-8"})
+    @POST("api/restock")
+    Call<ResponseBody> addStock(@Body AddStockRequest addStock, @Header("Authorization") String authHeader);
 }
