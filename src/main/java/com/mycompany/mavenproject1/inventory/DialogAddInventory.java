@@ -153,6 +153,11 @@ public class DialogAddInventory extends javax.swing.JDialog {
 
         txtCodeProduct.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtCodeProduct.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
+        txtCodeProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodeProductActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Precio costo:");
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -295,7 +300,6 @@ public class DialogAddInventory extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
@@ -435,7 +439,6 @@ public class DialogAddInventory extends javax.swing.JDialog {
                 }
             });
         } else {
-            JOptionPane.showMessageDialog(null, "Faltan campos obligatorios por llenar", "Agregar inventario", JOptionPane.ERROR_MESSAGE);
             btnAdd.setBackground(new java.awt.Color(0, 166, 237));
             btnAdd.setEnabled(true);
         }
@@ -443,6 +446,17 @@ public class DialogAddInventory extends javax.swing.JDialog {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
+        searchProduct();
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void txtCodeProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodeProductActionPerformed
+        // TODO add your handling code here:
+        searchProduct();
+    }//GEN-LAST:event_txtCodeProductActionPerformed
+
+    private void searchProduct() {
+        btnSearch.setBackground(Color.GRAY);
+        btnSearch.setEnabled(false);
         if (!txtCodeProduct.getText().equals("")) {
             SQLiteJDBC sqlite = new SQLiteJDBC();
             String token = sqlite.getToken();
@@ -462,6 +476,7 @@ public class DialogAddInventory extends javax.swing.JDialog {
                             txtSalePrice2.setText(product.getPriceOut3() == null ? "0.00" : product.getPriceOut2().toString());
                         }
                     } else {
+                        txtCodeProduct.requestFocusInWindow();
                         jCheckBox1.setSelected(false);
                         datePicker1.setDate(null);
                         datePicker1.setEnabled(false);
@@ -475,7 +490,10 @@ public class DialogAddInventory extends javax.swing.JDialog {
                         txtSalePrice1.setText("");
                         txtSalePrice2.setText("");
                         lblTotal.setText("$0.00");
+                        JOptionPane.showMessageDialog(null, "El producto no existe", "Agregar inventario", JOptionPane.ERROR_MESSAGE);
                     }
+                    btnSearch.setBackground(new java.awt.Color(0, 166, 237));
+                    btnSearch.setEnabled(true);
                 }
 
                 @Override
@@ -484,7 +502,7 @@ public class DialogAddInventory extends javax.swing.JDialog {
                 }
             });
         }
-    }//GEN-LAST:event_btnSearchActionPerformed
+    }
 
     /**
      * @param args the command line arguments

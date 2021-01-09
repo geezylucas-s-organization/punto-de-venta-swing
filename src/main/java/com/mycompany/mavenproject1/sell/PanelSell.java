@@ -29,11 +29,12 @@ public class PanelSell extends javax.swing.JPanel {
      */
     public PanelSell() {
         initComponents();
+        txtCodeProduct.requestFocusInWindow();
         tblProducts.getColumnModel().getColumn(0).setMinWidth(0);
         tblProducts.getColumnModel().getColumn(0).setMaxWidth(0);
         tblProducts.getColumnModel().getColumn(0).setWidth(0);
         tblProducts.setRowHeight(30);
-        //tblProducts.setShowGrid(true);
+        tblProducts.setShowGrid(true);
     }
 
     /**
@@ -48,9 +49,11 @@ public class PanelSell extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         lblCodeProduct = new javax.swing.JLabel();
         txtCodeProduct = new javax.swing.JTextField();
-        btnFindProduct = new javax.swing.JButton();
         btnAddProduct = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        btnMoreOptions = new javax.swing.JButton();
+        btnRemoveProduct = new javax.swing.JButton();
+        btnSomeProducts = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         btnCharge = new javax.swing.JButton();
         lblTotalMoney = new javax.swing.JLabel();
@@ -75,15 +78,11 @@ public class PanelSell extends javax.swing.JPanel {
 
         txtCodeProduct.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtCodeProduct.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
-
-        btnFindProduct.setBackground(new java.awt.Color(0, 166, 237));
-        btnFindProduct.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        btnFindProduct.setForeground(new java.awt.Color(255, 255, 255));
-        btnFindProduct.setText("Buscar producto");
-        btnFindProduct.setMaximumSize(new java.awt.Dimension(163, 40));
-        btnFindProduct.setMinimumSize(new java.awt.Dimension(163, 40));
-        btnFindProduct.setPreferredSize(new java.awt.Dimension(163, 40));
-        btnFindProduct.setUI(new StyledButtonUI());
+        txtCodeProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodeProductActionPerformed(evt);
+            }
+        });
 
         btnAddProduct.setBackground(new java.awt.Color(0, 166, 237));
         btnAddProduct.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -102,6 +101,38 @@ public class PanelSell extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel3.setText("Venta Ticket #1");
 
+        btnMoreOptions.setBackground(new java.awt.Color(0, 166, 237));
+        btnMoreOptions.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        btnMoreOptions.setForeground(new java.awt.Color(255, 255, 255));
+        btnMoreOptions.setText("Más opciones");
+        btnMoreOptions.setMaximumSize(new java.awt.Dimension(117, 40));
+        btnMoreOptions.setMinimumSize(new java.awt.Dimension(117, 40));
+        btnMoreOptions.setPreferredSize(new java.awt.Dimension(117, 40));
+        btnMoreOptions.setUI(new StyledButtonUI());
+
+        btnRemoveProduct.setBackground(new java.awt.Color(246, 81, 29));
+        btnRemoveProduct.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        btnRemoveProduct.setForeground(new java.awt.Color(255, 255, 255));
+        btnRemoveProduct.setText("Quitar producto");
+        btnRemoveProduct.setMaximumSize(new java.awt.Dimension(117, 40));
+        btnRemoveProduct.setMinimumSize(new java.awt.Dimension(117, 40));
+        btnRemoveProduct.setPreferredSize(new java.awt.Dimension(117, 40));
+        btnRemoveProduct.setUI(new StyledButtonUI());
+        btnRemoveProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveProductActionPerformed(evt);
+            }
+        });
+
+        btnSomeProducts.setBackground(new java.awt.Color(0, 166, 237));
+        btnSomeProducts.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        btnSomeProducts.setForeground(new java.awt.Color(255, 255, 255));
+        btnSomeProducts.setText("Varios");
+        btnSomeProducts.setMaximumSize(new java.awt.Dimension(117, 40));
+        btnSomeProducts.setMinimumSize(new java.awt.Dimension(117, 40));
+        btnSomeProducts.setPreferredSize(new java.awt.Dimension(117, 40));
+        btnSomeProducts.setUI(new StyledButtonUI());
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -116,9 +147,15 @@ public class PanelSell extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btnAddProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnFindProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3))
-                .addContainerGap(383, Short.MAX_VALUE))
+                        .addComponent(btnRemoveProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSomeProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                        .addComponent(btnMoreOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,8 +167,10 @@ public class PanelSell extends javax.swing.JPanel {
                     .addComponent(lblCodeProduct)
                     .addComponent(txtCodeProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAddProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFindProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnMoreOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRemoveProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSomeProducts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
@@ -200,7 +239,7 @@ public class PanelSell extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAssignClient, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPendingSell, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -295,6 +334,39 @@ public class PanelSell extends javax.swing.JPanel {
 
     private void btnAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductActionPerformed
         // TODO add your handling code here:
+        addProduct();
+    }//GEN-LAST:event_btnAddProductActionPerformed
+
+    private void txtCodeProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodeProductActionPerformed
+        // TODO add your handling code here:
+        addProduct();
+    }//GEN-LAST:event_txtCodeProductActionPerformed
+
+    private void btnRemoveProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveProductActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) this.tblProducts.getModel();
+        int[] rows = this.tblProducts.getSelectedRows();
+        for (int i = 0; i < rows.length; i++) {
+            model.removeRow(rows[i] - i);
+        }
+        int totalProducts = 0;
+        BigDecimal totalMoney = new BigDecimal(0);
+        for (int i = 0; i < tblProducts.getRowCount(); i++) {//For each row
+            totalProducts += (int) tblProducts.getValueAt(i, 4);
+            String value = String.valueOf(tblProducts.getValueAt(i, 5));
+            totalMoney = totalMoney.add(new BigDecimal(value));
+        }//For loop outer   
+        if (totalProducts == 0) {
+            txtCodeProduct.requestFocusInWindow();
+            lblTotalProducts.setText("Total productos: 0");
+            lblTotalMoney.setText("$0.00");
+        } else {
+            lblTotalProducts.setText("Total productos: " + totalProducts);
+            lblTotalMoney.setText("$" + totalMoney);
+        }
+    }//GEN-LAST:event_btnRemoveProductActionPerformed
+
+    private void addProduct() {
         btnAddProduct.setBackground(Color.GRAY);
         btnAddProduct.setEnabled(false);
         if (!txtCodeProduct.getText().equals("")) {
@@ -361,6 +433,7 @@ public class PanelSell extends javax.swing.JPanel {
                     } else {
                         JOptionPane.showMessageDialog(null, "No existe el producto", "Producto", JOptionPane.ERROR_MESSAGE);
                     }
+                    txtCodeProduct.requestFocusInWindow();
                     int totalProducts = 0;
                     BigDecimal totalMoney = new BigDecimal(0);
                     for (int i = 0; i < tblProducts.getRowCount(); i++) {//For each row
@@ -382,16 +455,17 @@ public class PanelSell extends javax.swing.JPanel {
             }
             );
         }
-    }//GEN-LAST:event_btnAddProductActionPerformed
-
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddProduct;
     private javax.swing.JButton btnAssignClient;
     private javax.swing.JButton btnCharge;
-    private javax.swing.JButton btnFindProduct;
+    private javax.swing.JButton btnMoreOptions;
     private javax.swing.JButton btnPendingSell;
     private javax.swing.JButton btnPendingSells;
+    private javax.swing.JButton btnRemoveProduct;
+    private javax.swing.JButton btnSomeProducts;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

@@ -16,6 +16,7 @@ import com.mycompany.mavenproject1.reports.PanelReportClients;
 import com.mycompany.mavenproject1.reports.PanelReportMovements;
 import com.mycompany.mavenproject1.reports.PanelReportSales;
 import com.mycompany.mavenproject1.sell.DialogRefunds;
+import com.mycompany.mavenproject1.sell.DialogSearchProduct;
 import com.mycompany.mavenproject1.sell.PanelSell;
 
 /**
@@ -50,6 +51,7 @@ public class MainApplication extends javax.swing.JFrame {
         sellMenu = new javax.swing.JMenu();
         sellMenuItem = new javax.swing.JMenuItem();
         repaymentMenuItem = new javax.swing.JMenuItem();
+        SearchProductMenuItem = new javax.swing.JMenuItem();
         ClientsMenu = new javax.swing.JMenu();
         AddClientMenuItem = new javax.swing.JMenuItem();
         ClientsMenuItem = new javax.swing.JMenuItem();
@@ -125,6 +127,15 @@ public class MainApplication extends javax.swing.JFrame {
             }
         });
         sellMenu.add(repaymentMenuItem);
+
+        SearchProductMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        SearchProductMenuItem.setText("Buscar Producto");
+        SearchProductMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchProductMenuItemActionPerformed(evt);
+            }
+        });
+        sellMenu.add(SearchProductMenuItem);
 
         menuBar.add(sellMenu);
 
@@ -365,6 +376,13 @@ public class MainApplication extends javax.swing.JFrame {
         panelCentral.repaint();
     }//GEN-LAST:event_ReportSalesMenuItemActionPerformed
 
+    private void SearchProductMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchProductMenuItemActionPerformed
+        // TODO add your handling code here:
+        DialogSearchProduct searchProduct = new DialogSearchProduct(this, true);
+        searchProduct.setLocationRelativeTo(null);
+        searchProduct.setVisible(true);
+    }//GEN-LAST:event_SearchProductMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -401,6 +419,7 @@ public class MainApplication extends javax.swing.JFrame {
     private javax.swing.JMenuItem ReportClientMenuItem;
     private javax.swing.JMenuItem ReportSalesMenuItem;
     private javax.swing.JMenu ReportsMenu;
+    private javax.swing.JMenuItem SearchProductMenuItem;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem addCategoryMenuItem;
     private javax.swing.JMenuItem categoriesMenuItem;
