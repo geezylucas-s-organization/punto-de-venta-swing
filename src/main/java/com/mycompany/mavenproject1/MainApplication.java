@@ -283,6 +283,7 @@ public class MainApplication extends javax.swing.JFrame {
         panelCentral.add(sell);
         panelCentral.validate();
         panelCentral.repaint();
+        sell.getTxtCodeProduct();
     }//GEN-LAST:event_sellMenuItemActionPerformed
 
     private void repaymentMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repaymentMenuItemActionPerformed

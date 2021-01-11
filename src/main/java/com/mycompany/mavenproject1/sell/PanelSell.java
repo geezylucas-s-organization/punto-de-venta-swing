@@ -7,12 +7,21 @@ package com.mycompany.mavenproject1.sell;
 
 import com.mycompany.mavenproject1.apiclient.ApiClient;
 import com.mycompany.mavenproject1.apiclient.products.ProductsResponse;
+import com.mycompany.mavenproject1.apiclient.sales.ProductsSaleRequest;
+import com.mycompany.mavenproject1.apiclient.sales.SaleRequest;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
 import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.Color;
+import java.awt.Frame;
+import java.awt.Window;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,12 +33,15 @@ import retrofit2.Response;
  */
 public class PanelSell extends javax.swing.JPanel {
 
+    public void getTxtCodeProduct() {
+        txtCodeProduct.requestFocusInWindow();
+    }
+
     /**
      * Creates new form PanelSell
      */
     public PanelSell() {
         initComponents();
-        txtCodeProduct.requestFocusInWindow();
         tblProducts.getColumnModel().getColumn(0).setMinWidth(0);
         tblProducts.getColumnModel().getColumn(0).setMaxWidth(0);
         tblProducts.getColumnModel().getColumn(0).setWidth(0);
@@ -282,7 +294,7 @@ public class PanelSell extends javax.swing.JPanel {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        tblProducts.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        tblProducts.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         tblProducts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -292,7 +304,7 @@ public class PanelSell extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false
@@ -330,7 +342,56 @@ public class PanelSell extends javax.swing.JPanel {
 
     private void btnChargeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChargeActionPerformed
         // TODO add your handling code here:
+        if (tblProducts.getRowCount() > 0) {
+            SQLiteJDBC sqlite = new SQLiteJDBC();
+            Integer userId = sqlite.getUserId();
+            Integer boxId = sqlite.getBoxId();
+
+            SaleRequest saleRequest = new SaleRequest();
+            saleRequest.setUserId(userId);
+            saleRequest.setBoxId(boxId);
+            //TODO: add assign client
+            saleRequest.setPersonId(2);
+            saleRequest.setTotal(new BigDecimal(lblTotalMoney.getText().substring(1)));
+            List<ProductsSaleRequest> productsSale = new ArrayList<>();
+            for (int i = 0; i < tblProducts.getRowCount(); i++) {
+                ProductsSaleRequest product = new ProductsSaleRequest();
+                product.setProductId((int) tblProducts.getValueAt(i, 0));
+                product.setQuantity((int) tblProducts.getValueAt(i, 4));
+                productsSale.add(product);
+            }
+            saleRequest.setProducts(productsSale);
+
+            Window parentWindow = SwingUtilities.windowForComponent(this);
+            // or pass 'this' if you are inside the panel
+            Frame parentFrame = null;
+            if (parentWindow instanceof Frame) {
+                parentFrame = (Frame) parentWindow;
+            }
+            DialogSaleConfirm saleConfirm = new DialogSaleConfirm(parentFrame, true, saleRequest);
+            saleConfirm.setLocationRelativeTo(null);
+            saleConfirm.setVisible(true);
+
+            saleConfirm.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    refresh();
+                }
+            });
+            txtCodeProduct.requestFocusInWindow();
+        }
     }//GEN-LAST:event_btnChargeActionPerformed
+
+    private void refresh() {
+        txtCodeProduct.requestFocusInWindow();
+        DefaultTableModel model = (DefaultTableModel) this.tblProducts.getModel();
+        int rows = model.getRowCount();
+        for (int i = rows - 1; i >= 0; i--) {
+            model.removeRow(i);
+        }
+        lblTotalProducts.setText("Total productos: 0");
+        lblTotalMoney.setText("$0.00");
+    }
 
     private void btnAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductActionPerformed
         // TODO add your handling code here:
@@ -357,19 +418,19 @@ public class PanelSell extends javax.swing.JPanel {
             totalMoney = totalMoney.add(new BigDecimal(value));
         }//For loop outer   
         if (totalProducts == 0) {
-            txtCodeProduct.requestFocusInWindow();
             lblTotalProducts.setText("Total productos: 0");
             lblTotalMoney.setText("$0.00");
         } else {
             lblTotalProducts.setText("Total productos: " + totalProducts);
             lblTotalMoney.setText("$" + totalMoney);
         }
+        txtCodeProduct.requestFocusInWindow();
     }//GEN-LAST:event_btnRemoveProductActionPerformed
 
     private void addProduct() {
-        btnAddProduct.setBackground(Color.GRAY);
-        btnAddProduct.setEnabled(false);
         if (!txtCodeProduct.getText().equals("")) {
+            btnAddProduct.setBackground(Color.GRAY);
+            btnAddProduct.setEnabled(false);
             SQLiteJDBC sqlite = new SQLiteJDBC();
             String token = sqlite.getToken();
             Call<ProductsResponse> productResponseCall = ApiClient.getProductService().getProductByBarcodeWithQuantity(txtCodeProduct.getText(), "Bearer " + token);
@@ -434,6 +495,7 @@ public class PanelSell extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(null, "No existe el producto", "Producto", JOptionPane.ERROR_MESSAGE);
                     }
                     txtCodeProduct.requestFocusInWindow();
+                    txtCodeProduct.setText("");
                     int totalProducts = 0;
                     BigDecimal totalMoney = new BigDecimal(0);
                     for (int i = 0; i < tblProducts.getRowCount(); i++) {//For each row
@@ -445,7 +507,6 @@ public class PanelSell extends javax.swing.JPanel {
                     lblTotalMoney.setText("$" + totalMoney);
                     btnAddProduct.setBackground(new java.awt.Color(0, 166, 237));
                     btnAddProduct.setEnabled(true);
-                    txtCodeProduct.setText("");
                 }
 
                 @Override

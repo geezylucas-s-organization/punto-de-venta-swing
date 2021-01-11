@@ -204,7 +204,7 @@ public class PanelCategories extends javax.swing.JPanel {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        tblCategories.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        tblCategories.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         tblCategories.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

@@ -11,6 +11,7 @@ import com.google.gson.GsonBuilder;
 import com.mycompany.mavenproject1.apiclient.persons.PersonsService;
 import com.mycompany.mavenproject1.apiclient.products.CategoryService;
 import com.mycompany.mavenproject1.apiclient.products.ProductService;
+import com.mycompany.mavenproject1.apiclient.sales.SalesService;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -52,5 +53,9 @@ public class ApiClient {
 
     public static PersonsService getPersonsService() {
         return getRetrofit().create(PersonsService.class);
+    }
+
+    public static SalesService getSalesService() {
+        return getRetrofit().create(SalesService.class);
     }
 }

@@ -204,7 +204,7 @@ public class PanelProducts extends javax.swing.JPanel {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        tblProducts.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        tblProducts.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         tblProducts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -214,7 +214,7 @@ public class PanelProducts extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false, false, false, false
