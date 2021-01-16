@@ -22,9 +22,10 @@ public class AddProductRequest {
     private BigDecimal priceOut1;
     private BigDecimal priceOut2;
     private BigDecimal priceOut3;
+    private Double inventoryOut3;
     private String unit;
     private String presentation;
-    private boolean isActive;
+    private boolean status;
     private boolean isBulk;
     private int userId;
     private int categoryId;
@@ -117,14 +118,6 @@ public class AddProductRequest {
         this.presentation = presentation;
     }
 
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean isActive) {
-        this.isActive = isActive;
-    }
-
     public boolean isBulk() {
         return isBulk;
     }
@@ -147,6 +140,22 @@ public class AddProductRequest {
 
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public Double getInventoryOut3() {
+        return inventoryOut3;
+    }
+
+    public void setInventoryOut3(Double inventoryOut3) {
+        this.inventoryOut3 = inventoryOut3;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
 }

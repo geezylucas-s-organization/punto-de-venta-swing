@@ -11,7 +11,7 @@ import com.google.gson.GsonBuilder;
 import com.mycompany.mavenproject1.apiclient.persons.PersonsService;
 import com.mycompany.mavenproject1.apiclient.products.CategoryService;
 import com.mycompany.mavenproject1.apiclient.products.ProductService;
-import com.mycompany.mavenproject1.apiclient.sales.SalesService;
+import com.mycompany.mavenproject1.apiclient.sells.SalesService;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

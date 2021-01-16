@@ -49,8 +49,8 @@ public class PanelClients extends javax.swing.JPanel {
                             model.addRow(new Object[]{
                                 item.getId(),
                                 item.getName() + " " + item.getLastname(),
-                                item.getEmail1(),
-                                item.getPhone1(),
+                                item.getEmail(),
+                                item.getPhone(),
                                 item.getCreatedAt()
                             });
                         });

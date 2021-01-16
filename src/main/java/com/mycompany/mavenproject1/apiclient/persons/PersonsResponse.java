@@ -16,13 +16,11 @@ public class PersonsResponse {
     private String name;
     private String lastname;
     private String company;
-    private String address1;
-    private String address2;
-    private String phone1;
-    private String phone2;
-    private String email1;
-    private String email2;
+    private String address;
+    private String phone;
+    private String email;
     private short kind;
+    private boolean status;
     private String createdAt;
 
     public int getId() {
@@ -65,52 +63,28 @@ public class PersonsResponse {
         this.company = company;
     }
 
-    public String getAddress1() {
-        return address1;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAddress1(String address1) {
-        this.address1 = address1;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getAddress2() {
-        return address2;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setAddress2(String address2) {
-        this.address2 = address2;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getPhone1() {
-        return phone1;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPhone1(String phone1) {
-        this.phone1 = phone1;
-    }
-
-    public String getPhone2() {
-        return phone2;
-    }
-
-    public void setPhone2(String phone2) {
-        this.phone2 = phone2;
-    }
-
-    public String getEmail1() {
-        return email1;
-    }
-
-    public void setEmail1(String email1) {
-        this.email1 = email1;
-    }
-
-    public String getEmail2() {
-        return email2;
-    }
-
-    public void setEmail2(String email2) {
-        this.email2 = email2;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public short getKind() {
@@ -121,6 +95,14 @@ public class PersonsResponse {
         this.kind = kind;
     }
 
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     public String getCreatedAt() {
         return createdAt;
     }
@@ -128,5 +110,6 @@ public class PersonsResponse {
     public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
+
 
 }

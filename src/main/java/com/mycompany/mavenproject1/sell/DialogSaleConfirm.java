@@ -6,7 +6,7 @@
 package com.mycompany.mavenproject1.sell;
 
 import com.mycompany.mavenproject1.apiclient.ApiClient;
-import com.mycompany.mavenproject1.apiclient.sales.SaleRequest;
+import com.mycompany.mavenproject1.apiclient.sells.SaleRequest;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
 import com.mycompany.mavenproject1.utils.TextBubbleBorder;

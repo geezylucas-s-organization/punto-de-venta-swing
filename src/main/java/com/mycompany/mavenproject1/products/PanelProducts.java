@@ -58,6 +58,7 @@ public class PanelProducts extends javax.swing.JPanel {
                                 item.getPriceOut1(),
                                 item.getPriceOut2(),
                                 item.getPriceOut3(),
+                                item.getInventoryOut3(),
                                 item.getInventoryMin(),
                                 item.getStock(),
                                 item.getUnit(),
@@ -210,14 +211,14 @@ public class PanelProducts extends javax.swing.JPanel {
 
             },
             new String [] {
-                "id", "Código de barras", "Nombre", "Descripción", "Precio costo", "Precio venta", "Precio dinámico", "Precio mayoreo", "Inv. Mínimo", "Existencia", "Tipo venta", "Departamento"
+                "id", "Código de barras", "Nombre", "Descripción", "Precio costo", "Precio venta", "Precio dinámico", "Precio mayoreo", "Inv. Mayoreo", "Inv. Mínimo", "Existencia", "Tipo venta", "Departamento"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {

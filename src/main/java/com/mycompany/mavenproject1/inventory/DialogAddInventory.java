@@ -472,8 +472,8 @@ public class DialogAddInventory extends javax.swing.JDialog {
                             lblStock.setText(product.getStock() == null ? "0.00" : product.getStock().toString());
                             txtCostPrice.setText(product.getPriceIn().toString());
                             txtSalePrice.setText(product.getPriceOut1().toString());
-                            txtSalePrice1.setText(product.getPriceOut2() == null ? "0.00" : product.getPriceOut1().toString());
-                            txtSalePrice2.setText(product.getPriceOut3() == null ? "0.00" : product.getPriceOut2().toString());
+                            txtSalePrice1.setText(product.getPriceOut2() == null ? "0.00" : product.getPriceOut2().toString());
+                            txtSalePrice2.setText(product.getPriceOut3() == null ? "0.00" : product.getPriceOut3().toString());
                         }
                     } else {
                         txtCodeProduct.requestFocusInWindow();

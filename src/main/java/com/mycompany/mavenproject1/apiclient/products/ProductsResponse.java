@@ -23,9 +23,10 @@ public class ProductsResponse {
     private BigDecimal priceOut1;
     private BigDecimal priceOut2;
     private BigDecimal priceOut3;
+    private Double inventoryOut3;
     private String unit;
     private String presentation;
-    private boolean active;
+    private boolean atatus;
     private boolean bulk;
     private String category;
     private Integer stock;
@@ -126,12 +127,20 @@ public class ProductsResponse {
         this.presentation = presentation;
     }
 
-    public boolean isActive() {
-        return active;
+    public Double getInventoryOut3() {
+        return inventoryOut3;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setInventoryOut3(Double inventoryOut3) {
+        this.inventoryOut3 = inventoryOut3;
+    }
+
+    public boolean isAtatus() {
+        return atatus;
+    }
+
+    public void setAtatus(boolean atatus) {
+        this.atatus = atatus;
     }
 
     public boolean isBulk() {

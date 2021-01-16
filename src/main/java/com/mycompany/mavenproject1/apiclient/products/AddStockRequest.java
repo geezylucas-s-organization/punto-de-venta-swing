@@ -15,7 +15,7 @@ public class AddStockRequest {
     private int boxId;
     private int personId;
     private int productId;
-    private int quantity;
+    private double quantity;
     private String dateExpiry;
 
     public int getUserId() {
@@ -50,20 +50,20 @@ public class AddStockRequest {
         this.productId = productId;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
     public String getDateExpiry() {
         return dateExpiry;
     }
 
     public void setDateExpiry(String dateExpiry) {
         this.dateExpiry = dateExpiry;
+    }
+
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
     }
 
 }

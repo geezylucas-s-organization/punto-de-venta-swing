@@ -24,7 +24,7 @@ import retrofit2.Response;
  * @author geezylucas
  */
 public class PanelAddProduct extends javax.swing.JPanel {
-
+    
     private String category;
     private int categoryId;
 
@@ -36,19 +36,19 @@ public class PanelAddProduct extends javax.swing.JPanel {
         initComponents();
         myInit();
     }
-
+    
     public PanelAddProduct(String category, int categoryId) {
         this.category = category;
         this.categoryId = categoryId;
         initComponents();
         myInit();
     }
-
+    
     private void myInit() {
         this.lblDepartament.setText(this.category);
         MaxLengthTextDocument maxLength = new MaxLengthTextDocument();
         maxLength.setMaxChars(50);
-
+        
         txtNameProduct.setDocument(maxLength);
     }
 
@@ -89,6 +89,8 @@ public class PanelAddProduct extends javax.swing.JPanel {
         txtSalePrice = new javax.swing.JTextField();
         lblDepartament = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txtInventorySalePrice2 = new javax.swing.JTextField();
 
         setMinimumSize(new java.awt.Dimension(1200, 630));
         setLayout(new java.awt.BorderLayout());
@@ -201,12 +203,19 @@ public class PanelAddProduct extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel5.setText("Precio venta:");
 
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel9.setText("Inventario mayoreo:");
+        jLabel9.setPreferredSize(new java.awt.Dimension(181, 26));
+
+        txtInventorySalePrice2.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
+        txtInventorySalePrice2.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -253,6 +262,11 @@ public class PanelAddProduct extends javax.swing.JPanel {
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(lblDepartament, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtInventorySalePrice2, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,12 +327,19 @@ public class PanelAddProduct extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtInventorySalePrice2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtMinimum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
-                    .addComponent(lblDepartament)))
+                    .addComponent(lblDepartament))
+                .addGap(40, 40, 40))
         );
 
         add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -334,7 +355,7 @@ public class PanelAddProduct extends javax.swing.JPanel {
             SQLiteJDBC sqlite = new SQLiteJDBC();
             String token = sqlite.getToken();
             Integer userId = sqlite.getUserId();
-
+            
             AddProductRequest addProduct = new AddProductRequest();
             addProduct.setBarcode(txtBarcode.getText());
             addProduct.setName(txtNameProduct.getText());
@@ -346,6 +367,7 @@ public class PanelAddProduct extends javax.swing.JPanel {
             }
             if (!txtSalePrice2.getText().equals("")) {
                 addProduct.setPriceOut3(new BigDecimal(txtSalePrice2.getText()));
+                addProduct.setInventoryOut3(Double.valueOf(this.txtInventorySalePrice2.getText()));
             }
             addProduct.setInventoryMin(Integer.valueOf(txtMinimum.getText()));
             addProduct.setBulk(false);
@@ -356,10 +378,11 @@ public class PanelAddProduct extends javax.swing.JPanel {
             } else if (rbBulk.isSelected()) {
                 addProduct.setBulk(true);
             }
-            addProduct.setActive(true);
+            
+            addProduct.setStatus(true);
             addProduct.setUserId(userId);
             addProduct.setCategoryId(this.categoryId);
-
+            
             Call<ResponseBody> addCategoryResponseCall = ApiClient.getProductService().addProduct(addProduct, "Bearer " + token);
             addCategoryResponseCall.enqueue(new Callback<ResponseBody>() {
                 @Override
@@ -368,7 +391,7 @@ public class PanelAddProduct extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(null, "Producto " + txtNameProduct.getText() + " creado exitosamente", "Crear producto", JOptionPane.INFORMATION_MESSAGE);
                         btnSave.setBackground(new java.awt.Color(0, 166, 237));
                         btnSave.setEnabled(true);
-
+                        
                         txtBarcode.setText("");
                         txtNameProduct.setText("");
                         txtDescription.setText("");
@@ -380,7 +403,7 @@ public class PanelAddProduct extends javax.swing.JPanel {
                         rbUnit.setSelected(true);
                     }
                 }
-
+                
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
                     System.out.println(t.getLocalizedMessage());
@@ -408,6 +431,7 @@ public class PanelAddProduct extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblDepartament;
@@ -417,6 +441,7 @@ public class PanelAddProduct extends javax.swing.JPanel {
     private javax.swing.JTextField txtBarcode;
     private javax.swing.JTextField txtCostPrice;
     private javax.swing.JTextField txtDescription;
+    private javax.swing.JTextField txtInventorySalePrice2;
     private javax.swing.JTextField txtMinimum;
     private javax.swing.JTextField txtNameProduct;
     private javax.swing.JTextField txtSalePrice;
