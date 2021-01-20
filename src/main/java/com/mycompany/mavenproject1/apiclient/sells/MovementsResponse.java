@@ -5,7 +5,7 @@
  */
 package com.mycompany.mavenproject1.apiclient.sells;
 
-import java.math.BigDecimal;
+import java.sql.Timestamp;
 
 /**
  *
@@ -14,14 +14,12 @@ import java.math.BigDecimal;
 public class MovementsResponse {
 
     private int id;
-    private int personId;
-    private String name;
-    private String username;
-    private int boxId;
-    private BigDecimal total;
-    private BigDecimal cash;
-    private String createdSell;
-    private int products;
+    private String operation;
+    private int quantity;
+    private String category;
+    private Timestamp createdSell;
+    private String productName;
+    private String cashier;
 
     public int getId() {
         return id;
@@ -31,68 +29,52 @@ public class MovementsResponse {
         this.id = id;
     }
 
-    public int getPersonId() {
-        return personId;
+    public String getOperation() {
+        return operation;
     }
 
-    public void setPersonId(int personId) {
-        this.personId = personId;
+    public void setOperation(String operation) {
+        this.operation = operation;
     }
 
-    public String getName() {
-        return name;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public String getUsername() {
-        return username;
+    public String getCategory() {
+        return category;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public int getBoxId() {
-        return boxId;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setBoxId(int boxId) {
-        this.boxId = boxId;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public BigDecimal getTotal() {
-        return total;
+    public String getCashier() {
+        return cashier;
     }
 
-    public void setTotal(BigDecimal total) {
-        this.total = total;
+    public void setCashier(String cashier) {
+        this.cashier = cashier;
     }
 
-    public BigDecimal getCash() {
-        return cash;
-    }
-
-    public void setCash(BigDecimal cash) {
-        this.cash = cash;
-    }
-
-    public String getCreatedSell() {
+    public Timestamp getCreatedSell() {
         return createdSell;
     }
 
-    public void setCreatedSell(String createdSell) {
+    public void setCreatedSell(Timestamp createdSell) {
         this.createdSell = createdSell;
-    }
-
-    public int getProducts() {
-        return products;
-    }
-
-    public void setProducts(int products) {
-        this.products = products;
     }
 
 }

@@ -26,4 +26,7 @@ public interface SalesService {
 
     @GET("api/sell/movements")
     Call<List<MovementsResponse>> movementsWithQuantity(@Header("Authorization") String authHeader);
+    
+    @GET("api/sell/returns")
+    Call<List<ReturnsResponse>> returnsToday(@Header("Authorization") String authHeader);
 }

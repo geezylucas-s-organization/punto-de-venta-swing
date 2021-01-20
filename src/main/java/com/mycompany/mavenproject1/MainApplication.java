@@ -62,6 +62,7 @@ public class MainApplication extends javax.swing.JFrame {
         stockMenu = new javax.swing.JMenu();
         restockMenuItem = new javax.swing.JMenuItem();
         kardexProductMenuItem = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         ReportsMenu = new javax.swing.JMenu();
         reportMovementsMenuItem = new javax.swing.JMenuItem();
         ReportSalesMenuItem = new javax.swing.JMenuItem();
@@ -214,6 +215,9 @@ public class MainApplication extends javax.swing.JFrame {
             }
         });
         stockMenu.add(kardexProductMenuItem);
+
+        jMenuItem1.setText("Products");
+        stockMenu.add(jMenuItem1);
 
         menuBar.add(stockMenu);
 
@@ -426,6 +430,7 @@ public class MainApplication extends javax.swing.JFrame {
     private javax.swing.JMenuItem categoriesMenuItem;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem kardexProductMenuItem;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JPanel panelBackgroud;

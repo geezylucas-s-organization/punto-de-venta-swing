@@ -5,9 +5,17 @@
  */
 package com.mycompany.mavenproject1.reports;
 
+import com.mycompany.mavenproject1.apiclient.ApiClient;
+import com.mycompany.mavenproject1.apiclient.sells.MovementsResponse;
+import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
 import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.Color;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  *
@@ -20,6 +28,45 @@ public class PanelReportMovements extends javax.swing.JPanel {
      */
     public PanelReportMovements() {
         initComponents();
+        tblMovements.getColumnModel().getColumn(0).setMinWidth(0);
+        tblMovements.getColumnModel().getColumn(0).setMaxWidth(0);
+        tblMovements.getColumnModel().getColumn(0).setWidth(0);
+        tblMovements.setRowHeight(30);
+        tblMovements.setShowGrid(true);
+        getMovements();
+    }
+
+    private void getMovements() {
+        SQLiteJDBC sqlite = new SQLiteJDBC();
+        String token = sqlite.getToken();
+        Call<List<MovementsResponse>> movementsResponseCall = ApiClient.getSalesService().movementsWithQuantity("Bearer " + token);
+        movementsResponseCall.enqueue(new Callback<List<MovementsResponse>>() {
+            @Override
+            public void onResponse(Call<List<MovementsResponse>> call, Response<List<MovementsResponse>> response) {
+                if (response.isSuccessful()) {
+                    List<MovementsResponse> list = response.body();
+                    if (list != null) {
+                        DefaultTableModel model = (DefaultTableModel) tblMovements.getModel();
+
+                        list.forEach(item -> {
+                            model.addRow(new Object[]{
+                                item.getId(),
+                                item.getCreatedSell(),
+                                item.getProductName(),
+                                item.getOperation(),
+                                item.getQuantity(),
+                                item.getCashier(),
+                                item.getCategory(),});
+                        });
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<MovementsResponse>> call, Throwable t) {
+                System.out.println(t.getLocalizedMessage());
+            }
+        });
     }
 
     /**
@@ -46,7 +93,7 @@ public class PanelReportMovements extends javax.swing.JPanel {
         btnPrint = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblMovements = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
@@ -206,19 +253,19 @@ public class PanelReportMovements extends javax.swing.JPanel {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblMovements.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "id", "Fecha", "Nombre", "Movimiento", "Había", "Tipo", "Cantidad", "Hay", "Cajero", "Departamento"
+                "id", "Fecha", "Nombre", "Tipo", "Cantidad", "Cajero", "Departamento"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -229,8 +276,8 @@ public class PanelReportMovements extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jScrollPane1.setViewportView(jTable1);
+        tblMovements.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jScrollPane1.setViewportView(tblMovements);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -269,6 +316,6 @@ public class PanelReportMovements extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblMovements;
     // End of variables declaration//GEN-END:variables
 }
