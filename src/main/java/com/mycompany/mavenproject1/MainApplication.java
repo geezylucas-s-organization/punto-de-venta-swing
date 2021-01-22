@@ -72,7 +72,6 @@ public class MainApplication extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        setResizable(false);
 
         panelBackgroud.setLayout(new java.awt.BorderLayout());
 
