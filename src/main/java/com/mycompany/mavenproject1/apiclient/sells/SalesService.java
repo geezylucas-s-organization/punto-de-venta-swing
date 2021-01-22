@@ -5,6 +5,7 @@
  */
 package com.mycompany.mavenproject1.apiclient.sells;
 
+import com.mycompany.mavenproject1.apiclient.ClassBase;
 import java.util.List;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -25,8 +26,8 @@ public interface SalesService {
     Call<ResponseBody> saleProducts(@Body SaleRequest saleRequest, @Header("Authorization") String authHeader);
 
     @GET("api/sell/movements")
-    Call<List<MovementsResponse>> movementsWithQuantity(@Header("Authorization") String authHeader);
-    
+    Call<ClassBase<MovementsResponse>> movementsWithQuantity(@Header("Authorization") String authHeader);
+
     @GET("api/sell/returns")
     Call<List<ReturnsResponse>> returnsToday(@Header("Authorization") String authHeader);
 }

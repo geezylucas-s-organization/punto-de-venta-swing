@@ -5,7 +5,7 @@
  */
 package com.mycompany.mavenproject1.apiclient.persons;
 
-import java.util.List;
+import com.mycompany.mavenproject1.apiclient.ClassBase;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
@@ -17,5 +17,5 @@ import retrofit2.http.Header;
 public interface PersonsService {
 
     @GET("api/fillcatalogs/clients")
-    Call<List<PersonsResponse>> getClients(@Header("Authorization") String authHeader);
+    Call<ClassBase<PersonsResponse>> getClients(@Header("Authorization") String authHeader);
 }

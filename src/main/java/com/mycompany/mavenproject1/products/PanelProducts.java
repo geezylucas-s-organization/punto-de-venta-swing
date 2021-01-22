@@ -6,6 +6,7 @@
 package com.mycompany.mavenproject1.products;
 
 import com.mycompany.mavenproject1.apiclient.ApiClient;
+import com.mycompany.mavenproject1.apiclient.ClassBase;
 import com.mycompany.mavenproject1.apiclient.products.ProductsResponse;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
@@ -39,13 +40,14 @@ public class PanelProducts extends javax.swing.JPanel {
     private void getProducts() {
         SQLiteJDBC sqlite = new SQLiteJDBC();
         String token = sqlite.getToken();
-        Call<List<ProductsResponse>> productsResponseCall = ApiClient.getProductService().getProducts("Bearer " + token);
-        productsResponseCall.enqueue(new Callback<List<ProductsResponse>>() {
+        Call<ClassBase<ProductsResponse>> productsResponseCall = ApiClient.getProductService().getProducts("Bearer " + token);
+        productsResponseCall.enqueue(new Callback<ClassBase<ProductsResponse>>() {
             @Override
-            public void onResponse(Call<List<ProductsResponse>> call, Response<List<ProductsResponse>> response) {
+            public void onResponse(Call<ClassBase<ProductsResponse>> call, Response<ClassBase<ProductsResponse>> response) {
                 if (response.isSuccessful()) {
-                    List<ProductsResponse> list = response.body();
-                    if (list != null) {
+                    ClassBase<ProductsResponse> productsResponse = response.body();
+                    if (productsResponse != null) {
+                        List<ProductsResponse> list = productsResponse.getData();
                         DefaultTableModel model = (DefaultTableModel) tblProducts.getModel();
 
                         list.forEach(item -> {
@@ -64,12 +66,14 @@ public class PanelProducts extends javax.swing.JPanel {
                                 item.getUnit(),
                                 item.getCategory(),});
                         });
+
+                        lblTotal.setText("Total de productos: " + productsResponse.getTotal());
                     }
                 }
             }
 
             @Override
-            public void onFailure(Call<List<ProductsResponse>> call, Throwable t) {
+            public void onFailure(Call<ClassBase<ProductsResponse>> call, Throwable t) {
                 System.out.println(t.getLocalizedMessage());
             }
         });
@@ -92,7 +96,7 @@ public class PanelProducts extends javax.swing.JPanel {
         btnRefresh = new javax.swing.JButton();
         btnLowInventory = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lblTotal = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProducts = new javax.swing.JTable();
@@ -180,9 +184,9 @@ public class PanelProducts extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setPreferredSize(new java.awt.Dimension(1200, 45));
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Total de productos: 0");
+        lblTotal.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        lblTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTotal.setText("Total de productos: 0");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -190,14 +194,14 @@ public class PanelProducts extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(830, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(lblTotal)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -257,12 +261,12 @@ public class PanelProducts extends javax.swing.JPanel {
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSearch;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTotal;
     private javax.swing.JTable tblProducts;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables

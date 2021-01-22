@@ -62,7 +62,7 @@ public class MainApplication extends javax.swing.JFrame {
         stockMenu = new javax.swing.JMenu();
         restockMenuItem = new javax.swing.JMenuItem();
         kardexProductMenuItem = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        productsExpiryMenuItem = new javax.swing.JMenuItem();
         ReportsMenu = new javax.swing.JMenu();
         reportMovementsMenuItem = new javax.swing.JMenuItem();
         ReportSalesMenuItem = new javax.swing.JMenuItem();
@@ -83,7 +83,7 @@ public class MainApplication extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Bienvenido");
+        jLabel1.setText("Bienvenido: Administrador");
 
         javax.swing.GroupLayout panelTitleLayout = new javax.swing.GroupLayout(panelTitle);
         panelTitle.setLayout(panelTitleLayout);
@@ -215,8 +215,9 @@ public class MainApplication extends javax.swing.JFrame {
         });
         stockMenu.add(kardexProductMenuItem);
 
-        jMenuItem1.setText("Products");
-        stockMenu.add(jMenuItem1);
+        productsExpiryMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        productsExpiryMenuItem.setText("Productos con caducidad");
+        stockMenu.add(productsExpiryMenuItem);
 
         menuBar.add(stockMenu);
 
@@ -429,12 +430,12 @@ public class MainApplication extends javax.swing.JFrame {
     private javax.swing.JMenuItem categoriesMenuItem;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem kardexProductMenuItem;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JPanel panelBackgroud;
     private javax.swing.JPanel panelCentral;
     private javax.swing.JPanel panelTitle;
+    private javax.swing.JMenuItem productsExpiryMenuItem;
     private javax.swing.JMenu productsMenu;
     private javax.swing.JMenuItem productsMenuItem;
     private javax.swing.JMenuItem repaymentMenuItem;

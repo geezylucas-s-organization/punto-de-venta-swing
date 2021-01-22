@@ -6,6 +6,7 @@
 package com.mycompany.mavenproject1.reports;
 
 import com.mycompany.mavenproject1.apiclient.ApiClient;
+import com.mycompany.mavenproject1.apiclient.ClassBase;
 import com.mycompany.mavenproject1.apiclient.sells.MovementsResponse;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
@@ -35,19 +36,20 @@ public class PanelReportMovements extends javax.swing.JPanel {
         tblMovements.setShowGrid(true);
         getMovements();
     }
-
+    
     private void getMovements() {
         SQLiteJDBC sqlite = new SQLiteJDBC();
         String token = sqlite.getToken();
-        Call<List<MovementsResponse>> movementsResponseCall = ApiClient.getSalesService().movementsWithQuantity("Bearer " + token);
-        movementsResponseCall.enqueue(new Callback<List<MovementsResponse>>() {
+        Call<ClassBase<MovementsResponse>> movementsResponseCall = ApiClient.getSalesService().movementsWithQuantity("Bearer " + token);
+        movementsResponseCall.enqueue(new Callback<ClassBase<MovementsResponse>>() {
             @Override
-            public void onResponse(Call<List<MovementsResponse>> call, Response<List<MovementsResponse>> response) {
+            public void onResponse(Call<ClassBase<MovementsResponse>> call, Response<ClassBase<MovementsResponse>> response) {
                 if (response.isSuccessful()) {
-                    List<MovementsResponse> list = response.body();
-                    if (list != null) {
+                    ClassBase<MovementsResponse> movementsResponse = response.body();
+                    if (movementsResponse != null) {
+                        List<MovementsResponse> list = movementsResponse.getData();
                         DefaultTableModel model = (DefaultTableModel) tblMovements.getModel();
-
+                        
                         list.forEach(item -> {
                             model.addRow(new Object[]{
                                 item.getId(),
@@ -58,12 +60,14 @@ public class PanelReportMovements extends javax.swing.JPanel {
                                 item.getCashier(),
                                 item.getCategory(),});
                         });
+                        
+                        lblTotal.setText("Total de movimientos: " + movementsResponse.getTotal());
                     }
                 }
             }
-
+            
             @Override
-            public void onFailure(Call<List<MovementsResponse>> call, Throwable t) {
+            public void onFailure(Call<ClassBase<MovementsResponse>> call, Throwable t) {
                 System.out.println(t.getLocalizedMessage());
             }
         });
@@ -91,6 +95,7 @@ public class PanelReportMovements extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         btnExport = new javax.swing.JButton();
         btnPrint = new javax.swing.JButton();
+        lblTotal = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMovements = new javax.swing.JTable();
@@ -211,33 +216,39 @@ public class PanelReportMovements extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setPreferredSize(new java.awt.Dimension(1200, 45));
 
+        btnExport.setText("Exportar");
         btnExport.setBackground(new java.awt.Color(127, 184, 0));
         btnExport.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnExport.setForeground(new java.awt.Color(255, 255, 255));
-        btnExport.setText("Exportar");
         btnExport.setMaximumSize(new java.awt.Dimension(165, 40));
         btnExport.setMinimumSize(new java.awt.Dimension(165, 40));
         btnExport.setPreferredSize(new java.awt.Dimension(165, 40));
         btnExport.setUI(new StyledButtonUI());
 
+        btnPrint.setText("Imprimir");
         btnPrint.setBackground(new java.awt.Color(127, 184, 0));
         btnPrint.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnPrint.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrint.setText("Imprimir");
         btnPrint.setMaximumSize(new java.awt.Dimension(165, 40));
         btnPrint.setMinimumSize(new java.awt.Dimension(165, 40));
         btnPrint.setPreferredSize(new java.awt.Dimension(165, 40));
         btnPrint.setUI(new StyledButtonUI());
+
+        lblTotal.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        lblTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTotal.setText("Total de movimientos: 0");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(932, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 566, Short.MAX_VALUE)
+                .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -245,7 +256,8 @@ public class PanelReportMovements extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTotal))
                 .addGap(0, 5, Short.MAX_VALUE))
         );
 
@@ -316,6 +328,7 @@ public class PanelReportMovements extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTotal;
     private javax.swing.JTable tblMovements;
     // End of variables declaration//GEN-END:variables
 }
