@@ -29,14 +29,11 @@ public class PanelReportMovements extends javax.swing.JPanel {
      */
     public PanelReportMovements() {
         initComponents();
-        tblMovements.getColumnModel().getColumn(0).setMinWidth(0);
-        tblMovements.getColumnModel().getColumn(0).setMaxWidth(0);
-        tblMovements.getColumnModel().getColumn(0).setWidth(0);
         tblMovements.setRowHeight(30);
         tblMovements.setShowGrid(true);
         getMovements();
     }
-    
+
     private void getMovements() {
         SQLiteJDBC sqlite = new SQLiteJDBC();
         String token = sqlite.getToken();
@@ -49,7 +46,7 @@ public class PanelReportMovements extends javax.swing.JPanel {
                     if (movementsResponse != null) {
                         List<MovementsResponse> list = movementsResponse.getData();
                         DefaultTableModel model = (DefaultTableModel) tblMovements.getModel();
-                        
+
                         list.forEach(item -> {
                             model.addRow(new Object[]{
                                 item.getId(),
@@ -60,12 +57,12 @@ public class PanelReportMovements extends javax.swing.JPanel {
                                 item.getCashier(),
                                 item.getCategory(),});
                         });
-                        
+
                         lblTotal.setText("Total de movimientos: " + movementsResponse.getTotal());
                     }
                 }
             }
-            
+
             @Override
             public void onFailure(Call<ClassBase<MovementsResponse>> call, Throwable t) {
                 System.out.println(t.getLocalizedMessage());
@@ -85,7 +82,6 @@ public class PanelReportMovements extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSearch = new javax.swing.JButton();
-        btnRefresh = new javax.swing.JButton();
         datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
         datePicker2 = new com.github.lgooddatepicker.components.DatePicker();
         jLabel4 = new javax.swing.JLabel();
@@ -117,15 +113,6 @@ public class PanelReportMovements extends javax.swing.JPanel {
         btnSearch.setMinimumSize(new java.awt.Dimension(93, 40));
         btnSearch.setPreferredSize(new java.awt.Dimension(93, 40));
         btnSearch.setUI(new StyledButtonUI());
-
-        btnRefresh.setText("Refrescar");
-        btnRefresh.setBackground(new java.awt.Color(0, 166, 237));
-        btnRefresh.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
-        btnRefresh.setMaximumSize(new java.awt.Dimension(117, 40));
-        btnRefresh.setMinimumSize(new java.awt.Dimension(117, 40));
-        btnRefresh.setPreferredSize(new java.awt.Dimension(117, 40));
-        btnRefresh.setUI(new StyledButtonUI());
 
         datePicker1.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         datePicker1.setMinimumSize(new java.awt.Dimension(174, 30));
@@ -160,9 +147,7 @@ public class PanelReportMovements extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(339, 339, 339))
+                    .addComponent(jLabel1)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -176,10 +161,8 @@ public class PanelReportMovements extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
-                        .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(345, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,9 +189,7 @@ public class PanelReportMovements extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         add(jPanel3, java.awt.BorderLayout.PAGE_START);
@@ -234,9 +215,9 @@ public class PanelReportMovements extends javax.swing.JPanel {
         btnPrint.setPreferredSize(new java.awt.Dimension(165, 40));
         btnPrint.setUI(new StyledButtonUI());
 
-        lblTotal.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         lblTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTotal.setText("Total de movimientos: 0");
+        lblTotal.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -270,7 +251,7 @@ public class PanelReportMovements extends javax.swing.JPanel {
 
             },
             new String [] {
-                "id", "Fecha", "Nombre", "Tipo", "Cantidad", "Cajero", "Departamento"
+                "Folio", "Fecha", "Nombre", "Tipo", "Cantidad", "Cajero", "Departamento"
             }
         ) {
             Class[] types = new Class [] {
@@ -315,7 +296,6 @@ public class PanelReportMovements extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExport;
     private javax.swing.JButton btnPrint;
-    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSearch;
     private com.github.lgooddatepicker.components.DatePicker datePicker1;
     private com.github.lgooddatepicker.components.DatePicker datePicker2;

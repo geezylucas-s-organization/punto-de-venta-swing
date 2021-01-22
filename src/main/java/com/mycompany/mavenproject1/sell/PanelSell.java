@@ -63,7 +63,6 @@ public class PanelSell extends javax.swing.JPanel {
         txtCodeProduct = new javax.swing.JTextField();
         btnAddProduct = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        btnMoreOptions = new javax.swing.JButton();
         btnRemoveProduct = new javax.swing.JButton();
         btnSomeProducts = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -113,15 +112,6 @@ public class PanelSell extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel3.setText("Venta Ticket #1");
 
-        btnMoreOptions.setBackground(new java.awt.Color(0, 166, 237));
-        btnMoreOptions.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        btnMoreOptions.setForeground(new java.awt.Color(255, 255, 255));
-        btnMoreOptions.setText("Más opciones");
-        btnMoreOptions.setMaximumSize(new java.awt.Dimension(117, 40));
-        btnMoreOptions.setMinimumSize(new java.awt.Dimension(117, 40));
-        btnMoreOptions.setPreferredSize(new java.awt.Dimension(117, 40));
-        btnMoreOptions.setUI(new StyledButtonUI());
-
         btnRemoveProduct.setBackground(new java.awt.Color(246, 81, 29));
         btnRemoveProduct.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnRemoveProduct.setForeground(new java.awt.Color(255, 255, 255));
@@ -161,13 +151,9 @@ public class PanelSell extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btnRemoveProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSomeProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
-                        .addComponent(btnMoreOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(btnSomeProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3))
+                .addContainerGap(287, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,10 +165,9 @@ public class PanelSell extends javax.swing.JPanel {
                     .addComponent(lblCodeProduct)
                     .addComponent(txtCodeProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAddProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMoreOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRemoveProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSomeProducts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
@@ -522,7 +507,6 @@ public class PanelSell extends javax.swing.JPanel {
     private javax.swing.JButton btnAddProduct;
     private javax.swing.JButton btnAssignClient;
     private javax.swing.JButton btnCharge;
-    private javax.swing.JButton btnMoreOptions;
     private javax.swing.JButton btnPendingSell;
     private javax.swing.JButton btnPendingSells;
     private javax.swing.JButton btnRemoveProduct;

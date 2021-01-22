@@ -36,7 +36,6 @@ public class PanelKardexProduct extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         btnSearch = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
-        btnRefresh = new javax.swing.JButton();
         datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
         datePicker2 = new com.github.lgooddatepicker.components.DatePicker();
         jLabel4 = new javax.swing.JLabel();
@@ -70,15 +69,6 @@ public class PanelKardexProduct extends javax.swing.JPanel {
         txtSearch.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtSearch.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
-        btnRefresh.setText("Refrescar");
-        btnRefresh.setBackground(new java.awt.Color(0, 166, 237));
-        btnRefresh.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
-        btnRefresh.setMaximumSize(new java.awt.Dimension(117, 40));
-        btnRefresh.setMinimumSize(new java.awt.Dimension(117, 40));
-        btnRefresh.setPreferredSize(new java.awt.Dimension(117, 40));
-        btnRefresh.setUI(new StyledButtonUI());
-
         datePicker1.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         datePicker1.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
         datePicker1.setMinimumSize(new java.awt.Dimension(174, 30));
@@ -103,8 +93,7 @@ public class PanelKardexProduct extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(179, 179, 179))
+                        .addComponent(jLabel1))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -118,10 +107,8 @@ public class PanelKardexProduct extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(datePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                        .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,9 +135,7 @@ public class PanelKardexProduct extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(datePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         add(jPanel3, java.awt.BorderLayout.PAGE_START);
@@ -218,7 +203,6 @@ public class PanelKardexProduct extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExport;
     private javax.swing.JButton btnPrint;
-    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSearch;
     private com.github.lgooddatepicker.components.DatePicker datePicker1;
     private com.github.lgooddatepicker.components.DatePicker datePicker2;

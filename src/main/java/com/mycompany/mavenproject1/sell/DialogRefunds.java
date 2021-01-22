@@ -8,6 +8,7 @@ package com.mycompany.mavenproject1.sell;
 import com.mycompany.mavenproject1.apiclient.ApiClient;
 import com.mycompany.mavenproject1.apiclient.sells.ReturnsResponse;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
+import com.mycompany.mavenproject1.utils.ForcedListSelectionModel;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -120,6 +121,7 @@ public class DialogRefunds extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        tblReturns.setSelectionModel(new ForcedListSelectionModel());
         jScrollPane1.setViewportView(tblReturns);
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -142,7 +144,7 @@ public class DialogRefunds extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Nombre", "Cantidad ", "Precio venta", "Total"
+                "Nombre", "Cantidad ", "Precio venta", "Importe"
             }
         ) {
             Class[] types = new Class [] {
@@ -253,6 +255,7 @@ public class DialogRefunds extends javax.swing.JDialog {
 
     private void btnDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailsActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnDetailsActionPerformed
 
     /**

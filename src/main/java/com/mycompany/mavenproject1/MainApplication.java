@@ -18,6 +18,7 @@ import com.mycompany.mavenproject1.reports.PanelReportSales;
 import com.mycompany.mavenproject1.sell.DialogRefunds;
 import com.mycompany.mavenproject1.sell.DialogSearchProduct;
 import com.mycompany.mavenproject1.sell.PanelSell;
+import com.mycompany.mavenproject1.utils.StyledButtonUI;
 
 /**
  *
@@ -67,6 +68,8 @@ public class MainApplication extends javax.swing.JFrame {
         reportMovementsMenuItem = new javax.swing.JMenuItem();
         ReportSalesMenuItem = new javax.swing.JMenuItem();
         ReportClientMenuItem = new javax.swing.JMenuItem();
+        cashierMenu = new javax.swing.JMenu();
+        closeShiftMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
@@ -253,6 +256,15 @@ public class MainApplication extends javax.swing.JFrame {
 
         menuBar.add(ReportsMenu);
 
+        cashierMenu.setText("Cajero");
+        cashierMenu.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        closeShiftMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        closeShiftMenuItem.setText("Cerrar turno");
+        cashierMenu.add(closeShiftMenuItem);
+
+        menuBar.add(cashierMenu);
+
         helpMenu.setMnemonic('h');
         helpMenu.setText("Ayuda");
         helpMenu.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -274,7 +286,7 @@ public class MainApplication extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBackgroud, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+            .addComponent(panelBackgroud, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
         );
 
         pack();
@@ -427,7 +439,9 @@ public class MainApplication extends javax.swing.JFrame {
     private javax.swing.JMenuItem SearchProductMenuItem;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem addCategoryMenuItem;
+    private javax.swing.JMenu cashierMenu;
     private javax.swing.JMenuItem categoriesMenuItem;
+    private javax.swing.JMenuItem closeShiftMenuItem;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem kardexProductMenuItem;
