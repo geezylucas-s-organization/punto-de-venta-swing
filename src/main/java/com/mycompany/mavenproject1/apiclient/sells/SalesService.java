@@ -14,6 +14,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 /**
  *
@@ -30,4 +31,7 @@ public interface SalesService {
 
     @GET("api/sell/returns")
     Call<List<ReturnsResponse>> returnsToday(@Header("Authorization") String authHeader);
+
+    @GET("api/sell/returns/{id}")
+    Call<List<DetailReturnResponse>> detailsReturn(@Path("id") int sellId, @Header("Authorization") String authHeader);
 }

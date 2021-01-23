@@ -6,6 +6,7 @@
 package com.mycompany.mavenproject1.sell;
 
 import com.mycompany.mavenproject1.apiclient.ApiClient;
+import com.mycompany.mavenproject1.apiclient.sells.DetailReturnResponse;
 import com.mycompany.mavenproject1.apiclient.sells.ReturnsResponse;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.ForcedListSelectionModel;
@@ -33,6 +34,12 @@ public class DialogRefunds extends javax.swing.JDialog {
         initComponents();
         tblReturns.setRowHeight(30);
         tblReturns.setShowGrid(true);
+
+        tblDetails.getColumnModel().getColumn(0).setMinWidth(0);
+        tblDetails.getColumnModel().getColumn(0).setMaxWidth(0);
+        tblDetails.getColumnModel().getColumn(0).setWidth(0);
+        tblDetails.setRowHeight(30);
+        tblDetails.setShowGrid(true);
         getReturns();
     }
 
@@ -50,10 +57,10 @@ public class DialogRefunds extends javax.swing.JDialog {
 
                         list.forEach(item -> {
                             model.addRow(new Object[]{
+                                item.getFolio(),
                                 item.getCashier(),
                                 item.getClient(),
                                 item.getTime(),
-                                item.getFolio(),
                                 item.getProducts(),
                                 item.getTotal(),
                                 item.getCash()
@@ -87,7 +94,7 @@ public class DialogRefunds extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         btnRefunds = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblSale = new javax.swing.JTable();
+        tblDetails = new javax.swing.JTable();
         btnDetails = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -103,11 +110,11 @@ public class DialogRefunds extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Cajero", "Cliente", "Hora", "Folio", "# Artículos", "Total", "Pago con"
+                "Folio", "Cajero", "Cliente", "Hora", "# Artículos", "Total", "Pago con"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false
@@ -138,20 +145,20 @@ public class DialogRefunds extends javax.swing.JDialog {
             }
         });
 
-        tblSale.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        tblSale.setModel(new javax.swing.table.DefaultTableModel(
+        tblDetails.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        tblDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nombre", "Cantidad ", "Precio venta", "Importe"
+                "id", "Nombre", "Cantidad ", "Precio venta", "Importe"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -162,7 +169,7 @@ public class DialogRefunds extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tblSale);
+        jScrollPane2.setViewportView(tblDetails);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -255,7 +262,39 @@ public class DialogRefunds extends javax.swing.JDialog {
 
     private void btnDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailsActionPerformed
         // TODO add your handling code here:
-        
+        int column = 0;
+        int row = tblReturns.getSelectedRow();
+        int sellId = Integer.valueOf(tblReturns.getModel().getValueAt(row, column).toString());
+
+        SQLiteJDBC sqlite = new SQLiteJDBC();
+        String token = sqlite.getToken();
+        Call<List<DetailReturnResponse>> detailReturnResponseCall = ApiClient.getSalesService().detailsReturn(sellId, "Bearer " + token);
+        detailReturnResponseCall.enqueue(new Callback<List<DetailReturnResponse>>() {
+            @Override
+            public void onResponse(Call<List<DetailReturnResponse>> call, Response<List<DetailReturnResponse>> response) {
+                if (response.isSuccessful()) {
+                    List<DetailReturnResponse> list = response.body();
+                    if (list != null) {
+                        DefaultTableModel model = (DefaultTableModel) tblDetails.getModel();
+
+                        list.forEach(item -> {
+                            model.addRow(new Object[]{
+                                item.getId(),
+                                item.getProductName(),
+                                item.getQuantity(),
+                                item.getPriceOut(),
+                                item.getTotal()
+                            });
+                        });
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<DetailReturnResponse>> call, Throwable t) {
+                System.out.println(t.getLocalizedMessage());
+            }
+        });
     }//GEN-LAST:event_btnDetailsActionPerformed
 
     /**
@@ -307,7 +346,7 @@ public class DialogRefunds extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblDetails;
     private javax.swing.JTable tblReturns;
-    private javax.swing.JTable tblSale;
     // End of variables declaration//GEN-END:variables
 }
