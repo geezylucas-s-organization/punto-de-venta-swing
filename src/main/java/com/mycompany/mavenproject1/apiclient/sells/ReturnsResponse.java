@@ -20,6 +20,7 @@ public class ReturnsResponse {
     private String time;
     private String cashier;
     private String client;
+    private String status;
 
     public int getFolio() {
         return folio;
@@ -77,4 +78,13 @@ public class ReturnsResponse {
         this.client = client;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    
 }

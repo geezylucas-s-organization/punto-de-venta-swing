@@ -60,6 +60,7 @@ public class DialogRefunds extends javax.swing.JDialog {
                                 item.getFolio(),
                                 item.getCashier(),
                                 item.getClient(),
+                                item.getStatus(),
                                 item.getTime(),
                                 item.getProducts(),
                                 item.getTotal(),
@@ -110,14 +111,14 @@ public class DialogRefunds extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Folio", "Cajero", "Cliente", "Hora", "# Artículos", "Total", "Pago con"
+                "Folio", "Cajero", "Cliente", "Estatus", "Hora", "# Artículos", "Total", "Pago con"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -277,6 +278,7 @@ public class DialogRefunds extends javax.swing.JDialog {
                     if (list != null) {
                         DefaultTableModel model = (DefaultTableModel) tblDetails.getModel();
 
+                        model.setRowCount(0);
                         list.forEach(item -> {
                             model.addRow(new Object[]{
                                 item.getId(),
