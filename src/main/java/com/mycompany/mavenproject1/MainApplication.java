@@ -64,6 +64,7 @@ public class MainApplication extends javax.swing.JFrame {
         restockMenuItem = new javax.swing.JMenuItem();
         kardexProductMenuItem = new javax.swing.JMenuItem();
         productsExpiryMenuItem = new javax.swing.JMenuItem();
+        productsLowInvMenuItem = new javax.swing.JMenuItem();
         ReportsMenu = new javax.swing.JMenu();
         reportMovementsMenuItem = new javax.swing.JMenuItem();
         ReportSalesMenuItem = new javax.swing.JMenuItem();
@@ -221,6 +222,10 @@ public class MainApplication extends javax.swing.JFrame {
         productsExpiryMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         productsExpiryMenuItem.setText("Productos con caducidad");
         stockMenu.add(productsExpiryMenuItem);
+
+        productsLowInvMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        productsLowInvMenuItem.setText("Productos bajos de inventario");
+        stockMenu.add(productsLowInvMenuItem);
 
         menuBar.add(stockMenu);
 
@@ -450,6 +455,7 @@ public class MainApplication extends javax.swing.JFrame {
     private javax.swing.JPanel panelCentral;
     private javax.swing.JPanel panelTitle;
     private javax.swing.JMenuItem productsExpiryMenuItem;
+    private javax.swing.JMenuItem productsLowInvMenuItem;
     private javax.swing.JMenu productsMenu;
     private javax.swing.JMenuItem productsMenuItem;
     private javax.swing.JMenuItem repaymentMenuItem;

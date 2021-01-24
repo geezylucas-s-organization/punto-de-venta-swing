@@ -92,8 +92,7 @@ public class PanelKardexProduct extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel1))
+                    .addComponent(jLabel1)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -143,19 +142,19 @@ public class PanelKardexProduct extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setPreferredSize(new java.awt.Dimension(1200, 45));
 
+        btnExport.setText("Exportar");
         btnExport.setBackground(new java.awt.Color(127, 184, 0));
         btnExport.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnExport.setForeground(new java.awt.Color(255, 255, 255));
-        btnExport.setText("Exportar");
         btnExport.setMaximumSize(new java.awt.Dimension(165, 40));
         btnExport.setMinimumSize(new java.awt.Dimension(165, 40));
         btnExport.setPreferredSize(new java.awt.Dimension(165, 40));
         btnExport.setUI(new StyledButtonUI());
 
+        btnPrint.setText("Imprimir");
         btnPrint.setBackground(new java.awt.Color(127, 184, 0));
         btnPrint.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnPrint.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrint.setText("Imprimir");
         btnPrint.setMaximumSize(new java.awt.Dimension(165, 40));
         btnPrint.setMinimumSize(new java.awt.Dimension(165, 40));
         btnPrint.setPreferredSize(new java.awt.Dimension(165, 40));
@@ -165,12 +164,12 @@ public class PanelKardexProduct extends javax.swing.JPanel {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(932, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(932, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,7 +177,7 @@ public class PanelKardexProduct extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 5, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(jPanel4, java.awt.BorderLayout.PAGE_END);
