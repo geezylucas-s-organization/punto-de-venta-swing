@@ -75,6 +75,7 @@ public class MainApplication extends javax.swing.JFrame {
         aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Punto de venta");
         setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
         panelBackgroud.setLayout(new java.awt.BorderLayout());

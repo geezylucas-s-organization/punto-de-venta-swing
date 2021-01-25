@@ -64,6 +64,7 @@ public class LoginForm extends javax.swing.JFrame {
         txtCashInBox = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Punto de venta");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
