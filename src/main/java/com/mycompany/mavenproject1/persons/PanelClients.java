@@ -95,11 +95,11 @@ public class PanelClients extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(1200, 110));
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setText("Clientes");
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel3.setText("Buscar:");
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         btnSearch.setBackground(new java.awt.Color(0, 166, 237));
         btnSearch.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -147,9 +147,9 @@ public class PanelClients extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setPreferredSize(new java.awt.Dimension(1200, 45));
 
-        lblTotal.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         lblTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTotal.setText("Total de clientes: 0");
+        lblTotal.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);

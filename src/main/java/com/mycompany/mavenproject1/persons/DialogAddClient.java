@@ -5,9 +5,17 @@
  */
 package com.mycompany.mavenproject1.persons;
 
+import com.mycompany.mavenproject1.apiclient.ApiClient;
+import com.mycompany.mavenproject1.apiclient.persons.PersonsResponse;
+import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
 import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  *
@@ -17,6 +25,7 @@ public class DialogAddClient extends javax.swing.JDialog {
 
     /**
      * Creates new form DialogAddClient
+     *
      * @param parent
      * @param modal
      */
@@ -44,7 +53,7 @@ public class DialogAddClient extends javax.swing.JDialog {
         txtPhoneNumber = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        btnAdd = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -78,14 +87,19 @@ public class DialogAddClient extends javax.swing.JDialog {
         txtEmail.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtEmail.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
-        btnAdd.setBackground(new java.awt.Color(0, 166, 237));
-        btnAdd.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        btnAdd.setForeground(new java.awt.Color(255, 255, 255));
-        btnAdd.setText("Agregar");
-        btnAdd.setMaximumSize(new java.awt.Dimension(95, 40));
-        btnAdd.setMinimumSize(new java.awt.Dimension(95, 40));
-        btnAdd.setPreferredSize(new java.awt.Dimension(95, 40));
-        btnAdd.setUI(new StyledButtonUI());
+        btnSave.setBackground(new java.awt.Color(0, 166, 237));
+        btnSave.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(255, 255, 255));
+        btnSave.setText("Agregar");
+        btnSave.setMaximumSize(new java.awt.Dimension(95, 40));
+        btnSave.setMinimumSize(new java.awt.Dimension(95, 40));
+        btnSave.setPreferredSize(new java.awt.Dimension(95, 40));
+        btnSave.setUI(new StyledButtonUI());
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -95,7 +109,7 @@ public class DialogAddClient extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(349, 349, 349)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +162,7 @@ public class DialogAddClient extends javax.swing.JDialog {
                         .addComponent(jLabel8))
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -167,6 +181,49 @@ public class DialogAddClient extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        btnSave.setBackground(Color.GRAY);
+        btnSave.setEnabled(false);
+        if (!txtName.getText().equals("") && !txtLastname.getText().equals("") && !txtPhoneNumber.getText().equals("")) {
+            SQLiteJDBC sqlite = new SQLiteJDBC();
+            String token = sqlite.getToken();
+            
+            PersonsResponse newClient = new PersonsResponse();
+            newClient.setKind((short) 1);
+            newClient.setName(txtName.getText());
+            newClient.setLastname(txtLastname.getText());
+            newClient.setPhone(txtPhoneNumber.getText());
+            newClient.setEmail(txtEmail.getText());
+            newClient.setStatus(true);
+            
+            Call<ResponseBody> addClientResponseCall = ApiClient.getPersonsService().addClient(newClient, "Bearer " + token);
+            addClientResponseCall.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    if (response.isSuccessful()) {
+                        JOptionPane.showMessageDialog(null, "Cliente " + txtName.getText() + " " + txtLastname.getText() + " creado exitosamente", "Crear cliente", JOptionPane.INFORMATION_MESSAGE);
+                        btnSave.setBackground(new java.awt.Color(0, 166, 237));
+                        btnSave.setEnabled(true);
+                        txtName.setText("");
+                        txtLastname.setText("");
+                        txtPhoneNumber.setText("");
+                        txtEmail.setText("");
+                    }
+                }
+                
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    System.out.println(t.getLocalizedMessage());
+                }
+            });
+        } else {
+            JOptionPane.showMessageDialog(null, "Faltan campos obligatorios", "Crear cliente", JOptionPane.ERROR_MESSAGE);
+            btnSave.setBackground(new java.awt.Color(0, 166, 237));
+            btnSave.setEnabled(true);
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,22 +253,20 @@ public class DialogAddClient extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                DialogAddClient dialog = new DialogAddClient(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            DialogAddClient dialog = new DialogAddClient(new javax.swing.JFrame(), true);
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
