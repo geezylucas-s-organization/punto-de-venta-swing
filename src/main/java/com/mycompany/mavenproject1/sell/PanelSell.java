@@ -20,8 +20,12 @@ import java.awt.event.WindowEvent;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -84,8 +88,8 @@ public class PanelSell extends javax.swing.JPanel {
         jPanel1.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(1200, 110));
 
-        lblCodeProduct.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         lblCodeProduct.setText("Código de producto:");
+        lblCodeProduct.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         txtCodeProduct.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtCodeProduct.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
@@ -109,8 +113,8 @@ public class PanelSell extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel3.setText("Venta Ticket #1");
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
 
         btnRemoveProduct.setBackground(new java.awt.Color(246, 81, 29));
         btnRemoveProduct.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -134,6 +138,11 @@ public class PanelSell extends javax.swing.JPanel {
         btnSomeProducts.setMinimumSize(new java.awt.Dimension(117, 40));
         btnSomeProducts.setPreferredSize(new java.awt.Dimension(117, 40));
         btnSomeProducts.setUI(new StyledButtonUI());
+        btnSomeProducts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSomeProductsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -175,9 +184,9 @@ public class PanelSell extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(1200, 150));
 
+        btnCharge.setText("Cobrar");
         btnCharge.setBackground(new java.awt.Color(255, 180, 0));
         btnCharge.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
-        btnCharge.setText("Cobrar");
         btnCharge.setUI(new StyledButtonUI());
         btnCharge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,26 +194,26 @@ public class PanelSell extends javax.swing.JPanel {
             }
         });
 
-        lblTotalMoney.setFont(new java.awt.Font("SansSerif", 1, 48)); // NOI18N
         lblTotalMoney.setText("$0.00");
+        lblTotalMoney.setFont(new java.awt.Font("SansSerif", 1, 48)); // NOI18N
 
-        lblTotalProducts.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         lblTotalProducts.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTotalProducts.setText("Total productos: 0");
+        lblTotalProducts.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel2.setText("Funciones adicionales:");
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
+        btnPendingSell.setText("Venta pendiente");
         btnPendingSell.setBackground(new java.awt.Color(127, 184, 0));
         btnPendingSell.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnPendingSell.setForeground(new java.awt.Color(255, 255, 255));
-        btnPendingSell.setText("Venta pendiente");
         btnPendingSell.setUI(new StyledButtonUI());
 
+        btnPendingSells.setText("Pendientes");
         btnPendingSells.setBackground(new java.awt.Color(127, 184, 0));
         btnPendingSells.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnPendingSells.setForeground(new java.awt.Color(255, 255, 255));
-        btnPendingSells.setText("Pendientes");
         btnPendingSells.setUI(new StyledButtonUI());
 
         btnAssignClient.setBackground(new java.awt.Color(127, 184, 0));
@@ -412,6 +421,84 @@ public class PanelSell extends javax.swing.JPanel {
         txtCodeProduct.requestFocusInWindow();
     }//GEN-LAST:event_btnRemoveProductActionPerformed
 
+    private void btnSomeProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSomeProductsActionPerformed
+        // TODO add your handling code here:
+
+        java.awt.GridBagConstraints gridBagConstraints;
+
+        JPanel jPanelDialogSome = new javax.swing.JPanel();
+        JLabel jLabel3DialogSome = new javax.swing.JLabel();
+        JTextField txtCodeProductDialogSome = new javax.swing.JTextField();
+        JLabel jLabel1DialogSome = new javax.swing.JLabel();
+        JLabel jLabel4DialogSome = new javax.swing.JLabel();
+        JTextField txtQuantityDialogSome = new javax.swing.JTextField();
+
+        jPanelDialogSome.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelDialogSome.setLayout(new java.awt.GridBagLayout());
+
+        jLabel3DialogSome.setText("Código del producto:");
+        jLabel3DialogSome.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(26, 6, 0, 0);
+        jPanelDialogSome.add(jLabel3DialogSome, gridBagConstraints);
+
+        txtCodeProductDialogSome.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
+        txtCodeProductDialogSome.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 236;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(24, 6, 0, 0);
+        jPanelDialogSome.add(txtCodeProductDialogSome, gridBagConstraints);
+
+        jLabel1DialogSome.setText("Agregar varios productos:");
+        jLabel1DialogSome.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 0);
+        jPanelDialogSome.add(jLabel1DialogSome, gridBagConstraints);
+
+        jLabel4DialogSome.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel4DialogSome.setText("Cantidad:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 6, 0, 0);
+        jPanelDialogSome.add(jLabel4DialogSome, gridBagConstraints);
+
+        txtQuantityDialogSome.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
+        txtQuantityDialogSome.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 236;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 6, 6, 0);
+        jPanelDialogSome.add(txtQuantityDialogSome, gridBagConstraints);
+
+        UIManager UI = new UIManager();
+        UI.put("OptionPane.background", Color.white);
+        UI.put("Panel.background", Color.white);
+
+        int result = JOptionPane.showConfirmDialog(null, jPanelDialogSome, null, JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+        if (result == JOptionPane.OK_OPTION) {
+            addSomeProduct(txtCodeProductDialogSome.getText(), Integer.valueOf(txtQuantityDialogSome.getText()));
+        }
+    }//GEN-LAST:event_btnSomeProductsActionPerformed
+
     private void addProduct() {
         if (!txtCodeProduct.getText().equals("")) {
             btnAddProduct.setBackground(Color.GRAY);
@@ -481,15 +568,7 @@ public class PanelSell extends javax.swing.JPanel {
                     }
                     txtCodeProduct.requestFocusInWindow();
                     txtCodeProduct.setText("");
-                    int totalProducts = 0;
-                    BigDecimal totalMoney = new BigDecimal(0);
-                    for (int i = 0; i < tblProducts.getRowCount(); i++) {//For each row
-                        totalProducts += (int) tblProducts.getValueAt(i, 4);
-                        String value = String.valueOf(tblProducts.getValueAt(i, 5));
-                        totalMoney = totalMoney.add(new BigDecimal(value));
-                    }//For loop outer   
-                    lblTotalProducts.setText("Total productos: " + totalProducts);
-                    lblTotalMoney.setText("$" + totalMoney);
+                    refreshTotals();
                     btnAddProduct.setBackground(new java.awt.Color(0, 166, 237));
                     btnAddProduct.setEnabled(true);
                 }
@@ -501,6 +580,103 @@ public class PanelSell extends javax.swing.JPanel {
             }
             );
         }
+    }
+
+    private void addSomeProduct(String codeProduct, int newQuantity) {
+        SQLiteJDBC sqlite = new SQLiteJDBC();
+        String token = sqlite.getToken();
+        Call<ProductsResponse> productResponseCall = ApiClient.getProductService().getProductByBarcodeWithQuantity(codeProduct, "Bearer " + token);
+        productResponseCall.enqueue(new Callback<ProductsResponse>() {
+            @Override
+            public void onResponse(Call<ProductsResponse> call, Response<ProductsResponse> response) {
+                if (response.isSuccessful()) {
+                    ProductsResponse product = response.body();
+                    if (product != null) {
+                        DefaultTableModel model = (DefaultTableModel) tblProducts.getModel();
+                        if (tblProducts.getRowCount() > 0) {
+                            int row = -1;
+                            for (int i = 0; i < tblProducts.getRowCount(); i++) {//For each row
+                                if (tblProducts.getModel().getValueAt(i, 0).equals(product.getId())) {//Search the model
+                                    row = i;
+                                    break;
+                                }
+                            }//For loop outer   
+                            if (row != -1) {
+                                int quantity = (int) tblProducts.getModel().getValueAt(row, 4) + newQuantity;
+                                double stock = product.getStock() - quantity;
+                                if (stock >= 0) {
+                                    tblProducts.getModel().setValueAt(quantity, row, 4);
+                                    BigDecimal total = product.getPriceOut1().multiply(new BigDecimal(quantity));
+                                    tblProducts.getModel().setValueAt(total, row, 5);
+                                    tblProducts.getModel().setValueAt(stock, row, 6);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Ya no quedan productos de " + product.getName() + "", "Producto", JOptionPane.ERROR_MESSAGE);
+                                }
+                            } else {
+                                if (product.getStock() != null) {
+                                    if (product.getStock() >= newQuantity) {
+                                        model.addRow(new Object[]{
+                                            product.getId(),
+                                            product.getBarcode(),
+                                            product.getName(),
+                                            product.getPriceOut1(),
+                                            newQuantity,
+                                            (product.getPriceOut1().multiply(new BigDecimal(1))),
+                                            product.getStock() - newQuantity
+                                        });
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Cantidad invalida de " + product.getName() + "", "Producto", JOptionPane.ERROR_MESSAGE);
+                                    }
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Ya no quedan productos de " + product.getName() + "", "Producto", JOptionPane.ERROR_MESSAGE);
+                                }
+                            }
+                        } else {
+                            if (product.getStock() != null) {
+                                if (product.getStock() >= newQuantity) {
+                                    model.addRow(new Object[]{
+                                        product.getId(),
+                                        product.getBarcode(),
+                                        product.getName(),
+                                        product.getPriceOut1(),
+                                        newQuantity,
+                                        (product.getPriceOut1().multiply(new BigDecimal(1))),
+                                        product.getStock() - newQuantity
+                                    });
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Cantidad invalida de " + product.getName() + "", "Producto", JOptionPane.ERROR_MESSAGE);
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Ya no quedan productos de " + product.getName() + "", "Producto", JOptionPane.ERROR_MESSAGE);
+                            }
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "No existe el producto", "Producto", JOptionPane.ERROR_MESSAGE);
+                }
+
+                txtCodeProduct.requestFocusInWindow();
+                refreshTotals();
+            }
+
+            @Override
+            public void onFailure(Call<ProductsResponse> call, Throwable t) {
+                System.out.println(t.getLocalizedMessage());
+            }
+        }
+        );
+    }
+
+    private void refreshTotals() {
+        int totalProducts = 0;
+        BigDecimal totalMoney = new BigDecimal(0);
+        for (int i = 0; i < tblProducts.getRowCount(); i++) {//For each row
+            totalProducts += (int) tblProducts.getValueAt(i, 4);
+            String value = String.valueOf(tblProducts.getValueAt(i, 5));
+            totalMoney = totalMoney.add(new BigDecimal(value));
+        }//For loop outer   
+        lblTotalProducts.setText("Total productos: " + totalProducts);
+        lblTotalMoney.setText("$" + totalMoney);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
