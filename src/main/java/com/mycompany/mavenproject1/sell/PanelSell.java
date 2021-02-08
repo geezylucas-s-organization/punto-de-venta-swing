@@ -489,12 +489,12 @@ public class PanelSell extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(18, 6, 6, 0);
         jPanelDialogSome.add(txtQuantityDialogSome, gridBagConstraints);
 
-        UIManager UI = new UIManager();
-        UI.put("OptionPane.background", Color.white);
-        UI.put("Panel.background", Color.white);
+        UIManager.put("OptionPane.background", Color.white);
+        UIManager.put("Panel.background", Color.white);
 
-        int result = JOptionPane.showConfirmDialog(null, jPanelDialogSome, null, JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-        if (result == JOptionPane.OK_OPTION) {
+        final Object[] options = {"Agregar", "Cancelar"};
+        int result = JOptionPane.showOptionDialog(null, jPanelDialogSome, null, JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
+        if (result == 0) {
             addSomeProduct(txtCodeProductDialogSome.getText(), Integer.valueOf(txtQuantityDialogSome.getText()));
         }
     }//GEN-LAST:event_btnSomeProductsActionPerformed
