@@ -9,10 +9,12 @@ import com.mycompany.mavenproject1.apiclient.ClassBase;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 /**
@@ -24,6 +26,13 @@ public interface ProductService {
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @POST("api/fillcatalogs/products")
     Call<ResponseBody> addProduct(@Body AddProductRequest product, @Header("Authorization") String authHeader);
+
+    @Headers({"Content-Type: application/json;charset=UTF-8"})
+    @PUT("api/fillcatalogs/products/{id}")
+    Call<ResponseBody> editProduct(@Path("id") Integer id, @Body AddProductRequest product, @Header("Authorization") String authHeader);
+
+    @DELETE("api/fillcatalogs/products/{id}")
+    Call<ResponseBody> deleteProduct(@Path("id") Integer id, @Header("Authorization") String authHeader);
 
     @GET("api/fillcatalogs/products")
     Call<ClassBase<ProductsResponse>> getProducts(@Header("Authorization") String authHeader);

@@ -7,6 +7,7 @@ package com.mycompany.mavenproject1.products;
 
 import com.mycompany.mavenproject1.apiclient.ApiClient;
 import com.mycompany.mavenproject1.apiclient.products.AddProductRequest;
+import com.mycompany.mavenproject1.apiclient.products.ProductsResponse;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.MaxLengthTextDocument;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
@@ -23,33 +24,53 @@ import retrofit2.Response;
  *
  * @author geezylucas
  */
-public class PanelAddProduct extends javax.swing.JPanel {
+public class PanelEditProduct extends javax.swing.JPanel {
 
-    private String category;
-    private int categoryId;
+    private ProductsResponse product;
 
     /**
      * Creates new form PanelAddProduct
      *
      */
-    public PanelAddProduct() {
+    public PanelEditProduct() {
         initComponents();
         myInit();
     }
 
-    public PanelAddProduct(String category, int categoryId) {
-        this.category = category;
-        this.categoryId = categoryId;
+    public PanelEditProduct(ProductsResponse product) {
+        this.product = product;
         initComponents();
         myInit();
     }
 
     private void myInit() {
-        this.lblDepartament.setText(this.category);
         MaxLengthTextDocument maxLength = new MaxLengthTextDocument();
         maxLength.setMaxChars(50);
 
         txtNameProduct.setDocument(maxLength);
+
+        txtBarcode.setText(this.product.getBarcode());
+        txtNameProduct.setText(this.product.getName());
+        txtDescription.setText(this.product.getDescription());
+        txtCostPrice.setText(this.product.getPriceIn().toString());
+        txtSalePrice.setText(this.product.getPriceOut1().toString());
+        txtSalePrice1.setText(this.product.getPriceOut2() != null ? this.product.getPriceOut2().toString() : "");
+        txtSalePrice2.setText(this.product.getPriceOut3() != null ? this.product.getPriceOut3().toString() : "");
+        txtMinimum.setText(String.valueOf(this.product.getInventoryMin()));
+        txtInventorySalePrice2.setText(this.product.getInventoryOut3() != null ? this.product.getInventoryOut3().toString() : "");
+        lblDepartament.setText(this.product.getCategory());
+
+        switch (this.product.getUnit()) {
+            case "UD":
+                rbUnit.setSelected(true);
+                break;
+            case "PKG":
+                rbPackage.setSelected(true);
+                break;
+            default:
+                rbBulk.setSelected(true);
+                break;
+        }
     }
 
     /**
@@ -64,7 +85,7 @@ public class PanelAddProduct extends javax.swing.JPanel {
 
         buttonGroupUnit = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        btnSave = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         txtNameProduct = new javax.swing.JTextField();
         txtSalePrice1 = new javax.swing.JTextField();
@@ -99,24 +120,24 @@ public class PanelAddProduct extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(1200, 50));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        btnSave.setBackground(new java.awt.Color(0, 166, 237));
-        btnSave.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        btnSave.setForeground(new java.awt.Color(255, 255, 255));
-        btnSave.setText("Crear");
-        btnSave.setMaximumSize(new java.awt.Dimension(81, 40));
-        btnSave.setMinimumSize(new java.awt.Dimension(81, 40));
-        btnSave.setPreferredSize(new java.awt.Dimension(250, 40));
-        btnSave.setUI(new StyledButtonUI());
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
+        btnEdit.setBackground(new java.awt.Color(0, 166, 237));
+        btnEdit.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        btnEdit.setForeground(new java.awt.Color(255, 255, 255));
+        btnEdit.setText("Editar");
+        btnEdit.setMaximumSize(new java.awt.Dimension(81, 40));
+        btnEdit.setMinimumSize(new java.awt.Dimension(81, 40));
+        btnEdit.setPreferredSize(new java.awt.Dimension(250, 40));
+        btnEdit.setUI(new StyledButtonUI());
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
+                btnEditActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 15;
-        jPanel1.add(btnSave, gridBagConstraints);
+        jPanel1.add(btnEdit, gridBagConstraints);
 
         add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
@@ -141,7 +162,7 @@ public class PanelAddProduct extends javax.swing.JPanel {
         txtCostPrice.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel1.setText("Agregar nuevo producto");
+        jLabel1.setText("Editar producto");
 
         txtMinimum.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtMinimum.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
@@ -172,6 +193,7 @@ public class PanelAddProduct extends javax.swing.JPanel {
 
         txtBarcode.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtBarcode.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
+        txtBarcode.setEditable(false);
 
         rbBulk.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroupUnit.add(rbBulk);
@@ -261,12 +283,11 @@ public class PanelAddProduct extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lblDepartament, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtInventorySalePrice2, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblDepartament, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtInventorySalePrice2, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -345,63 +366,50 @@ public class PanelAddProduct extends javax.swing.JPanel {
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        btnSave.setBackground(Color.GRAY);
-        btnSave.setEnabled(false);
+        btnEdit.setBackground(Color.GRAY);
+        btnEdit.setEnabled(false);
         if (!txtBarcode.getText().equals("") && !txtNameProduct.getText().equals("")
                 && !txtCostPrice.getText().equals("") && !txtSalePrice.getText().equals("")
                 && !txtMinimum.getText().equals("")) {
             SQLiteJDBC sqlite = new SQLiteJDBC();
             String token = sqlite.getToken();
-            Integer userId = sqlite.getUserId();
 
-            AddProductRequest addProduct = new AddProductRequest();
-            addProduct.setBarcode(txtBarcode.getText());
-            addProduct.setName(txtNameProduct.getText());
-            addProduct.setDescription(txtDescription.getText());
-            addProduct.setPriceIn(new BigDecimal(txtCostPrice.getText()));
-            addProduct.setPriceOut1(new BigDecimal(txtSalePrice.getText()));
+            AddProductRequest editProduct = new AddProductRequest();
+            editProduct.setBarcode(txtBarcode.getText());
+            editProduct.setName(txtNameProduct.getText());
+            editProduct.setDescription(txtDescription.getText());
+            editProduct.setPriceIn(new BigDecimal(txtCostPrice.getText()));
+            editProduct.setPriceOut1(new BigDecimal(txtSalePrice.getText()));
             if (!txtSalePrice1.getText().equals("")) {
-                addProduct.setPriceOut2(new BigDecimal(txtSalePrice1.getText()));
+                editProduct.setPriceOut2(new BigDecimal(txtSalePrice1.getText()));
             }
             if (!txtSalePrice2.getText().equals("")) {
-                addProduct.setPriceOut3(new BigDecimal(txtSalePrice2.getText()));
-                addProduct.setInventoryOut3(Double.valueOf(this.txtInventorySalePrice2.getText()));
+                editProduct.setPriceOut3(new BigDecimal(txtSalePrice2.getText()));
+                editProduct.setInventoryOut3(Double.valueOf(this.txtInventorySalePrice2.getText()));
             }
-            addProduct.setInventoryMin(Integer.valueOf(txtMinimum.getText()));
-            addProduct.setBulk(false);
+            editProduct.setInventoryMin(Integer.valueOf(txtMinimum.getText()));
+            editProduct.setBulk(false);
+
             if (rbUnit.isSelected()) {
-                addProduct.setUnit("UD");
+                editProduct.setUnit("UD");
             } else if (rbPackage.isSelected()) {
-                addProduct.setUnit("PKG");
+                editProduct.setUnit("PKG");
             } else if (rbBulk.isSelected()) {
-                addProduct.setBulk(true);
+                editProduct.setBulk(true);
             }
 
-            addProduct.setStatus(true);
-            addProduct.setUserId(userId);
-            addProduct.setCategoryId(this.categoryId);
+            editProduct.setStatus(true);
 
-            Call<ResponseBody> addCategoryResponseCall = ApiClient.getProductService().addProduct(addProduct, "Bearer " + token);
-            addCategoryResponseCall.enqueue(new Callback<ResponseBody>() {
+            Call<ResponseBody> editProductResponseCall = ApiClient.getProductService().editProduct(this.product.getId(), editProduct, "Bearer " + token);
+            editProductResponseCall.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     if (response.isSuccessful()) {
-                        JOptionPane.showMessageDialog(null, "Producto " + txtNameProduct.getText() + " creado exitosamente", "Crear producto", JOptionPane.INFORMATION_MESSAGE);
-                        btnSave.setBackground(new java.awt.Color(0, 166, 237));
-                        btnSave.setEnabled(true);
-
-                        txtBarcode.setText("");
-                        txtNameProduct.setText("");
-                        txtDescription.setText("");
-                        txtCostPrice.setText("");
-                        txtSalePrice.setText("");
-                        txtSalePrice1.setText("");
-                        txtSalePrice2.setText("");
-                        txtMinimum.setText("");
-                        rbUnit.setSelected(true);
-                        txtInventorySalePrice2.setText("");
+                        JOptionPane.showMessageDialog(null, "Producto " + txtNameProduct.getText() + " editado exitosamente", "Editar producto", JOptionPane.INFORMATION_MESSAGE);
+                        btnEdit.setBackground(new java.awt.Color(0, 166, 237));
+                        btnEdit.setEnabled(true);
                     }
                 }
 
@@ -411,15 +419,15 @@ public class PanelAddProduct extends javax.swing.JPanel {
                 }
             });
         } else {
-            JOptionPane.showMessageDialog(null, "Faltan campos obligatorios por llenar", "Crear producto", JOptionPane.ERROR_MESSAGE);
-            btnSave.setBackground(new java.awt.Color(0, 166, 237));
-            btnSave.setEnabled(true);
+            JOptionPane.showMessageDialog(null, "Faltan campos obligatorios por llenar", "Editar producto", JOptionPane.ERROR_MESSAGE);
+            btnEdit.setBackground(new java.awt.Color(0, 166, 237));
+            btnEdit.setEnabled(true);
         }
-    }//GEN-LAST:event_btnSaveActionPerformed
+    }//GEN-LAST:event_btnEditActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnEdit;
     private javax.swing.ButtonGroup buttonGroupUnit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

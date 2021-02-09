@@ -7,13 +7,22 @@ package com.mycompany.mavenproject1.products;
 
 import com.mycompany.mavenproject1.apiclient.ApiClient;
 import com.mycompany.mavenproject1.apiclient.ClassBase;
+import com.mycompany.mavenproject1.apiclient.products.AddProductRequest;
 import com.mycompany.mavenproject1.apiclient.products.ProductsResponse;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
+import com.mycompany.mavenproject1.utils.ForcedListSelectionModel;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
 import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.Color;
+import java.awt.Container;
+import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -93,6 +102,8 @@ public class PanelProducts extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         btnSearch = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
+        btnEdit = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         lblTotal = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -104,11 +115,11 @@ public class PanelProducts extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(1200, 110));
 
-        jLabel1.setText("Productos");
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel1.setText("Productos");
 
-        jLabel3.setText("Buscar:");
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel3.setText("Buscar:");
 
         btnSearch.setBackground(new java.awt.Color(0, 166, 237));
         btnSearch.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -121,6 +132,34 @@ public class PanelProducts extends javax.swing.JPanel {
 
         txtSearch.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtSearch.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
+
+        btnEdit.setBackground(new java.awt.Color(127, 184, 0));
+        btnEdit.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        btnEdit.setForeground(new java.awt.Color(255, 255, 255));
+        btnEdit.setText("Editar");
+        btnEdit.setMaximumSize(new java.awt.Dimension(93, 40));
+        btnEdit.setMinimumSize(new java.awt.Dimension(93, 40));
+        btnEdit.setPreferredSize(new java.awt.Dimension(93, 40));
+        btnEdit.setUI(new StyledButtonUI());
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
+
+        btnDelete.setBackground(new java.awt.Color(246, 81, 29));
+        btnDelete.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
+        btnDelete.setText("Eliminar");
+        btnDelete.setMaximumSize(new java.awt.Dimension(93, 40));
+        btnDelete.setMinimumSize(new java.awt.Dimension(93, 40));
+        btnDelete.setPreferredSize(new java.awt.Dimension(93, 40));
+        btnDelete.setUI(new StyledButtonUI());
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -135,8 +174,12 @@ public class PanelProducts extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(709, Short.MAX_VALUE))
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(470, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,7 +190,9 @@ public class PanelProducts extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -156,9 +201,9 @@ public class PanelProducts extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setPreferredSize(new java.awt.Dimension(1200, 45));
 
+        lblTotal.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         lblTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTotal.setText("Total de productos: 0");
-        lblTotal.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -205,6 +250,7 @@ public class PanelProducts extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblProducts.setSelectionModel(new ForcedListSelectionModel());
         jScrollPane1.setViewportView(tblProducts);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -227,8 +273,76 @@ public class PanelProducts extends javax.swing.JPanel {
         add(jPanel5, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        int column = 1;
+        int row = tblProducts.getSelectedRow();
+        String barcode = tblProducts.getModel().getValueAt(row, column).toString();
+
+        SQLiteJDBC sqlite = new SQLiteJDBC();
+        String token = sqlite.getToken();
+        Call<ProductsResponse> productResponseCall = ApiClient.getProductService().getProductByBarcodeWithQuantity(barcode, "Bearer " + token);
+
+        ProductsResponse product = null;
+        try {
+            product = productResponseCall.execute().body();
+        } catch (IOException ex) {
+            Logger.getLogger(PanelProducts.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (product != null) {
+            PanelEditProduct editCategory = new PanelEditProduct(product);
+            Container c = this.getParent();
+            c.removeAll();
+            c.add(editCategory);
+            c.validate();
+            c.repaint();
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        btnDelete.setBackground(Color.GRAY);
+        btnDelete.setEnabled(false);
+
+        int column = 2;
+        int row = tblProducts.getSelectedRow();
+        String nameProduct = tblProducts.getModel().getValueAt(row, column).toString();
+        column = 0;
+        int idProduct = Integer.valueOf(tblProducts.getModel().getValueAt(row, column).toString());
+
+        int input = JOptionPane.showConfirmDialog(null, "¿Seguro de eliminar el producto " + nameProduct + "?");
+
+        if (input == 0) {
+            SQLiteJDBC sqlite = new SQLiteJDBC();
+            String token = sqlite.getToken();
+
+            Call<ResponseBody> editProductResponseCall = ApiClient.getProductService().deleteProduct(idProduct, "Bearer " + token);
+            editProductResponseCall.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    if (response.isSuccessful()) {
+                        JOptionPane.showMessageDialog(null, "Producto " + nameProduct + " eliminado exitosamente", "Eliminar producto", JOptionPane.INFORMATION_MESSAGE);
+                        btnDelete.setBackground(new java.awt.Color(246, 81, 29));
+                        btnDelete.setEnabled(true);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    System.out.println(t.getLocalizedMessage());
+                }
+            });
+        } else {
+            btnDelete.setBackground(new java.awt.Color(246, 81, 29));
+            btnDelete.setEnabled(true);
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
