@@ -8,6 +8,7 @@ package com.mycompany.mavenproject1;
 import com.mycompany.mavenproject1.persons.DialogAddClient;
 import com.mycompany.mavenproject1.persons.PanelClients;
 import com.mycompany.mavenproject1.inventory.DialogAddInventory;
+import com.mycompany.mavenproject1.inventory.DialogRemoveInventory;
 import com.mycompany.mavenproject1.inventory.PanelKardexProduct;
 import com.mycompany.mavenproject1.products.DialogAddCategory;
 import com.mycompany.mavenproject1.products.PanelCategories;
@@ -18,7 +19,6 @@ import com.mycompany.mavenproject1.reports.PanelReportSales;
 import com.mycompany.mavenproject1.sell.DialogRefunds;
 import com.mycompany.mavenproject1.sell.DialogSearchProduct;
 import com.mycompany.mavenproject1.sell.PanelSell;
-import com.mycompany.mavenproject1.utils.StyledButtonUI;
 
 /**
  *
@@ -62,6 +62,7 @@ public class MainApplication extends javax.swing.JFrame {
         productsMenuItem = new javax.swing.JMenuItem();
         stockMenu = new javax.swing.JMenu();
         restockMenuItem = new javax.swing.JMenuItem();
+        removeInventoryMenuItem = new javax.swing.JMenuItem();
         kardexProductMenuItem = new javax.swing.JMenuItem();
         productsExpiryMenuItem = new javax.swing.JMenuItem();
         productsLowInvMenuItem = new javax.swing.JMenuItem();
@@ -210,6 +211,15 @@ public class MainApplication extends javax.swing.JFrame {
             }
         });
         stockMenu.add(restockMenuItem);
+
+        removeInventoryMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        removeInventoryMenuItem.setText("Quitar inventario a producto");
+        removeInventoryMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeInventoryMenuItemActionPerformed(evt);
+            }
+        });
+        stockMenu.add(removeInventoryMenuItem);
 
         kardexProductMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         kardexProductMenuItem.setText("Kardex de producto");
@@ -406,6 +416,13 @@ public class MainApplication extends javax.swing.JFrame {
         searchProduct.setVisible(true);
     }//GEN-LAST:event_SearchProductMenuItemActionPerformed
 
+    private void removeInventoryMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeInventoryMenuItemActionPerformed
+        // TODO add your handling code here:
+        DialogRemoveInventory removeInventory = new DialogRemoveInventory(this, true);
+        removeInventory.setLocationRelativeTo(null);
+        removeInventory.setVisible(true);
+    }//GEN-LAST:event_removeInventoryMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -459,6 +476,7 @@ public class MainApplication extends javax.swing.JFrame {
     private javax.swing.JMenuItem productsLowInvMenuItem;
     private javax.swing.JMenu productsMenu;
     private javax.swing.JMenuItem productsMenuItem;
+    private javax.swing.JMenuItem removeInventoryMenuItem;
     private javax.swing.JMenuItem repaymentMenuItem;
     private javax.swing.JMenuItem reportMovementsMenuItem;
     private javax.swing.JMenuItem restockMenuItem;

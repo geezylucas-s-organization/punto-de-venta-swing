@@ -6,6 +6,7 @@
 package com.mycompany.mavenproject1.apiclient.products;
 
 import com.mycompany.mavenproject1.apiclient.ClassBase;
+import com.mycompany.mavenproject1.apiclient.sells.ProductsSaleRequest;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -43,4 +44,8 @@ public interface ProductService {
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @POST("api/restock")
     Call<ResponseBody> addStock(@Body AddStockRequest addStock, @Header("Authorization") String authHeader);
+
+    @Headers({"Content-Type: application/json;charset=UTF-8"})
+    @POST("api/restock/removestock")
+    Call<ResponseBody> removeStock(@Body ProductsSaleRequest productSaleRequest, @Header("Authorization") String authHeader);
 }

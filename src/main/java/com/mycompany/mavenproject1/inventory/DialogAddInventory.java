@@ -39,7 +39,7 @@ public class DialogAddInventory extends javax.swing.JDialog {
         datePicker1.setEnabled(false);
         lblIdProduct.setVisible(false);
 
-        txtAdd.getDocument().addDocumentListener(new DocumentListener() {
+        txtQuantity.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void changedUpdate(DocumentEvent e) {
                 warn();
@@ -57,12 +57,12 @@ public class DialogAddInventory extends javax.swing.JDialog {
 
             public void warn() {
                 try {
-                    if (Integer.parseInt(txtAdd.getText()) <= 0) {
+                    if (Integer.parseInt(txtQuantity.getText()) <= 0) {
                         JOptionPane.showMessageDialog(null,
                                 "Error: Please enter number bigger than 0", "Error Massage",
                                 JOptionPane.ERROR_MESSAGE);
-                    } else if (Integer.parseInt(txtAdd.getText()) > 0) {
-                        lblTotal.setText(String.format("$%,.2f", (Double.valueOf(txtCostPrice.getText()) * Integer.valueOf(txtAdd.getText()))));
+                    } else if (Integer.parseInt(txtQuantity.getText()) > 0) {
+                        lblTotal.setText(String.format("$%,.2f", (Double.valueOf(txtCostPrice.getText()) * Integer.valueOf(txtQuantity.getText()))));
                     }
                 } catch (NumberFormatException e) {
                     lblTotal.setText("$0.00");
@@ -83,7 +83,7 @@ public class DialogAddInventory extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtAdd = new javax.swing.JTextField();
+        txtQuantity = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
@@ -118,7 +118,7 @@ public class DialogAddInventory extends javax.swing.JDialog {
         jLabel2.setText("Buscar:");
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        txtAdd.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
+        txtQuantity.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
 
         btnSearch.setText("Buscar");
         btnSearch.setBackground(new java.awt.Color(0, 166, 237));
@@ -146,7 +146,7 @@ public class DialogAddInventory extends javax.swing.JDialog {
         lblStock.setText("-");
         lblStock.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        jLabel5.setText("Agregar:");
+        jLabel5.setText("Cantidad:");
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         txtCodeProduct.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
@@ -248,22 +248,6 @@ public class DialogAddInventory extends javax.swing.JDialog {
                         .addComponent(lblStock, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jLabel5)
-                        .addGap(82, 82, 82)
-                        .addComponent(txtAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jCheckBox1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel6)
-                        .addGap(46, 46, 46)
-                        .addComponent(txtCostPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel11)
-                        .addGap(6, 6, 6)
-                        .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
                         .addComponent(jLabel7)
                         .addGap(45, 45, 45)
                         .addComponent(txtSalePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -284,7 +268,24 @@ public class DialogAddInventory extends javax.swing.JDialog {
                         .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(349, 349, 349)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5))
+                        .addGap(46, 46, 46)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jCheckBox1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtCostPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel11)
+                                .addGap(6, 6, 6)
+                                .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -313,8 +314,9 @@ public class DialogAddInventory extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(jLabel5))
-                    .addComponent(txtAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jCheckBox1)
+                        .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtCostPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -322,8 +324,9 @@ public class DialogAddInventory extends javax.swing.JDialog {
                         .addGap(2, 2, 2)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
-                            .addComponent(jLabel11)
-                            .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel11)))))
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -378,7 +381,7 @@ public class DialogAddInventory extends javax.swing.JDialog {
         // TODO add your handling code here:
         btnAdd.setBackground(Color.GRAY);
         btnAdd.setEnabled(false);
-        if (!txtAdd.getText().equals("") && !lblIdProduct.getText().equals("")) {
+        if (!txtQuantity.getText().equals("") && !lblIdProduct.getText().equals("")) {
             SQLiteJDBC sqlite = new SQLiteJDBC();
             String token = sqlite.getToken();
             Integer userId = sqlite.getUserId();
@@ -390,7 +393,7 @@ public class DialogAddInventory extends javax.swing.JDialog {
             // TODO: add person when necessary
             addStockRequest.setPersonId(1);
             addStockRequest.setProductId(Integer.valueOf(lblIdProduct.getText()));
-            addStockRequest.setQuantity(Integer.valueOf(txtAdd.getText()));
+            addStockRequest.setQuantity(Integer.valueOf(txtQuantity.getText()));
             addStockRequest.setDateExpiry(null);
             if (jCheckBox1.isSelected()) {
                 LocalDate pickerDate = datePicker1.getDate();
@@ -403,7 +406,7 @@ public class DialogAddInventory extends javax.swing.JDialog {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     if (response.isSuccessful()) {
-                        JOptionPane.showMessageDialog(null, "Se agregó " + txtAdd.getText() + " productos a " + lblName.getText() + " exitosamente", "Agregar inventario", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Se agregó " + txtQuantity.getText() + " productos a " + lblName.getText() + " exitosamente", "Agregar inventario", JOptionPane.INFORMATION_MESSAGE);
                         btnAdd.setBackground(new java.awt.Color(0, 166, 237));
                         btnAdd.setEnabled(true);
 
@@ -411,7 +414,7 @@ public class DialogAddInventory extends javax.swing.JDialog {
                         datePicker1.setDate(null);
                         datePicker1.setEnabled(false);
                         txtCodeProduct.setText("");
-                        txtAdd.setText("");
+                        txtQuantity.setText("");
                         lblIdProduct.setText("");
                         lblName.setText("-");
                         lblStock.setText("-");
@@ -471,7 +474,7 @@ public class DialogAddInventory extends javax.swing.JDialog {
                         datePicker1.setDate(null);
                         datePicker1.setEnabled(false);
                         txtCodeProduct.setText("");
-                        txtAdd.setText("");
+                        txtQuantity.setText("");
                         lblIdProduct.setText("");
                         lblName.setText("-");
                         lblStock.setText("-");
@@ -559,9 +562,9 @@ public class DialogAddInventory extends javax.swing.JDialog {
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblStock;
     private javax.swing.JLabel lblTotal;
-    private javax.swing.JTextField txtAdd;
     private javax.swing.JTextField txtCodeProduct;
     private javax.swing.JTextField txtCostPrice;
+    private javax.swing.JTextField txtQuantity;
     private javax.swing.JTextField txtSalePrice;
     private javax.swing.JTextField txtSalePrice1;
     private javax.swing.JTextField txtSalePrice2;
