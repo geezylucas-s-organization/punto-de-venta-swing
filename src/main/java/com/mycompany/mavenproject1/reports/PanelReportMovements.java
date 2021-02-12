@@ -10,8 +10,6 @@ import com.mycompany.mavenproject1.apiclient.ClassBase;
 import com.mycompany.mavenproject1.apiclient.sells.MovementsResponse;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
-import com.mycompany.mavenproject1.utils.TextBubbleBorder;
-import java.awt.Color;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import retrofit2.Call;
@@ -117,12 +115,10 @@ public class PanelReportMovements extends javax.swing.JPanel {
         datePicker1.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         datePicker1.setMinimumSize(new java.awt.Dimension(174, 30));
         datePicker1.setPreferredSize(new java.awt.Dimension(174, 30));
-        datePicker1.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         datePicker2.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         datePicker2.setMinimumSize(new java.awt.Dimension(174, 30));
         datePicker2.setPreferredSize(new java.awt.Dimension(174, 30));
-        datePicker2.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         jLabel4.setText("Inicio:");
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -138,7 +134,6 @@ public class PanelReportMovements extends javax.swing.JPanel {
         jComboBox1.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         jComboBox1.setMinimumSize(new java.awt.Dimension(69, 30));
         jComboBox1.setPreferredSize(new java.awt.Dimension(69, 30));
-        jComboBox1.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

@@ -9,7 +9,6 @@ import com.mycompany.mavenproject1.apiclient.ApiClient;
 import com.mycompany.mavenproject1.apiclient.products.ProductsResponse;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
-import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import retrofit2.Call;
@@ -67,7 +66,6 @@ public class DialogSearchProduct extends javax.swing.JDialog {
         jLabel3.setText("Buscar:");
 
         txtSearch.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtSearch.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSearchActionPerformed(evt);

@@ -10,7 +10,6 @@ import com.mycompany.mavenproject1.apiclient.ApiClient;
 import com.mycompany.mavenproject1.apiclient.auth.AuthRequest;
 import com.mycompany.mavenproject1.apiclient.auth.AuthResponse;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
-import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.Color;
 import java.awt.Image;
 import java.math.BigDecimal;
@@ -69,19 +68,18 @@ public class LoginForm extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Comenzar un nuevo corte");
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel2.setText("Usuario:");
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        txtUsername.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
         txtUsername.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel3.setText("Contraseña:");
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         btnIngresar.setBackground(new java.awt.Color(0, 166, 237));
         btnIngresar.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -97,13 +95,11 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
 
-        txtPassword.setBorder(new TextBubbleBorder(Color.BLACK, 1, 4, 0));
         txtPassword.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel4.setText("Dinero en caja:");
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        txtCashInBox.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
         txtCashInBox.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

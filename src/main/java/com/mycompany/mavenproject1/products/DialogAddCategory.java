@@ -9,7 +9,6 @@ import com.mycompany.mavenproject1.apiclient.ApiClient;
 import com.mycompany.mavenproject1.apiclient.products.AddCategoryRequest;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
-import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import okhttp3.ResponseBody;
@@ -79,7 +78,6 @@ public class DialogAddCategory extends javax.swing.JDialog {
         jPanel1.add(jLabel2, gridBagConstraints);
 
         txtName.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtName.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -122,7 +120,6 @@ public class DialogAddCategory extends javax.swing.JDialog {
         jPanel1.add(btnSave, gridBagConstraints);
 
         txtDescription.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtDescription.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;

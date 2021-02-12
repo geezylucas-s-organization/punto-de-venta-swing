@@ -7,16 +7,13 @@ package com.mycompany.mavenproject1.products;
 
 import com.mycompany.mavenproject1.apiclient.ApiClient;
 import com.mycompany.mavenproject1.apiclient.ClassBase;
-import com.mycompany.mavenproject1.apiclient.products.AddProductRequest;
 import com.mycompany.mavenproject1.apiclient.products.ProductsResponse;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.ForcedListSelectionModel;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
-import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.Color;
 import java.awt.Container;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -131,7 +128,6 @@ public class PanelProducts extends javax.swing.JPanel {
         btnSearch.setUI(new StyledButtonUI());
 
         txtSearch.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtSearch.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         btnEdit.setBackground(new java.awt.Color(127, 184, 0));
         btnEdit.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N

@@ -6,8 +6,6 @@
 package com.mycompany.mavenproject1.inventory;
 
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
-import com.mycompany.mavenproject1.utils.TextBubbleBorder;
-import java.awt.Color;
 
 /**
  *
@@ -67,17 +65,14 @@ public class PanelKardexProduct extends javax.swing.JPanel {
         btnSearch.setUI(new StyledButtonUI());
 
         txtSearch.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtSearch.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         datePicker1.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        datePicker1.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
         datePicker1.setMinimumSize(new java.awt.Dimension(174, 30));
         datePicker1.setPreferredSize(new java.awt.Dimension(174, 30));
 
         datePicker2.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         datePicker2.setMinimumSize(new java.awt.Dimension(174, 30));
         datePicker2.setPreferredSize(new java.awt.Dimension(174, 30));
-        datePicker2.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         jLabel4.setText("Inicio:");
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N

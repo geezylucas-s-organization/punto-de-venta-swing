@@ -9,7 +9,6 @@ import com.mycompany.mavenproject1.apiclient.ApiClient;
 import com.mycompany.mavenproject1.apiclient.sells.SaleRequest;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
-import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.Color;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -149,7 +148,6 @@ public class DialogSaleConfirm extends javax.swing.JDialog {
         });
 
         txtMoney.setFont(new java.awt.Font("SansSerif", 0, 35)); // NOI18N
-        txtMoney.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

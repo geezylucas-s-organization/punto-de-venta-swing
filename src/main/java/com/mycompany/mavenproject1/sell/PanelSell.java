@@ -11,13 +11,13 @@ import com.mycompany.mavenproject1.apiclient.sells.ProductsSaleRequest;
 import com.mycompany.mavenproject1.apiclient.sells.SaleRequest;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
-import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Window;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLabel;
@@ -88,11 +88,10 @@ public class PanelSell extends javax.swing.JPanel {
         jPanel1.setFont(new java.awt.Font("Nadeem", 0, 18)); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(1200, 110));
 
-        lblCodeProduct.setText("Código de producto:");
         lblCodeProduct.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        lblCodeProduct.setText("Código de producto:");
 
         txtCodeProduct.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtCodeProduct.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
         txtCodeProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodeProductActionPerformed(evt);
@@ -113,8 +112,8 @@ public class PanelSell extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setText("Venta Ticket #1");
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel3.setText("Venta Ticket #1");
 
         btnRemoveProduct.setBackground(new java.awt.Color(246, 81, 29));
         btnRemoveProduct.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -184,9 +183,9 @@ public class PanelSell extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(1200, 150));
 
-        btnCharge.setText("Cobrar");
         btnCharge.setBackground(new java.awt.Color(255, 180, 0));
         btnCharge.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
+        btnCharge.setText("Cobrar");
         btnCharge.setUI(new StyledButtonUI());
         btnCharge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,26 +193,26 @@ public class PanelSell extends javax.swing.JPanel {
             }
         });
 
-        lblTotalMoney.setText("$0.00");
         lblTotalMoney.setFont(new java.awt.Font("SansSerif", 1, 48)); // NOI18N
+        lblTotalMoney.setText("$0.00");
 
+        lblTotalProducts.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         lblTotalProducts.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTotalProducts.setText("Total productos: 0");
-        lblTotalProducts.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
 
-        jLabel2.setText("Funciones adicionales:");
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel2.setText("Funciones adicionales:");
 
-        btnPendingSell.setText("Venta pendiente");
         btnPendingSell.setBackground(new java.awt.Color(127, 184, 0));
         btnPendingSell.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnPendingSell.setForeground(new java.awt.Color(255, 255, 255));
+        btnPendingSell.setText("Venta pendiente");
         btnPendingSell.setUI(new StyledButtonUI());
 
-        btnPendingSells.setText("Pendientes");
         btnPendingSells.setBackground(new java.awt.Color(127, 184, 0));
         btnPendingSells.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnPendingSells.setForeground(new java.awt.Color(255, 255, 255));
+        btnPendingSells.setText("Pendientes");
         btnPendingSells.setUI(new StyledButtonUI());
 
         btnAssignClient.setBackground(new java.awt.Color(127, 184, 0));
@@ -447,7 +446,6 @@ public class PanelSell extends javax.swing.JPanel {
         jPanelDialogSome.add(jLabel3DialogSome, gridBagConstraints);
 
         txtCodeProductDialogSome.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtCodeProductDialogSome.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -478,7 +476,6 @@ public class PanelSell extends javax.swing.JPanel {
         jPanelDialogSome.add(jLabel4DialogSome, gridBagConstraints);
 
         txtQuantityDialogSome.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtQuantityDialogSome.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;

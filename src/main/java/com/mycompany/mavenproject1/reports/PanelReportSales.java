@@ -6,9 +6,7 @@
 package com.mycompany.mavenproject1.reports;
 
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
-import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -183,7 +181,6 @@ public class PanelReportSales extends javax.swing.JPanel {
         datePicker1.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         datePicker1.setMinimumSize(new java.awt.Dimension(174, 30));
         datePicker1.setPreferredSize(new java.awt.Dimension(174, 30));
-        datePicker1.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         jLabel5.setText("Inicio:");
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -194,7 +191,6 @@ public class PanelReportSales extends javax.swing.JPanel {
         datePicker2.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         datePicker2.setMinimumSize(new java.awt.Dimension(174, 30));
         datePicker2.setPreferredSize(new java.awt.Dimension(174, 30));
-        datePicker2.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         btnSearch.setText("Buscar");
         btnSearch.setBackground(new java.awt.Color(0, 166, 237));
@@ -358,51 +354,51 @@ public class PanelReportSales extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel26.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel26.setText("Ventas por día");
+        jLabel26.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel26.setToolTipText("");
 
-        jLabel27.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel27.setText("Lunes:");
+        jLabel27.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        jLabel28.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel28.setText("18");
+        jLabel28.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        jLabel29.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel29.setText("18");
+        jLabel29.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        jLabel30.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel30.setText("Martes:");
+        jLabel30.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        jLabel31.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel31.setText("18");
+        jLabel31.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        jLabel32.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel32.setText("Miércoles:");
+        jLabel32.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        jLabel33.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel33.setText("18");
+        jLabel33.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        jLabel34.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel34.setText("Jueves:");
+        jLabel34.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        jLabel35.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel35.setText("18");
+        jLabel35.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        jLabel36.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel36.setText("Viernes:");
+        jLabel36.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        jLabel37.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel37.setText("18");
+        jLabel37.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        jLabel38.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel38.setText("Sábado:");
+        jLabel38.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        jLabel39.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel39.setText("18");
+        jLabel39.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        jLabel40.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel40.setText("Domingo");
+        jLabel40.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);

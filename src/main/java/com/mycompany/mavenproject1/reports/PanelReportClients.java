@@ -6,8 +6,6 @@
 package com.mycompany.mavenproject1.reports;
 
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
-import com.mycompany.mavenproject1.utils.TextBubbleBorder;
-import java.awt.Color;
 
 /**
  *
@@ -48,11 +46,11 @@ public class PanelReportClients extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(1200, 110));
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setText("Reporte de ventas por clientes");
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel3.setText("Buscar:");
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         btnSearch.setBackground(new java.awt.Color(0, 166, 237));
         btnSearch.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -64,7 +62,6 @@ public class PanelReportClients extends javax.swing.JPanel {
         btnSearch.setUI(new StyledButtonUI());
 
         txtSearch.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtSearch.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -100,9 +97,9 @@ public class PanelReportClients extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setPreferredSize(new java.awt.Dimension(1200, 45));
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Total de clientes: 0");
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);

@@ -5,10 +5,6 @@
  */
 package com.mycompany.mavenproject1.sell;
 
-import com.mycompany.mavenproject1.utils.StyledButtonUI;
-import com.mycompany.mavenproject1.utils.TextBubbleBorder;
-import java.awt.Color;
-
 /**
  *
  * @author Gerardo-PC
@@ -56,7 +52,6 @@ public class NewJDialog extends javax.swing.JDialog {
         jPanelDialogSome.add(jLabel3DialogSome, gridBagConstraints);
 
         txtCodeProductlDialogSome.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtCodeProductlDialogSome.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -87,7 +82,6 @@ public class NewJDialog extends javax.swing.JDialog {
         jPanelDialogSome.add(jLabel4DialogSome, gridBagConstraints);
 
         txtQuantitylDialogSome.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtCodeProductlDialogSome.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;

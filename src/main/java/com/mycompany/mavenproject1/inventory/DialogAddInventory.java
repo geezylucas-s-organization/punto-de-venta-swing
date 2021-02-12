@@ -10,7 +10,6 @@ import com.mycompany.mavenproject1.apiclient.products.AddStockRequest;
 import com.mycompany.mavenproject1.apiclient.products.ProductsResponse;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
-import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -120,7 +119,6 @@ public class DialogAddInventory extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         txtAdd.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtAdd.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         btnSearch.setText("Buscar");
         btnSearch.setBackground(new java.awt.Color(0, 166, 237));
@@ -152,7 +150,6 @@ public class DialogAddInventory extends javax.swing.JDialog {
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         txtCodeProduct.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtCodeProduct.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
         txtCodeProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodeProductActionPerformed(evt);
@@ -163,28 +160,24 @@ public class DialogAddInventory extends javax.swing.JDialog {
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         txtCostPrice.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtCostPrice.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
         txtCostPrice.setEditable(false);
 
         jLabel7.setText("Precio venta:");
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         txtSalePrice.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtSalePrice.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
         txtSalePrice.setEditable(false);
 
         jLabel8.setText("Precio dinámico:");
         jLabel8.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         txtSalePrice1.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtSalePrice1.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
         txtSalePrice1.setEditable(false);
 
         jLabel9.setText("Precio mayoreo:");
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         txtSalePrice2.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtSalePrice2.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
         txtSalePrice2.setEditable(false);
 
         jLabel10.setText("Total:");
@@ -222,7 +215,6 @@ public class DialogAddInventory extends javax.swing.JDialog {
         datePicker1.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         datePicker1.setMinimumSize(new java.awt.Dimension(174, 30));
         datePicker1.setPreferredSize(new java.awt.Dimension(174, 30));
-        datePicker1.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         lblIdProduct.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 

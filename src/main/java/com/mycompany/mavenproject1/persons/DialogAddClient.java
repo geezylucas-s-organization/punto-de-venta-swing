@@ -9,7 +9,6 @@ import com.mycompany.mavenproject1.apiclient.ApiClient;
 import com.mycompany.mavenproject1.apiclient.persons.PersonsResponse;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
-import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import okhttp3.ResponseBody;
@@ -67,25 +66,21 @@ public class DialogAddClient extends javax.swing.JDialog {
         jLabel5.setText("Nombre:");
 
         txtName.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtName.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel6.setText("Apellidos:");
 
         txtLastname.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtLastname.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel7.setText("Teléfono:");
 
         txtPhoneNumber.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtPhoneNumber.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel8.setText("Email:");
 
         txtEmail.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtEmail.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         btnSave.setBackground(new java.awt.Color(0, 166, 237));
         btnSave.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N

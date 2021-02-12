@@ -11,7 +11,6 @@ import com.mycompany.mavenproject1.apiclient.products.ProductsResponse;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.MaxLengthTextDocument;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
-import com.mycompany.mavenproject1.utils.TextBubbleBorder;
 import java.awt.Color;
 import java.math.BigDecimal;
 import javax.swing.JOptionPane;
@@ -145,10 +144,8 @@ public class PanelEditProduct extends javax.swing.JPanel {
         jPanel2.setPreferredSize(new java.awt.Dimension(1200, 580));
 
         txtNameProduct.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtNameProduct.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         txtSalePrice1.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtSalePrice1.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel10.setText("Mínimo en inventario:");
@@ -159,16 +156,13 @@ public class PanelEditProduct extends javax.swing.JPanel {
         jLabel6.setText("Precio venta dinámico:");
 
         txtCostPrice.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtCostPrice.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setText("Editar producto");
 
         txtMinimum.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtMinimum.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         txtSalePrice2.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtSalePrice2.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel12.setText("Se vende:");
@@ -192,7 +186,6 @@ public class PanelEditProduct extends javax.swing.JPanel {
         rbPackage.setText("Paquete");
 
         txtBarcode.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtBarcode.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
         txtBarcode.setEditable(false);
 
         rbBulk.setBackground(new java.awt.Color(255, 255, 255));
@@ -204,7 +197,6 @@ public class PanelEditProduct extends javax.swing.JPanel {
         jLabel8.setText("Departamento:");
 
         txtDescription.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtDescription.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel4.setText("Precio costo:");
@@ -216,7 +208,6 @@ public class PanelEditProduct extends javax.swing.JPanel {
         jLabel13.setText("Descripción:");
 
         txtSalePrice.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtSalePrice.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         lblDepartament.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         lblDepartament.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -230,7 +221,6 @@ public class PanelEditProduct extends javax.swing.JPanel {
         jLabel9.setPreferredSize(new java.awt.Dimension(181, 26));
 
         txtInventorySalePrice2.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        txtInventorySalePrice2.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

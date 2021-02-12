@@ -93,9 +93,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodeProductActionPerformed"/>
           </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="txtCodeProduct.setBorder(new TextBubbleBorder(Color.BLACK, 1, 3, 0));"/>
-          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="btnAddProduct">
           <Properties>
