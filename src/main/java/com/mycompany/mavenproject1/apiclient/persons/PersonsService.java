@@ -13,6 +13,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 /**
  *
@@ -22,8 +23,11 @@ public interface PersonsService {
 
     @GET("api/fillcatalogs/clients")
     Call<ClassBase<PersonsResponse>> getClients(@Header("Authorization") String authHeader);
-    
+
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @POST("api/fillcatalogs/persons")
     Call<ResponseBody> addClient(@Body PersonsResponse newClient, @Header("Authorization") String authHeader);
+
+    @GET("api/fillcatalogs/clients/{id}")
+    Call<PersonsResponse> getClientById(@Path("id") int id, @Header("Authorization") String authHeader);
 }

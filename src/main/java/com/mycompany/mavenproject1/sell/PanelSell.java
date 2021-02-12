@@ -6,6 +6,7 @@
 package com.mycompany.mavenproject1.sell;
 
 import com.mycompany.mavenproject1.apiclient.ApiClient;
+import com.mycompany.mavenproject1.apiclient.persons.PersonsResponse;
 import com.mycompany.mavenproject1.apiclient.products.ProductsResponse;
 import com.mycompany.mavenproject1.apiclient.sells.ProductsSaleRequest;
 import com.mycompany.mavenproject1.apiclient.sells.SaleRequest;
@@ -17,7 +18,6 @@ import java.awt.Window;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLabel;
@@ -36,7 +36,9 @@ import retrofit2.Response;
  * @author geezylucas
  */
 public class PanelSell extends javax.swing.JPanel {
-
+    
+    private int folioClient = 2;
+    
     public void getTxtCodeProduct() {
         txtCodeProduct.requestFocusInWindow();
     }
@@ -69,6 +71,7 @@ public class PanelSell extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         btnRemoveProduct = new javax.swing.JButton();
         btnSomeProducts = new javax.swing.JButton();
+        lblClient = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnCharge = new javax.swing.JButton();
         lblTotalMoney = new javax.swing.JLabel();
@@ -143,6 +146,10 @@ public class PanelSell extends javax.swing.JPanel {
             }
         });
 
+        lblClient.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        lblClient.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblClient.setText("Cliente: Anónimo");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -159,15 +166,21 @@ public class PanelSell extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btnRemoveProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSomeProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3))
-                .addContainerGap(287, Short.MAX_VALUE))
+                        .addComponent(btnSomeProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 281, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblClient, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(lblClient))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCodeProduct)
@@ -175,7 +188,7 @@ public class PanelSell extends javax.swing.JPanel {
                     .addComponent(btnAddProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRemoveProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSomeProducts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
@@ -223,6 +236,11 @@ public class PanelSell extends javax.swing.JPanel {
         btnAssignClient.setMinimumSize(new java.awt.Dimension(165, 40));
         btnAssignClient.setPreferredSize(new java.awt.Dimension(165, 40));
         btnAssignClient.setUI(new StyledButtonUI());
+        btnAssignClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignClientActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -339,12 +357,12 @@ public class PanelSell extends javax.swing.JPanel {
             SQLiteJDBC sqlite = new SQLiteJDBC();
             Integer userId = sqlite.getUserId();
             Integer boxId = sqlite.getBoxId();
-
+            
             SaleRequest saleRequest = new SaleRequest();
             saleRequest.setUserId(userId);
             saleRequest.setBoxId(boxId);
             //TODO: add assign client
-            saleRequest.setPersonId(2);
+            saleRequest.setPersonId(this.folioClient);
             saleRequest.setTotal(new BigDecimal(lblTotalMoney.getText().substring(1)));
             List<ProductsSaleRequest> productsSale = new ArrayList<>();
             for (int i = 0; i < tblProducts.getRowCount(); i++) {
@@ -354,7 +372,7 @@ public class PanelSell extends javax.swing.JPanel {
                 productsSale.add(product);
             }
             saleRequest.setProducts(productsSale);
-
+            
             Window parentWindow = SwingUtilities.windowForComponent(this);
             // or pass 'this' if you are inside the panel
             Frame parentFrame = null;
@@ -364,7 +382,7 @@ public class PanelSell extends javax.swing.JPanel {
             DialogSaleConfirm saleConfirm = new DialogSaleConfirm(parentFrame, true, saleRequest);
             saleConfirm.setLocationRelativeTo(null);
             saleConfirm.setVisible(true);
-
+            
             saleConfirm.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
@@ -374,7 +392,7 @@ public class PanelSell extends javax.swing.JPanel {
             txtCodeProduct.requestFocusInWindow();
         }
     }//GEN-LAST:event_btnChargeActionPerformed
-
+    
     private void refresh() {
         txtCodeProduct.requestFocusInWindow();
         DefaultTableModel model = (DefaultTableModel) this.tblProducts.getModel();
@@ -384,6 +402,8 @@ public class PanelSell extends javax.swing.JPanel {
         }
         lblTotalProducts.setText("Total productos: 0");
         lblTotalMoney.setText("$0.00");
+        this.folioClient = 2;
+        lblClient.setText("Cliente: Anónimo");
     }
 
     private void btnAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductActionPerformed
@@ -403,20 +423,8 @@ public class PanelSell extends javax.swing.JPanel {
         for (int i = 0; i < rows.length; i++) {
             model.removeRow(rows[i] - i);
         }
-        int totalProducts = 0;
-        BigDecimal totalMoney = new BigDecimal(0);
-        for (int i = 0; i < tblProducts.getRowCount(); i++) {//For each row
-            totalProducts += (int) tblProducts.getValueAt(i, 4);
-            String value = String.valueOf(tblProducts.getValueAt(i, 5));
-            totalMoney = totalMoney.add(new BigDecimal(value));
-        }//For loop outer   
-        if (totalProducts == 0) {
-            lblTotalProducts.setText("Total productos: 0");
-            lblTotalMoney.setText("$0.00");
-        } else {
-            lblTotalProducts.setText("Total productos: " + totalProducts);
-            lblTotalMoney.setText("$" + totalMoney);
-        }
+        
+        refreshTotals();
         txtCodeProduct.requestFocusInWindow();
     }//GEN-LAST:event_btnRemoveProductActionPerformed
 
@@ -424,17 +432,17 @@ public class PanelSell extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         java.awt.GridBagConstraints gridBagConstraints;
-
+        
         JPanel jPanelDialogSome = new javax.swing.JPanel();
         JLabel jLabel3DialogSome = new javax.swing.JLabel();
         JTextField txtCodeProductDialogSome = new javax.swing.JTextField();
         JLabel jLabel1DialogSome = new javax.swing.JLabel();
         JLabel jLabel4DialogSome = new javax.swing.JLabel();
         JTextField txtQuantityDialogSome = new javax.swing.JTextField();
-
+        
         jPanelDialogSome.setBackground(new java.awt.Color(255, 255, 255));
         jPanelDialogSome.setLayout(new java.awt.GridBagLayout());
-
+        
         jLabel3DialogSome.setText("Código del producto:");
         jLabel3DialogSome.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -444,7 +452,7 @@ public class PanelSell extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(26, 6, 0, 0);
         jPanelDialogSome.add(jLabel3DialogSome, gridBagConstraints);
-
+        
         txtCodeProductDialogSome.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -455,7 +463,7 @@ public class PanelSell extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(24, 6, 0, 0);
         jPanelDialogSome.add(txtCodeProductDialogSome, gridBagConstraints);
-
+        
         jLabel1DialogSome.setText("Agregar varios productos:");
         jLabel1DialogSome.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -465,7 +473,7 @@ public class PanelSell extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 0);
         jPanelDialogSome.add(jLabel1DialogSome, gridBagConstraints);
-
+        
         jLabel4DialogSome.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel4DialogSome.setText("Cantidad:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -474,7 +482,7 @@ public class PanelSell extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 6, 0, 0);
         jPanelDialogSome.add(jLabel4DialogSome, gridBagConstraints);
-
+        
         txtQuantityDialogSome.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -485,10 +493,10 @@ public class PanelSell extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 6, 6, 0);
         jPanelDialogSome.add(txtQuantityDialogSome, gridBagConstraints);
-
+        
         UIManager.put("OptionPane.background", Color.white);
         UIManager.put("Panel.background", Color.white);
-
+        
         final Object[] options = {"Agregar", "Cancelar"};
         int result = JOptionPane.showOptionDialog(null, jPanelDialogSome, null, JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
         if (result == 0) {
@@ -496,6 +504,84 @@ public class PanelSell extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnSomeProductsActionPerformed
 
+    private void btnAssignClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignClientActionPerformed
+        // TODO add your handling code here:
+        java.awt.GridBagConstraints gridBagConstraints;
+        
+        JPanel jPanelDialogAssign = new javax.swing.JPanel();
+        JLabel jLabelAssign = new javax.swing.JLabel();
+        JTextField txtFolioAssign = new javax.swing.JTextField();
+        JLabel jLabel1Assign = new javax.swing.JLabel();
+        
+        jPanelDialogAssign.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelDialogAssign.setLayout(new java.awt.GridBagLayout());
+        
+        jLabelAssign.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabelAssign.setText("Folio:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(26, 6, 0, 0);
+        jPanelDialogAssign.add(jLabelAssign, gridBagConstraints);
+        
+        txtFolioAssign.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 236;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(24, 6, 0, 0);
+        jPanelDialogAssign.add(txtFolioAssign, gridBagConstraints);
+        
+        jLabel1Assign.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel1Assign.setText("Asignar venta a cliente:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 0);
+        jPanelDialogAssign.add(jLabel1Assign, gridBagConstraints);
+        
+        UIManager.put("OptionPane.background", Color.white);
+        UIManager.put("Panel.background", Color.white);
+        
+        final Object[] options = {"Agregar", "Cancelar"};
+        int result = JOptionPane.showOptionDialog(null, jPanelDialogAssign, null, JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
+        if (result == 0) {
+            searchClient(Integer.valueOf(txtFolioAssign.getText()));
+        }
+    }//GEN-LAST:event_btnAssignClientActionPerformed
+    
+    private void searchClient(int id) {
+        SQLiteJDBC sqlite = new SQLiteJDBC();
+        String token = sqlite.getToken();
+        Call<PersonsResponse> clientResponseCall = ApiClient.getPersonsService().getClientById(id, "Bearer " + token);
+        clientResponseCall.enqueue(new Callback<PersonsResponse>() {
+            @Override
+            public void onResponse(Call<PersonsResponse> call, Response<PersonsResponse> response) {
+                if (response.isSuccessful()) {
+                    PersonsResponse clientResponse = response.body();
+                    if (clientResponse != null) {
+                        folioClient = clientResponse.getId();
+                        lblClient.setText("Cliente: " + clientResponse.getName() + " " + clientResponse.getLastname());
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, String.format("No existe el cliente con folio: %d", id), "Error asignar cliente", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            
+            @Override
+            public void onFailure(Call<PersonsResponse> call, Throwable t) {
+                System.out.println(t.getLocalizedMessage());
+            }
+        });
+    }
+    
     private void addProduct() {
         if (!txtCodeProduct.getText().equals("")) {
             btnAddProduct.setBackground(Color.GRAY);
@@ -569,7 +655,7 @@ public class PanelSell extends javax.swing.JPanel {
                     btnAddProduct.setBackground(new java.awt.Color(0, 166, 237));
                     btnAddProduct.setEnabled(true);
                 }
-
+                
                 @Override
                 public void onFailure(Call<ProductsResponse> call, Throwable t) {
                     System.out.println(t.getLocalizedMessage());
@@ -578,7 +664,7 @@ public class PanelSell extends javax.swing.JPanel {
             );
         }
     }
-
+    
     private void addSomeProduct(String codeProduct, int newQuantity) {
         SQLiteJDBC sqlite = new SQLiteJDBC();
         String token = sqlite.getToken();
@@ -651,11 +737,11 @@ public class PanelSell extends javax.swing.JPanel {
                 } else {
                     JOptionPane.showMessageDialog(null, "No existe el producto", "Producto", JOptionPane.ERROR_MESSAGE);
                 }
-
+                
                 txtCodeProduct.requestFocusInWindow();
                 refreshTotals();
             }
-
+            
             @Override
             public void onFailure(Call<ProductsResponse> call, Throwable t) {
                 System.out.println(t.getLocalizedMessage());
@@ -663,7 +749,7 @@ public class PanelSell extends javax.swing.JPanel {
         }
         );
     }
-
+    
     private void refreshTotals() {
         int totalProducts = 0;
         BigDecimal totalMoney = new BigDecimal(0);
@@ -672,8 +758,13 @@ public class PanelSell extends javax.swing.JPanel {
             String value = String.valueOf(tblProducts.getValueAt(i, 5));
             totalMoney = totalMoney.add(new BigDecimal(value));
         }//For loop outer   
-        lblTotalProducts.setText("Total productos: " + totalProducts);
-        lblTotalMoney.setText("$" + totalMoney);
+        if (totalProducts == 0) {
+            lblTotalProducts.setText("Total productos: 0");
+            lblTotalMoney.setText("$0.00");
+        } else {
+            lblTotalProducts.setText("Total productos: " + totalProducts);
+            lblTotalMoney.setText("$" + totalMoney);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -691,6 +782,7 @@ public class PanelSell extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblClient;
     private javax.swing.JLabel lblCodeProduct;
     private javax.swing.JLabel lblTotalMoney;
     private javax.swing.JLabel lblTotalProducts;

@@ -5,15 +5,12 @@
  */
 package com.mycompany.mavenproject1.inventory;
 
-import com.mycompany.mavenproject1.apiclient.ApiClient;
-import com.mycompany.mavenproject1.apiclient.products.AddStockRequest;
+import com.mycompany.mavenproject1.apiclient.ApiClient;  
 import com.mycompany.mavenproject1.apiclient.products.ProductsResponse;
 import com.mycompany.mavenproject1.apiclient.sells.ProductsSaleRequest;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
 import java.awt.Color;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -243,7 +240,7 @@ public class DialogRemoveInventory extends javax.swing.JDialog {
                         lblName.setText("-");
                         lblStock.setText("-");
                     }
-                }
+                } 
 
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {

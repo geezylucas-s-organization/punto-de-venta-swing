@@ -29,29 +29,27 @@ public class NewJDialog extends javax.swing.JDialog {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanelDialogSome = new javax.swing.JPanel();
-        jLabel3DialogSome = new javax.swing.JLabel();
-        txtCodeProductlDialogSome = new javax.swing.JTextField();
-        jLabel1DialogSome = new javax.swing.JLabel();
-        jLabel4DialogSome = new javax.swing.JLabel();
-        txtQuantitylDialogSome = new javax.swing.JTextField();
+        jPanelDialogAssign = new javax.swing.JPanel();
+        jLabelAssign = new javax.swing.JLabel();
+        txtFolioAssign = new javax.swing.JTextField();
+        jLabel1Assign = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanelDialogSome.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelDialogSome.setLayout(new java.awt.GridBagLayout());
+        jPanelDialogAssign.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelDialogAssign.setLayout(new java.awt.GridBagLayout());
 
-        jLabel3DialogSome.setText("Código del producto:");
-        jLabel3DialogSome.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabelAssign.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabelAssign.setText("Folio:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(26, 6, 0, 0);
-        jPanelDialogSome.add(jLabel3DialogSome, gridBagConstraints);
+        jPanelDialogAssign.add(jLabelAssign, gridBagConstraints);
 
-        txtCodeProductlDialogSome.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
+        txtFolioAssign.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -60,47 +58,27 @@ public class NewJDialog extends javax.swing.JDialog {
         gridBagConstraints.ipadx = 236;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(24, 6, 0, 0);
-        jPanelDialogSome.add(txtCodeProductlDialogSome, gridBagConstraints);
+        jPanelDialogAssign.add(txtFolioAssign, gridBagConstraints);
 
-        jLabel1DialogSome.setText("Agregar varios productos:");
-        jLabel1DialogSome.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel1Assign.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel1Assign.setText("Asignar venta a cliente:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 0);
-        jPanelDialogSome.add(jLabel1DialogSome, gridBagConstraints);
-
-        jLabel4DialogSome.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel4DialogSome.setText("Cantidad:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 6, 0, 0);
-        jPanelDialogSome.add(jLabel4DialogSome, gridBagConstraints);
-
-        txtQuantitylDialogSome.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 236;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 6, 6, 0);
-        jPanelDialogSome.add(txtQuantitylDialogSome, gridBagConstraints);
+        jPanelDialogAssign.add(jLabel1Assign, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelDialogSome, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
+            .addComponent(jPanelDialogAssign, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelDialogSome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelDialogAssign, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -149,11 +127,9 @@ public class NewJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1DialogSome;
-    private javax.swing.JLabel jLabel3DialogSome;
-    private javax.swing.JLabel jLabel4DialogSome;
-    private javax.swing.JPanel jPanelDialogSome;
-    private javax.swing.JTextField txtCodeProductlDialogSome;
-    private javax.swing.JTextField txtQuantitylDialogSome;
+    private javax.swing.JLabel jLabel1Assign;
+    private javax.swing.JLabel jLabelAssign;
+    private javax.swing.JPanel jPanelDialogAssign;
+    private javax.swing.JTextField txtFolioAssign;
     // End of variables declaration//GEN-END:variables
 }

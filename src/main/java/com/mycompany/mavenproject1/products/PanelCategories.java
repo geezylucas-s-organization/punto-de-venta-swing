@@ -11,7 +11,6 @@ import com.mycompany.mavenproject1.apiclient.products.CategoriesResponse;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.ForcedListSelectionModel;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
-import java.awt.Color;
 import java.awt.Container;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
