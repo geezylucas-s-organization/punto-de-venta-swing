@@ -27,7 +27,6 @@ public class NewJDialog extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanelDialogAssign = new javax.swing.JPanel();
         jLabelAssign = new javax.swing.JLabel();
@@ -37,44 +36,46 @@ public class NewJDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanelDialogAssign.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelDialogAssign.setLayout(new java.awt.GridBagLayout());
 
-        jLabelAssign.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabelAssign.setText("Folio:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(26, 6, 0, 0);
-        jPanelDialogAssign.add(jLabelAssign, gridBagConstraints);
+        jLabelAssign.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         txtFolioAssign.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 236;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(24, 6, 0, 0);
-        jPanelDialogAssign.add(txtFolioAssign, gridBagConstraints);
 
-        jLabel1Assign.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1Assign.setText("Asignar venta a cliente:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 0);
-        jPanelDialogAssign.add(jLabel1Assign, gridBagConstraints);
+        jLabel1Assign.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+
+        javax.swing.GroupLayout jPanelDialogAssignLayout = new javax.swing.GroupLayout(jPanelDialogAssign);
+        jPanelDialogAssign.setLayout(jPanelDialogAssignLayout);
+        jPanelDialogAssignLayout.setHorizontalGroup(
+            jPanelDialogAssignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDialogAssignLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelDialogAssignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1Assign)
+                    .addGroup(jPanelDialogAssignLayout.createSequentialGroup()
+                        .addComponent(jLabelAssign)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtFolioAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(88, 88, 88))
+        );
+        jPanelDialogAssignLayout.setVerticalGroup(
+            jPanelDialogAssignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDialogAssignLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1Assign)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelDialogAssignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelAssign)
+                    .addComponent(txtFolioAssign, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(141, 141, 141))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelDialogAssign, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+            .addComponent(jPanelDialogAssign, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

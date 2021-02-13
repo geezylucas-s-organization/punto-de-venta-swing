@@ -16,6 +16,7 @@ import com.mycompany.mavenproject1.products.PanelProducts;
 import com.mycompany.mavenproject1.reports.PanelReportClients;
 import com.mycompany.mavenproject1.reports.PanelReportMovements;
 import com.mycompany.mavenproject1.reports.PanelReportSales;
+import com.mycompany.mavenproject1.sell.DialogCloseShift;
 import com.mycompany.mavenproject1.sell.DialogRefunds;
 import com.mycompany.mavenproject1.sell.DialogSearchProduct;
 import com.mycompany.mavenproject1.sell.PanelSell;
@@ -72,6 +73,7 @@ public class MainApplication extends javax.swing.JFrame {
         ReportClientMenuItem = new javax.swing.JMenuItem();
         cashierMenu = new javax.swing.JMenu();
         closeShiftMenuItem = new javax.swing.JMenuItem();
+        boxesMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
@@ -277,7 +279,16 @@ public class MainApplication extends javax.swing.JFrame {
 
         closeShiftMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         closeShiftMenuItem.setText("Cerrar turno");
+        closeShiftMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeShiftMenuItemActionPerformed(evt);
+            }
+        });
         cashierMenu.add(closeShiftMenuItem);
+
+        boxesMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        boxesMenuItem.setText("Cortes de cajeros");
+        cashierMenu.add(boxesMenuItem);
 
         menuBar.add(cashierMenu);
 
@@ -423,6 +434,13 @@ public class MainApplication extends javax.swing.JFrame {
         removeInventory.setVisible(true);
     }//GEN-LAST:event_removeInventoryMenuItemActionPerformed
 
+    private void closeShiftMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeShiftMenuItemActionPerformed
+        // TODO add your handling code here:
+        DialogCloseShift closeShift = new DialogCloseShift(this, true);
+        closeShift.setLocationRelativeTo(null);
+        closeShift.setVisible(true);
+    }//GEN-LAST:event_closeShiftMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -462,6 +480,7 @@ public class MainApplication extends javax.swing.JFrame {
     private javax.swing.JMenuItem SearchProductMenuItem;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem addCategoryMenuItem;
+    private javax.swing.JMenuItem boxesMenuItem;
     private javax.swing.JMenu cashierMenu;
     private javax.swing.JMenuItem categoriesMenuItem;
     private javax.swing.JMenuItem closeShiftMenuItem;
