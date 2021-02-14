@@ -25,7 +25,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,9 +35,9 @@ import retrofit2.Response;
  * @author geezylucas
  */
 public class PanelSell extends javax.swing.JPanel {
-    
+
     private int folioClient = 2;
-    
+
     public void getTxtCodeProduct() {
         txtCodeProduct.requestFocusInWindow();
     }
@@ -358,7 +357,7 @@ public class PanelSell extends javax.swing.JPanel {
             SQLiteJDBC sqlite = new SQLiteJDBC();
             Integer userId = sqlite.getUserId();
             Integer boxId = sqlite.getBoxId();
-            
+
             SaleRequest saleRequest = new SaleRequest();
             saleRequest.setUserId(userId);
             saleRequest.setBoxId(boxId);
@@ -373,7 +372,7 @@ public class PanelSell extends javax.swing.JPanel {
                 productsSale.add(product);
             }
             saleRequest.setProducts(productsSale);
-            
+
             Window parentWindow = SwingUtilities.windowForComponent(this);
             // or pass 'this' if you are inside the panel
             Frame parentFrame = null;
@@ -383,7 +382,7 @@ public class PanelSell extends javax.swing.JPanel {
             DialogSaleConfirm saleConfirm = new DialogSaleConfirm(parentFrame, true, saleRequest);
             saleConfirm.setLocationRelativeTo(null);
             saleConfirm.setVisible(true);
-            
+
             saleConfirm.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
@@ -393,7 +392,7 @@ public class PanelSell extends javax.swing.JPanel {
             txtCodeProduct.requestFocusInWindow();
         }
     }//GEN-LAST:event_btnChargeActionPerformed
-    
+
     private void refresh() {
         txtCodeProduct.requestFocusInWindow();
         DefaultTableModel model = (DefaultTableModel) this.tblProducts.getModel();
@@ -424,7 +423,7 @@ public class PanelSell extends javax.swing.JPanel {
         for (int i = 0; i < rows.length; i++) {
             model.removeRow(rows[i] - i);
         }
-        
+
         refreshTotals();
         txtCodeProduct.requestFocusInWindow();
     }//GEN-LAST:event_btnRemoveProductActionPerformed
@@ -433,17 +432,16 @@ public class PanelSell extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         java.awt.GridBagConstraints gridBagConstraints;
-        
+
         JPanel jPanelDialogSome = new javax.swing.JPanel();
         JLabel jLabel3DialogSome = new javax.swing.JLabel();
         JTextField txtCodeProductDialogSome = new javax.swing.JTextField();
         JLabel jLabel1DialogSome = new javax.swing.JLabel();
         JLabel jLabel4DialogSome = new javax.swing.JLabel();
         JTextField txtQuantityDialogSome = new javax.swing.JTextField();
-        
-        jPanelDialogSome.setBackground(new java.awt.Color(255, 255, 255));
+
         jPanelDialogSome.setLayout(new java.awt.GridBagLayout());
-        
+
         jLabel3DialogSome.setText("Código del producto:");
         jLabel3DialogSome.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -453,7 +451,7 @@ public class PanelSell extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(26, 6, 0, 0);
         jPanelDialogSome.add(jLabel3DialogSome, gridBagConstraints);
-        
+
         txtCodeProductDialogSome.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -464,7 +462,7 @@ public class PanelSell extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(24, 6, 0, 0);
         jPanelDialogSome.add(txtCodeProductDialogSome, gridBagConstraints);
-        
+
         jLabel1DialogSome.setText("Agregar varios productos:");
         jLabel1DialogSome.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -474,7 +472,7 @@ public class PanelSell extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 0);
         jPanelDialogSome.add(jLabel1DialogSome, gridBagConstraints);
-        
+
         jLabel4DialogSome.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel4DialogSome.setText("Cantidad:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -483,7 +481,7 @@ public class PanelSell extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 6, 0, 0);
         jPanelDialogSome.add(jLabel4DialogSome, gridBagConstraints);
-        
+
         txtQuantityDialogSome.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -494,10 +492,7 @@ public class PanelSell extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 6, 6, 0);
         jPanelDialogSome.add(txtQuantityDialogSome, gridBagConstraints);
-        
-        UIManager.put("OptionPane.background", Color.white);
-        UIManager.put("Panel.background", Color.white);
-        
+
         final Object[] options = {"Agregar", "Cancelar"};
         int result = JOptionPane.showOptionDialog(null, jPanelDialogSome, null, JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
         if (result == 0) {
@@ -508,15 +503,14 @@ public class PanelSell extends javax.swing.JPanel {
     private void btnAssignClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignClientActionPerformed
         // TODO add your handling code here:
         java.awt.GridBagConstraints gridBagConstraints;
-        
+
         JPanel jPanelDialogAssign = new javax.swing.JPanel();
         JLabel jLabelAssign = new javax.swing.JLabel();
         JTextField txtFolioAssign = new javax.swing.JTextField();
         JLabel jLabel1Assign = new javax.swing.JLabel();
-        
-        jPanelDialogAssign.setBackground(new java.awt.Color(255, 255, 255));
+
         jPanelDialogAssign.setLayout(new java.awt.GridBagLayout());
-        
+
         jLabelAssign.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabelAssign.setText("Folio:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -526,7 +520,7 @@ public class PanelSell extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(26, 6, 0, 0);
         jPanelDialogAssign.add(jLabelAssign, gridBagConstraints);
-        
+
         txtFolioAssign.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -537,7 +531,7 @@ public class PanelSell extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(24, 6, 0, 0);
         jPanelDialogAssign.add(txtFolioAssign, gridBagConstraints);
-        
+
         jLabel1Assign.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1Assign.setText("Asignar venta a cliente:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -547,17 +541,14 @@ public class PanelSell extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 0);
         jPanelDialogAssign.add(jLabel1Assign, gridBagConstraints);
-        
-        UIManager.put("OptionPane.background", Color.white);
-        UIManager.put("Panel.background", Color.white);
-        
+
         final Object[] options = {"Agregar", "Cancelar"};
         int result = JOptionPane.showOptionDialog(null, jPanelDialogAssign, null, JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
         if (result == 0) {
             searchClient(Integer.valueOf(txtFolioAssign.getText()));
         }
     }//GEN-LAST:event_btnAssignClientActionPerformed
-    
+
     private void searchClient(int id) {
         SQLiteJDBC sqlite = new SQLiteJDBC();
         String token = sqlite.getToken();
@@ -575,14 +566,14 @@ public class PanelSell extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null, String.format("No existe el cliente con folio: %d", id), "Error asignar cliente", JOptionPane.ERROR_MESSAGE);
                 }
             }
-            
+
             @Override
             public void onFailure(Call<PersonsResponse> call, Throwable t) {
                 System.out.println(t.getLocalizedMessage());
             }
         });
     }
-    
+
     private void addProduct() {
         if (!txtCodeProduct.getText().equals("")) {
             btnAddProduct.setBackground(Color.GRAY);
@@ -656,7 +647,7 @@ public class PanelSell extends javax.swing.JPanel {
                     btnAddProduct.setBackground(new java.awt.Color(0, 166, 237));
                     btnAddProduct.setEnabled(true);
                 }
-                
+
                 @Override
                 public void onFailure(Call<ProductsResponse> call, Throwable t) {
                     System.out.println(t.getLocalizedMessage());
@@ -665,7 +656,7 @@ public class PanelSell extends javax.swing.JPanel {
             );
         }
     }
-    
+
     private void addSomeProduct(String codeProduct, int newQuantity) {
         SQLiteJDBC sqlite = new SQLiteJDBC();
         String token = sqlite.getToken();
@@ -705,7 +696,7 @@ public class PanelSell extends javax.swing.JPanel {
                                             product.getName(),
                                             product.getPriceOut1(),
                                             newQuantity,
-                                            (product.getPriceOut1().multiply(new BigDecimal(1))),
+                                            (product.getPriceOut1().multiply(new BigDecimal(newQuantity))),
                                             product.getStock() - newQuantity
                                         });
                                     } else {
@@ -724,7 +715,7 @@ public class PanelSell extends javax.swing.JPanel {
                                         product.getName(),
                                         product.getPriceOut1(),
                                         newQuantity,
-                                        (product.getPriceOut1().multiply(new BigDecimal(1))),
+                                        (product.getPriceOut1().multiply(new BigDecimal(newQuantity))),
                                         product.getStock() - newQuantity
                                     });
                                 } else {
@@ -738,11 +729,11 @@ public class PanelSell extends javax.swing.JPanel {
                 } else {
                     JOptionPane.showMessageDialog(null, "No existe el producto", "Producto", JOptionPane.ERROR_MESSAGE);
                 }
-                
+
                 txtCodeProduct.requestFocusInWindow();
                 refreshTotals();
             }
-            
+
             @Override
             public void onFailure(Call<ProductsResponse> call, Throwable t) {
                 System.out.println(t.getLocalizedMessage());
@@ -750,7 +741,7 @@ public class PanelSell extends javax.swing.JPanel {
         }
         );
     }
-    
+
     private void refreshTotals() {
         int totalProducts = 0;
         BigDecimal totalMoney = new BigDecimal(0);

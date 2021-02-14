@@ -132,8 +132,8 @@ public class PanelReportMovements extends javax.swing.JPanel {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Entradas", "Salidas", "Devoluciones" }));
         jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox1.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
-        jComboBox1.setMinimumSize(new java.awt.Dimension(69, 30));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(69, 30));
+        jComboBox1.setMinimumSize(new java.awt.Dimension(69, 31));
+        jComboBox1.setPreferredSize(new java.awt.Dimension(69, 31));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
