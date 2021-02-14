@@ -15,6 +15,17 @@ import javax.swing.JFrame;
 public class Main {
 
     public static void main(String[] args) {
+        load();
+    }
+
+    private static String checkUserData() {
+        SQLiteJDBC sqlite = new SQLiteJDBC();
+        sqlite.createUserTable();
+
+        return sqlite.getToken();
+    }
+
+    public static void load() {
         SplashForm splash = new SplashForm();
         splash.setLocationRelativeTo(null);
         splash.setVisible(true);
@@ -35,13 +46,5 @@ public class Main {
         }
 
         splash.dispose();
-
-    }
-
-    private static String checkUserData() {
-        SQLiteJDBC sqlite = new SQLiteJDBC();
-        sqlite.createUserTable();
-
-        return sqlite.getToken();
     }
 }

@@ -38,7 +38,6 @@ public class SQLiteJDBC {
             stmt.executeUpdate(query);
             stmt.close();
             conn.close();
-
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
@@ -62,9 +61,9 @@ public class SQLiteJDBC {
                     + "VALUES ('" + token + "', " + userId + ", " + boxId + ");";
 
             stmt.executeUpdate(query);
+            conn.commit();
 
             stmt.close();
-            conn.commit();
             conn.close();
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
@@ -84,9 +83,9 @@ public class SQLiteJDBC {
 
             String query = "UPDATE USER SET token = '" + token + "';";
             stmt.executeUpdate(query);
+            conn.commit();
 
             stmt.close();
-            conn.commit();
             conn.close();
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
@@ -171,7 +170,7 @@ public class SQLiteJDBC {
             return null;
         }
     }
-    
+
     public void removeRow(int boxId) {
         Connection conn;
         Statement stmt;
@@ -181,20 +180,13 @@ public class SQLiteJDBC {
             conn = DriverManager.getConnection("jdbc:sqlite:local.db");
             conn.setAutoCommit(false);
             stmt = conn.createStatement();
+            stmt.executeUpdate(String.format("DELETE FROM USER where box_id = %d;", boxId));
+            conn.commit();
 
-            int userId = 0;
-            try (ResultSet rs = stmt.executeQuery("DELETE FROM USER where box_id = ;")) {
-                while (rs.next()) {
-                    userId = rs.getInt("box_id");
-                }
-            }
             stmt.close();
             conn.close();
-
-            return userId;
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
-            return null;
         }
     }
 }

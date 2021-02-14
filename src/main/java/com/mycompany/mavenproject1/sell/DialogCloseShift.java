@@ -5,16 +5,19 @@
  */
 package com.mycompany.mavenproject1.sell;
 
+import com.mycompany.mavenproject1.Main;
 import com.mycompany.mavenproject1.apiclient.ApiClient;
 import com.mycompany.mavenproject1.apiclient.shifts.CloseShiftRequest;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
 import java.awt.Color;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  *
@@ -94,18 +97,17 @@ public class DialogCloseShift extends javax.swing.JDialog {
                         .addGap(6, 6, 6)
                         .addComponent(jLabel1Assign))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabelAssign)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabelAssign1)
-                        .addGap(27, 27, 27)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(137, 137, 137)
-                        .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelAssign)
+                            .addComponent(jLabelAssign1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -150,29 +152,25 @@ public class DialogCloseShift extends javax.swing.JDialog {
             SQLiteJDBC sqlite = new SQLiteJDBC();
             String token = sqlite.getToken();
             Integer boxId = sqlite.getBoxId();
-            
+
             CloseShiftRequest closeShift = new CloseShiftRequest();
             closeShift.setBoxId(boxId);
             closeShift.setCash(new BigDecimal(txtMoney.getText()).setScale(2));
             closeShift.setComment(txtaComment.getText());
-            
+
             Call<ResponseBody> closeShiftResponseCall = ApiClient.getShiftsService().closeShift(closeShift, "Bearer " + token);
-            closeShiftResponseCall.enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    if (response.isSuccessful()) {
-                        btnClose.setBackground(new java.awt.Color(0, 166, 237));
-                        btnClose.setEnabled(true);
-                        
-                        
-                    }
-                }
-                
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    System.out.println(t.getLocalizedMessage());
-                }
-            });
+            try {
+                closeShiftResponseCall.execute();
+                JFrame parent = (JFrame) this.getParent();
+                sqlite.removeRow(boxId);
+                this.setVisible(false);
+                parent.setVisible(false);
+                Main.load();
+                parent.dispose();
+                this.dispose();
+            } catch (IOException ex) {
+                Logger.getLogger(DialogCloseShift.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btnCloseActionPerformed
 
@@ -192,15 +190,11 @@ public class DialogCloseShift extends javax.swing.JDialog {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DialogCloseShift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DialogCloseShift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DialogCloseShift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(DialogCloseShift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+
         //</editor-fold>
 
         /* Create and display the dialog */

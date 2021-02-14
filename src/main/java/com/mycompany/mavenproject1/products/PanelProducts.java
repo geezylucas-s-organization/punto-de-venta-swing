@@ -307,7 +307,7 @@ public class PanelProducts extends javax.swing.JPanel {
         column = 0;
         int idProduct = Integer.valueOf(tblProducts.getModel().getValueAt(row, column).toString());
 
-        int input = JOptionPane.showConfirmDialog(null, "¿Seguro de eliminar el producto " + nameProduct + "?");
+        int input = JOptionPane.showConfirmDialog(null, "¿Seguro de eliminar el producto " + nameProduct + "?\n*AVISO*: Solo se podrá eliminar el producto si no tiene movimientos (entradas y saludas).");
 
         if (input == 0) {
             SQLiteJDBC sqlite = new SQLiteJDBC();
