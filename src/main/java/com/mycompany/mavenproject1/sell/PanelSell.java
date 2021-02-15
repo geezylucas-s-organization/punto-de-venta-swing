@@ -11,6 +11,7 @@ import com.mycompany.mavenproject1.apiclient.products.ProductsResponse;
 import com.mycompany.mavenproject1.apiclient.sells.ProductsSaleRequest;
 import com.mycompany.mavenproject1.apiclient.sells.SaleRequest;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
+import com.mycompany.mavenproject1.utils.Functions;
 import com.mycompany.mavenproject1.utils.StyledButtonUI;
 import java.awt.Color;
 import java.awt.Frame;
@@ -587,6 +588,14 @@ public class PanelSell extends javax.swing.JPanel {
                     if (response.isSuccessful()) {
                         ProductsResponse product = response.body();
                         if (product != null) {
+                            // price dynamic
+                            BigDecimal priceProduct;
+                            if (Functions.dynamicDate() && product.getPriceOut2() != null) {
+                                priceProduct = product.getPriceOut2();
+                            } else {
+                                priceProduct = product.getPriceOut1();
+                            }
+
                             DefaultTableModel model = (DefaultTableModel) tblProducts.getModel();
                             if (tblProducts.getRowCount() > 0) {
                                 int row = -1;
@@ -601,7 +610,9 @@ public class PanelSell extends javax.swing.JPanel {
                                     double stock = product.getStock() - quantity;
                                     if (stock >= 0) {
                                         tblProducts.getModel().setValueAt(quantity, row, 4);
-                                        BigDecimal total = product.getPriceOut1().multiply(new BigDecimal(quantity));
+
+                                        BigDecimal total = priceProduct.multiply(new BigDecimal(quantity));
+
                                         tblProducts.getModel().setValueAt(total, row, 5);
                                         tblProducts.getModel().setValueAt(stock, row, 6);
                                     } else {
@@ -613,9 +624,9 @@ public class PanelSell extends javax.swing.JPanel {
                                             product.getId(),
                                             product.getBarcode(),
                                             product.getName(),
-                                            product.getPriceOut1(),
+                                            priceProduct,
                                             1,
-                                            (product.getPriceOut1().multiply(new BigDecimal(1))),
+                                            (priceProduct.multiply(new BigDecimal(1))),
                                             product.getStock() - 1
                                         });
                                     } else {
@@ -628,9 +639,9 @@ public class PanelSell extends javax.swing.JPanel {
                                         product.getId(),
                                         product.getBarcode(),
                                         product.getName(),
-                                        product.getPriceOut1(),
+                                        priceProduct,
                                         1,
-                                        product.getPriceOut1().multiply(new BigDecimal(1)),
+                                        priceProduct.multiply(new BigDecimal(1)),
                                         product.getStock() - 1
                                     });
                                 } else {
@@ -667,6 +678,14 @@ public class PanelSell extends javax.swing.JPanel {
                 if (response.isSuccessful()) {
                     ProductsResponse product = response.body();
                     if (product != null) {
+                        // price dynamic
+                        BigDecimal priceProduct;
+                        if (Functions.dynamicDate() && product.getPriceOut2() != null) {
+                            priceProduct = product.getPriceOut2();
+                        } else {
+                            priceProduct = product.getPriceOut1();
+                        }
+
                         DefaultTableModel model = (DefaultTableModel) tblProducts.getModel();
                         if (tblProducts.getRowCount() > 0) {
                             int row = -1;
@@ -681,7 +700,9 @@ public class PanelSell extends javax.swing.JPanel {
                                 double stock = product.getStock() - quantity;
                                 if (stock >= 0) {
                                     tblProducts.getModel().setValueAt(quantity, row, 4);
-                                    BigDecimal total = product.getPriceOut1().multiply(new BigDecimal(quantity));
+
+                                    BigDecimal total = priceProduct.multiply(new BigDecimal(quantity));
+
                                     tblProducts.getModel().setValueAt(total, row, 5);
                                     tblProducts.getModel().setValueAt(stock, row, 6);
                                 } else {
@@ -694,9 +715,9 @@ public class PanelSell extends javax.swing.JPanel {
                                             product.getId(),
                                             product.getBarcode(),
                                             product.getName(),
-                                            product.getPriceOut1(),
+                                            priceProduct,
                                             newQuantity,
-                                            (product.getPriceOut1().multiply(new BigDecimal(newQuantity))),
+                                            (priceProduct.multiply(new BigDecimal(newQuantity))),
                                             product.getStock() - newQuantity
                                         });
                                     } else {
@@ -713,9 +734,9 @@ public class PanelSell extends javax.swing.JPanel {
                                         product.getId(),
                                         product.getBarcode(),
                                         product.getName(),
-                                        product.getPriceOut1(),
+                                        priceProduct,
                                         newQuantity,
-                                        (product.getPriceOut1().multiply(new BigDecimal(newQuantity))),
+                                        (priceProduct.multiply(new BigDecimal(newQuantity))),
                                         product.getStock() - newQuantity
                                     });
                                 } else {

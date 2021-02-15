@@ -5,6 +5,7 @@
  */
 package com.mycompany.mavenproject1.sell;
 
+import com.mycompany.mavenproject1.utils.Functions;
 import com.mycompany.mavenproject1.apiclient.ApiClient;
 import com.mycompany.mavenproject1.apiclient.products.ProductsResponse;
 import com.mycompany.mavenproject1.sqlite.SQLiteJDBC;
@@ -223,18 +224,17 @@ public class DialogSearchProduct extends javax.swing.JDialog {
                             lblName.setText(product.getName());
                             lblStock.setText(product.getStock() == null ? "0.00" : product.getStock().toString());
                             // TODO: check price according to the schedule
-                            lblPriceSale.setText(product.getPriceOut1().toString());
-                            //txtSalePrice1.setText(product.getPriceOut2() == null ? "0.00" : product.getPriceOut1().toString());
-                            //txtSalePrice2.setText(product.getPriceOut3() == null ? "0.00" : product.getPriceOut2().toString());
+                            if (Functions.dynamicDate() && product.getPriceOut2() != null) {
+                                lblPriceSale.setText(product.getPriceOut2().toString());
+                            } else {
+                                lblPriceSale.setText(product.getPriceOut1().toString());
+                            }
                             lblCategory.setText(product.getCategory());
                         }
                     } else {
                         lblName.setText("-");
                         lblStock.setText("0");
-                        // TODO: check price according to the schedule
                         lblPriceSale.setText("$0.00");
-                        //txtSalePrice1.setText(product.getPriceOut2() == null ? "0.00" : product.getPriceOut1().toString());
-                        //txtSalePrice2.setText(product.getPriceOut3() == null ? "0.00" : product.getPriceOut2().toString());
                         lblCategory.setText("-");
                         JOptionPane.showMessageDialog(null, "El producto no existe", "Agregar inventario", JOptionPane.ERROR_MESSAGE);
                     }
