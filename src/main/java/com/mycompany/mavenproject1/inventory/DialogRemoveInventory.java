@@ -63,18 +63,18 @@ public class DialogRemoveInventory extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setText("Quitar inventario:");
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel2.setText("Buscar:");
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         txtQuantity.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
 
-        btnSearch.setText("Buscar");
         btnSearch.setBackground(new java.awt.Color(0, 166, 237));
         btnSearch.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnSearch.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearch.setText("Buscar");
         btnSearch.setMaximumSize(new java.awt.Dimension(95, 40));
         btnSearch.setMinimumSize(new java.awt.Dimension(95, 40));
         btnSearch.setPreferredSize(new java.awt.Dimension(95, 40));
@@ -85,20 +85,20 @@ public class DialogRemoveInventory extends javax.swing.JDialog {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel3.setText("Nombre:");
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        lblName.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         lblName.setText("-");
+        lblName.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel4.setText("Hay:");
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        lblStock.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         lblStock.setText("-");
+        lblStock.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel5.setText("Cantidad:");
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         txtCodeProduct.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
         txtCodeProduct.addActionListener(new java.awt.event.ActionListener() {
@@ -154,13 +154,13 @@ public class DialogRemoveInventory extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
-                        .addGap(26, 26, 26)
+                        .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblStock, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(6, 12, Short.MAX_VALUE))
+                                .addComponent(lblStock, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,17 +168,15 @@ public class DialogRemoveInventory extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(txtCodeProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblIdProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblIdProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtCodeProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(lblName))
@@ -186,7 +184,7 @@ public class DialogRemoveInventory extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(lblStock))
-                .addGap(19, 19, 19)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))

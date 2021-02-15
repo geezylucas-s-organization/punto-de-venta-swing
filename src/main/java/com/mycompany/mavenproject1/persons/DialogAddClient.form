@@ -62,9 +62,9 @@
                                       <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtPhoneNumber" pref="271" max="32767" attributes="0"/>
+                                      <Component id="txtPhoneNumber" pref="272" max="32767" attributes="0"/>
                                       <Component id="txtEmail" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -73,10 +73,10 @@
                                       <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtLastname" pref="271" max="32767" attributes="0"/>
-                                      <Component id="txtName" max="32767" attributes="0"/>
+                                      <Component id="txtName" pref="271" max="32767" attributes="0"/>
+                                      <Component id="txtLastname" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -107,7 +107,7 @@
                       </Group>
                       <Component id="txtLastname" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
@@ -123,7 +123,7 @@
                       </Group>
                       <Component id="txtEmail" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="btnSave" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -133,18 +133,18 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
+            <Property name="text" type="java.lang.String" value="Agregar cliente:"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="24" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Agregar cliente:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
+            <Property name="text" type="java.lang.String" value="Nombre:"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Nombre:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtName">
@@ -156,10 +156,10 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
+            <Property name="text" type="java.lang.String" value="Apellidos:"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Apellidos:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtLastname">
@@ -171,10 +171,10 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
+            <Property name="text" type="java.lang.String" value="Tel&#xe9;fono:"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Tel&#xe9;fono:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPhoneNumber">
@@ -186,10 +186,10 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
+            <Property name="text" type="java.lang.String" value="Email:"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Email:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtEmail">

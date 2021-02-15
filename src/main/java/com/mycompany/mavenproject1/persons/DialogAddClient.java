@@ -59,26 +59,26 @@ public class DialogAddClient extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setText("Agregar cliente:");
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel5.setText("Nombre:");
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         txtName.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel6.setText("Apellidos:");
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         txtLastname.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel7.setText("Teléfono:");
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         txtPhoneNumber.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel8.setText("Email:");
+        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         txtEmail.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
 
@@ -113,18 +113,18 @@ public class DialogAddClient extends javax.swing.JDialog {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel8))
-                                .addGap(19, 19, 19)
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                                     .addComponent(txtEmail)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtLastname, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
-                                    .addComponent(txtName))))))
+                                    .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                                    .addComponent(txtLastname))))))
                 .addContainerGap(350, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
